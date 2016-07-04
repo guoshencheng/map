@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  display: -webkit-flex;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  flex-direction: column;
+  color: #111111;
+  margin: 0px;
+  background-color: #F9FAFD; }
+
+div {
+  width: 100%;
+  text-align: center; }
+
+.mix_title {
+  background-color: #F7CD1F; }
+  .mix_title .mix_title_img {
+    width: 100%; }
+
+.mix_rule {
+  background-color: #00C7AB; }
+  .mix_rule img {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 80%; }
+
+.mix_start {
+  background-color: #EF9033; }
+  .mix_start img {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 20%; }
+
+/*# sourceMappingURL=index.css.map */
