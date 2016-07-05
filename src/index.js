@@ -34,7 +34,7 @@ function drawline(point) {
 function animationDrawLine(origin, tar) {
   var children = tar.children
   var originTar = new BMap.Point(origin.lng, origin.lat)
-  var polyline = new BMap.Polyline([origin, originTar], {strokeColor:"red", strokeWeight:1, strokeOpacity:0.5})
+  var polyline = new BMap.Polyline([origin, originTar], {strokeColor:"red", strokeWeight:1, strokeOpacity:0.3})
   map.addOverlay(polyline)
   var tween = new TWEEN.Tween(polyline.ia[1])
   tween.to(tar, 1000)
