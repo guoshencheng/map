@@ -1,0 +1,18 @@
+.location_circle {
+  position: absolute;
+  box-shadow: 0px 0px 10px 2px red;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px; }
+
+.meteor_container {
+  position: absolute; }
+
+.meteor_icon {
+  left: 10%;
+  top: 45%;
+  height: 10%;
+  width: 40%;
+  position: relative; }
+
+/*# sourceMappingURL=map.css.map */

@@ -1,0 +1,32 @@
+@mixin shadow {
+  box-shadow:0px 0px 10px 2px red;
+}
+
+@mixin rotate($value: 20deg) {
+    -ms-transform: rotate($value);
+    -webkit-transform: rotate($value);
+    transform: rotate($value);
+
+}
+
+.location_circle {
+  position: absolute;
+  @include shadow;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+
+.meteor_container {
+  position: absolute;
+}
+
+.meteor_icon {
+  left: 10%;
+  top: 45%;
+  height: 10%;
+  width: 40%;
+  position: relative;
+}
+
+
