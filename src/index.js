@@ -11,11 +11,12 @@ p1.children = points1
 p2.children = points2
 
 var map = new AMap.Map("container"); 
+map.on('complete', function() {
+  drawline(p1)
+})
 map.setZoom(5)
-drawline(p1)
 
 function drawline(point) {
-
   new AMap.Marker({
     map: map,
 		position: point,
