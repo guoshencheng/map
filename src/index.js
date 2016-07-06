@@ -1,14 +1,18 @@
 var TWEEN = require('tween.js')
 var p1 = [116.399, 39.910]
 var p2 = [121.43333, 34.50000]
+var p3 = [115.55, 28.4]
 var points1 = [
   p2,
-  [120.20000, 32.266667]
+  [120.20000, 32.266667],
 ]
+
+var points3 = [[123.25, 41.48], [111.41, 40.48], [101.48, 36.38]]
 var points2 = [[113.23333, 23.16667],
- [113.51667, 22.30000]]
+ [113.51667, 22.30000], p3]
 p1.children = points1
 p2.children = points2
+p3.children = points3
 
 var map = new AMap.Map("container"); 
 map.on('complete', function() {
@@ -26,7 +30,7 @@ function drawline(point) {
             imageSize: new AMap.Size(20, 20),
             imageOffset: new AMap.Pixel(0, 20)
         })        
-    });
+   });
   if (point.children && point.children.length > 0) {
     for (var index in point.children) {
       var child = point.children[index]
@@ -43,7 +47,7 @@ function animationDrawLine(origin, tar) {
   var polyline = new AMap.Polyline({ map: map,
             path: [origin, originTar],
             strokeColor: 'red' ,
-            strokeOpacity: 0.3,
+            strokeOpacity: 0.4,
             strokeWeight: 1, 
             strokeStyle: "solid"//线样式
         })
