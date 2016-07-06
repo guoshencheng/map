@@ -33,7 +33,7 @@ body {
     flex-grow: 1;
     text-align: center; }
     .title_block .spread_text_container p {
-      margin-top: 40%; }
+      margin-top: 50px; }
 
 .data_container {
   height: 200px; }
