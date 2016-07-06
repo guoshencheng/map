@@ -1,6 +1,6 @@
 @mixin card {
   margin-bottom: 8px;
-  box-shadow: 0px 0px 5px #666666;
+  box-shadow: 0px 0px 5px #dedede;
 }
 
 @mixin flex {
@@ -35,7 +35,7 @@ html{
 body {
   height:100%;
   margin:0px;
-  padding:0px
+  padding:0px;
 }
 
 #map_container {
@@ -73,7 +73,53 @@ body {
 }
 
 .data_container {
-  height: 200px;
+  text-align: center;
+  width: 100%;
+  .number {
+    font-size:30px;
+    margin: 0px;
+  }
+  .description {
+    font-size: 20px; 
+    margin: 0px;
+  }
+  .line {
+    height: 1px;
+    background-color: gray;
+    margin-left: 10%;
+    width: 80%;
+  }
+  .text_container {
+      @include flex;
+      justify-content: center;
+  }
+  #view_container {
+    .text_container {
+      margin: 15px;
+      @include flex;
+      justify-content: center;
+    }
+  }
+ #spread_rate {
+   .container {
+      margin: 15px;
+      .text_container {
+         @include flex;
+         justify-content: center;
+      } 
+   }
+ }
+ #spread_distance {
+  .text_container {
+    margin: 15px;
+  }
+ }
+ #spread_hot_rate {
+  .text_container {
+    margin: 15px;
+  }
+ }
+ 
 }
 
 .content_container {
@@ -126,21 +172,22 @@ body {
   @include radius(2px);
   .logo {
     @include radius(5px);
-    height: 50px;
+    height: 40px;
     margin: 8px;
     margin-left: 15px;
   }
   .text_container {
     width: 50%;
     p {
+      font-size: 12px;
       color: white;
-      height: 40%;
-      margin: 5px;
+      height: 30%;
+      margin: 6px;
     }
   }
   .download_button {
     margin: 8px;
-    height: 50px;
+    height: 40px;
     width: 80px;
     background-color: yellow;
     @include radius(5px);
