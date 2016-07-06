@@ -15,16 +15,18 @@ map.setZoom(5)
 drawline(p1)
 
 function drawline(point) {
-  var circle = new AMap.Circle({
-        center: new AMap.LngLat(point[0], point[1]),// 圆心位置
-        radius: 10000,
-        strokeColor: "blue",
-        strokeOpacity: 1, //线透明度
-        strokeWeight: 3, //线粗细度
-        fillColor: "red", //填充颜色
-        fillOpacity: 0.35//填充透明度
+
+  new AMap.Marker({
+    map: map,
+		position: point,
+        icon: new AMap.Icon({            
+            size: new AMap.Size(78, 78), 
+            image: "/imgs/point.png",
+            imageSize: new AMap.Size(20, 20),
+            imageOffset: new AMap.Pixel(0, 20)
+        })        
     });
-    circle.setMap(map);  if (point.children && point.children.length > 0) {
+  if (point.children && point.children.length > 0) {
     for (var index in point.children) {
       var child = point.children[index]
       if (child) {
