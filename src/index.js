@@ -14,11 +14,11 @@ p1.children = points1
 p2.children = points2
 p3.children = points3
 
-var map = new AMap.Map("container"); 
+var map = new AMap.Map("map_container"); 
 map.on('complete', function() {
   drawline(p1)
 })
-map.setZoom(5)
+map.setZoom(4)
 
 function drawline(point) {
   new AMap.Marker({
@@ -27,8 +27,8 @@ function drawline(point) {
         icon: new AMap.Icon({            
             size: new AMap.Size(78, 78), 
             image: "/imgs/point.png",
-            imageSize: new AMap.Size(20, 20),
-            imageOffset: new AMap.Pixel(0, 20)
+            imageSize: new AMap.Size(10, 10),
+            imageOffset: new AMap.Pixel(5, 25)
         })        
    });
   if (point.children && point.children.length > 0) {
@@ -49,10 +49,10 @@ function animationDrawLine(origin, tar) {
             strokeColor: 'red' ,
             strokeOpacity: 0.4,
             strokeWeight: 1, 
-            strokeStyle: "solid"//线样式
+            strokeStyle: "solid"
         })
   var tween = new TWEEN.Tween(originTar)
-  tween.to(tar, 1000)
+  tween.to(tar, 800)
   tween.onUpdate(function () {
     polyline.setPath([origin, this])
   })

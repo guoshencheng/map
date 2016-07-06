@@ -1,3 +1,116 @@
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px; }
+
+#map_container {
+  position: relative;
+  height: 400px; }
+
+.renyan_container {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: -50px;
+  width: 100%; }
+
+.title_block {
+  display: flex;
+  display: -webkit-flex;
+  height: 100px;
+  width: 100%; }
+  .title_block .spread_img_container {
+    flex-grow: 1;
+    height: 100%;
+    text-align: center; }
+    .title_block .spread_img_container img {
+      height: 100%; }
+  .title_block .spread_text_container {
+    flex-grow: 1;
+    text-align: center; }
+    .title_block .spread_text_container p {
+      margin-top: 40%; }
+
+.data_container {
+  height: 200px; }
+
+.content_container {
+  width: 100%;
+  background-color: #F9F9F9; }
+  .content_container .content_card {
+    margin-bottom: 8px;
+    box-shadow: 0px 0px 5px #666666;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: white;
+    width: 80%;
+    height: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%; }
+
+.notice_download {
+  background-color: #F9F9F9;
+  width: 100%;
+  text-align: center; }
+
+.user_info_block {
+  background-color: #F9F9F9;
+  width: 100%; }
+  .user_info_block .user_info_container {
+    width: 60%;
+    margin-left: 20%;
+    text-align: center; }
+    .user_info_block .user_info_container .user_avatar {
+      width: 40%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      border-radius: 50%; }
+  .user_info_block .user_data {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row; }
+    .user_info_block .user_data p {
+      flex-grow: 1; }
+
+.download_banner {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #222222;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px; }
+  .download_banner .logo {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 50px;
+    margin: 8px;
+    margin-left: 15px; }
+  .download_banner .text_container {
+    width: 50%; }
+    .download_banner .text_container p {
+      color: white;
+      height: 40%;
+      margin: 5px; }
+  .download_banner .download_button {
+    margin: 8px;
+    height: 50px;
+    width: 80px;
+    background-color: yellow;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: black;
+    text-align: center; }
+
 .location_circle {
   position: absolute;
   box-shadow: 0px 0px 10px 2px red;

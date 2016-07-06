@@ -1,20 +1,158 @@
+@mixin card {
+  margin-bottom: 8px;
+  box-shadow: 0px 0px 5px #666666;
+}
+
+@mixin flex {
+   display: flex;
+   display: -webkit-flex;
+}
+
+@mixin gray {
+  background-color: #F9F9F9;
+}
+
 @mixin shadow {
   box-shadow:0px 0px 10px 2px red;
 }
 
-@mixin rotate($value: 20deg) {
-    -ms-transform: rotate($value);
-    -webkit-transform: rotate($value);
-    transform: rotate($value);
+@mixin radius($value: 5px) {
+  -moz-border-radius: $value;
+  -webkit-border-radius: $value;
+  border-radius: $value;
+}
 
+@mixin rotate($value: 20deg) {
+  -ms-transform: rotate($value);
+  -webkit-transform: rotate($value);
+  transform: rotate($value);
+}
+
+html{
+  height:100%
+}
+
+body {
+  height:100%;
+  margin:0px;
+  padding:0px
+}
+
+#map_container {
+  position:relative;
+  height:400px;
+}
+
+.renyan_container {
+  @include flex;
+  flex-direction: column;
+  position:absolute;
+  margin-top: -50px;
+  width: 100%;
+}
+
+.title_block {
+  @include flex;
+  height: 100px;
+  width: 100%;
+  .spread_img_container {
+    flex-grow:1; 
+    height: 100%;
+    text-align: center;
+    img {
+       height: 100%;
+    }
+  }
+  .spread_text_container {
+    flex-grow:1; 
+    text-align: center;
+    p {
+      margin-top: 40%;
+    }
+  }
+}
+
+.data_container {
+  height: 200px;
+}
+
+.content_container {
+  width:100%;
+  @include gray;
+  .content_card {
+    @include card;
+    @include radius(10px);
+    background-color: white;
+    width: 80%;
+    height: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left:10%;
+  }
+}
+
+.notice_download {
+  @include gray;
+  width: 100%;
+  text-align: center;
+}
+
+.user_info_block {
+  @include gray;
+  width: 100%;
+  .user_info_container {
+    width: 60%;
+    margin-left: 20%;
+    text-align:center;
+    .user_avatar {
+      width: 40%;
+      @include radius(50%);
+    }
+  }
+  .user_data {
+    @include flex;
+    flex-direction: row;
+    p {
+      flex-grow: 1;
+    }
+  }
+}
+
+.download_banner {
+  @include flex;
+  justify-content:space-between;
+  width: 100%;
+  background-color: #222222;
+  @include radius(2px);
+  .logo {
+    @include radius(5px);
+    height: 50px;
+    margin: 8px;
+    margin-left: 15px;
+  }
+  .text_container {
+    width: 50%;
+    p {
+      color: white;
+      height: 40%;
+      margin: 5px;
+    }
+  }
+  .download_button {
+    margin: 8px;
+    height: 50px;
+    width: 80px;
+    background-color: yellow;
+    @include radius(5px);
+    color: black;
+    text-align: center;
+  }
 }
 
 .location_circle {
   position: absolute;
   @include shadow;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
+  @include radius(50px);
 }
 
 .meteor_container {
