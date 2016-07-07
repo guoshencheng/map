@@ -52,6 +52,7 @@ function animationDrawLine(origin, tar) {
             strokeStyle: "solid"
         })
   var tween = new TWEEN.Tween(originTar)
+  tween.easing(TWEEN.Easing.Quadratic.In);
   tween.to(tar, 800)
   tween.onUpdate(function () {
     polyline.setPath([origin, this])
