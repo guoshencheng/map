@@ -5,8 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
 <title>renyan map test</title>  
   <link href="/stylesheets/map.css" rel="stylesheet">
-  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5658086d6c430da1b17d0452dc1952c6">
-  </script>
+  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5658086d6c430da1b17d0452dc1952c6"></script>
 </head>  
 
 <body>  
@@ -84,7 +83,12 @@
       </a>
     </div>
   </div>
-    
+  <script type="text/javascript">
+    var pointString = '<%- JSON.stringify(point) %>'
+    var point = JSON.parse(pointString)
+    console.log(point)
+    window.point = point
+  </script>
   <script type="text/javascript" src="/javascripts/map/dist/dist.js"></script>
 
 </body>  

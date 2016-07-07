@@ -1,24 +1,16 @@
 var TWEEN = require('tween.js')
-var p1 = [116.399, 39.910]
-var p2 = [121.43333, 34.50000]
-var p3 = [115.55, 28.4]
-var points1 = [
-  p2,
-  [120.20000, 32.266667],
-]
-
-var points3 = [[123.25, 41.48], [111.41, 40.48], [101.48, 36.38]]
-var points2 = [[113.23333, 23.16667],
- [113.51667, 22.30000], p3]
-p1.children = points1
-p2.children = points2
-p3.children = points3
-
+var p = window.point;
 var map = new AMap.Map("map_container"); 
 map.on('complete', function() {
-  drawline(p1)
+  drawline(getPoint(p))
 })
 map.setZoom(4)
+
+function getPoint(point) {
+  var result = [point.lng, point.lat]
+  if (point.children) result.children = point.children
+  return result
+}
 
 function drawline(point) {
   new AMap.Marker({
@@ -26,7 +18,7 @@ function drawline(point) {
 		position: point,
         icon: new AMap.Icon({            
             size: new AMap.Size(78, 78), 
-            image: "/image/point.png",
+            image: "/images/point.png",
             imageSize: new AMap.Size(10, 10),
             imageOffset: new AMap.Pixel(5, 25)
         })        
@@ -35,6 +27,7 @@ function drawline(point) {
     for (var index in point.children) {
       var child = point.children[index]
       if (child) {
+        child = getPoint(child)
         animationDrawLine(point, child)
       }
     }
