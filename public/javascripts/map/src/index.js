@@ -2,6 +2,10 @@ var TWEEN = require('tween.js')
 var p = window.point;
 var map = new AMap.Map("map_container"); 
 map.on('complete', function() {
+  var mark = document.getElementsByClassName('amap-logo')[0]
+  if (mark && mark.parentElement) {
+    mark.parentElement.removeChild(mark)
+  }
   drawline(getPoint(p))
 })
 map.setZoom(4)
