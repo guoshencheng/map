@@ -1,4 +1,11 @@
+@font-face {
+  font-family: 'PingFang Regular';
+  src: url("../font/PingFang Regular.eot");
+  src: url("../font/PingFang Regular.eot?#font-spider") format("embedded-opentype"), url("../font/PingFang Regular.woff2") format("woff2"), url("../font/PingFang Regular.woff") format("woff"), url("../font/PingFang Regular.ttf") format("truetype"), url("../font/PingFang Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 html {
+  font-family: 'PingFang Regular';
   height: 100%; }
 
 body {
