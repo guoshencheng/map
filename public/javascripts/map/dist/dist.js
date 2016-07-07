@@ -53,12 +53,14 @@
 	map.setZoom(4)
 	
 	function getPoint(point) {
-	  var result = [point.lng, point.lat]
-	  if (point.children) result.children = point.children
+	  if (!point) return null
+	  var result = [point.lon, point.lat]
+	  if (point.nodes && point.nodes.length > 0) result.nodes = point.nodes
 	  return result
 	}
 	
 	function drawline(point) {
+	  if (!point) return
 	  new AMap.Marker({
 	    map: map,
 			position: point,
@@ -69,9 +71,9 @@
 	            imageOffset: new AMap.Pixel(5, 25)
 	        })        
 	   });
-	  if (point.children && point.children.length > 0) {
-	    for (var index in point.children) {
-	      var child = point.children[index]
+	  if (point.nodes && point.nodes.length > 0) {
+	    for (var index in point.nodes) {
+	      var child = point.nodes[index]
 	      if (child) {
 	        child = getPoint(child)
 	        animationDrawLine(point, child)
@@ -81,7 +83,7 @@
 	}
 	
 	function animationDrawLine(origin, tar) {
-	  var children = tar.children
+	  var nodes = tar.nodes
 	  var originTar = [origin[0], origin[1]]
 	  var polyline = new AMap.Polyline({ map: map,
 	            path: [origin, originTar],
@@ -97,7 +99,7 @@
 	    polyline.setPath([origin, this])
 	  })
 	  tween.onComplete(function() {
-	    tar.children = children
+	    tar.nodes = nodes
 	    drawline(tar)
 	  })
 	  tween.start()
