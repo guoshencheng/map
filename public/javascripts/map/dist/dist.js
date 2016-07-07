@@ -46,21 +46,6 @@
 
 	var TWEEN = __webpack_require__(1)
 	var p = window.point;
-	var p1 = [116.399, 39.910]
-	var p2 = [121.43333, 34.50000]
-	var p3 = [115.55, 28.4]
-	var points1 = [
-	  p2,
-	  [120.20000, 32.266667],
-	]
-	
-	var points3 = [[123.25, 41.48], [111.41, 40.48], [101.48, 36.38]]
-	var points2 = [[113.23333, 23.16667],
-	 [113.51667, 22.30000], p3]
-	p1.children = points1
-	p2.children = points2
-	p3.children = points3
-	
 	var map = new AMap.Map("map_container"); 
 	map.on('complete', function() {
 	  drawline(getPoint(p))
