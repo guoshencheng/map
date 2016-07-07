@@ -26,7 +26,7 @@ function drawline(point) {
 		position: point,
         icon: new AMap.Icon({            
             size: new AMap.Size(78, 78), 
-            image: "/imgs/point.png",
+            image: "/image/point.png",
             imageSize: new AMap.Size(10, 10),
             imageOffset: new AMap.Pixel(5, 25)
         })        

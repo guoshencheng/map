@@ -42,55 +42,975 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	function SquareOverlay(center, length, color){    
-	 this._center = center;    
-	 this._length = length;    
-	 this._color = color;    
-	}    
-	// 继承API的BMap.Overlay    
-	SquareOverlay.prototype = new BMap.Overlay();
-	SquareOverlay.prototype.initialize = function(map){    
-	// 保存map对象实例   
-	 this._map = map;        
-	 // 创建div元素，作为自定义覆盖物的容器   
-	 var div = document.createElement("div");    
-	 div.setAttribute('class', 'location_circle')
-	 div.style.position = "absolute";        
-	 // 可以根据参数设置元素外观   
-	 div.style.width = this._length + "px";    
-	 div.style.height = this._length + "px";    
-	 div.style.background = this._color;      
-	// 将div添加到覆盖物容器中   
-	 map.getPanes().markerPane.appendChild(div);      
-	// 保存div实例   
-	 this._div = div;      
-	// 需要将div元素作为方法的返回值，当调用该覆盖物的show、   
-	// hide方法，或者对覆盖物进行移除时，API都将操作此元素。   
-	 return div;    
+	var TWEEN = __webpack_require__(1)
+	var p1 = [116.399, 39.910]
+	var p2 = [121.43333, 34.50000]
+	var p3 = [115.55, 28.4]
+	var points1 = [
+	  p2,
+	  [120.20000, 32.266667],
+	]
+	
+	var points3 = [[123.25, 41.48], [111.41, 40.48], [101.48, 36.38]]
+	var points2 = [[113.23333, 23.16667],
+	 [113.51667, 22.30000], p3]
+	p1.children = points1
+	p2.children = points2
+	p3.children = points3
+	
+	var map = new AMap.Map("map_container"); 
+	map.on('complete', function() {
+	  drawline(p1)
+	})
+	map.setZoom(4)
+	
+	function drawline(point) {
+	  new AMap.Marker({
+	    map: map,
+			position: point,
+	        icon: new AMap.Icon({            
+	            size: new AMap.Size(78, 78), 
+	            image: "/images/point.png",
+	            imageSize: new AMap.Size(10, 10),
+	            imageOffset: new AMap.Pixel(5, 25)
+	        })        
+	   });
+	  if (point.children && point.children.length > 0) {
+	    for (var index in point.children) {
+	      var child = point.children[index]
+	      if (child) {
+	        animationDrawLine(point, child)
+	      }
+	    }
+	  }
 	}
 	
-	SquareOverlay.prototype.draw = function(){    
-	// 根据地理坐标转换为像素坐标，并设置给容器    
-	 var position = this._map.pointToOverlayPixel(this._center);    
-	 this._div.style.left = position.x - this._length / 2 + "px";    
-	 this._div.style.top = position.y - this._length / 2 + "px";    
+	function animationDrawLine(origin, tar) {
+	  var children = tar.children
+	  var originTar = [origin[0], origin[1]]
+	  var polyline = new AMap.Polyline({ map: map,
+	            path: [origin, originTar],
+	            strokeColor: 'red' ,
+	            strokeOpacity: 0.4,
+	            strokeWeight: 1, 
+	            strokeStyle: "solid"
+	        })
+	  var tween = new TWEEN.Tween(originTar)
+	  tween.easing(TWEEN.Easing.Quadratic.In);
+	  tween.to(tar, 800)
+	  tween.onUpdate(function () {
+	    polyline.setPath([origin, this])
+	  })
+	  tween.onComplete(function() {
+	    tar.children = children
+	    drawline(tar)
+	  })
+	  tween.start()
 	}
 	
-	SquareOverlay.prototype.show = function(){    
-	 if (this._div){    
-	   this._div.style.display = "";    
-	 }    
-	}      
-	// 实现隐藏方法  
-	SquareOverlay.prototype.hide = function(){    
-	 if (this._div){    
-	   this._div.style.display = "none";    
-	 }    
+	animate();
+	function animate() {
+	  requestAnimationFrame(animate);
+	  TWEEN.update()
 	}
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+	 * Tween.js - Licensed under the MIT license
+	 * https://github.com/tweenjs/tween.js
+	 * ----------------------------------------------
+	 *
+	 * See https://github.com/tweenjs/tween.js/graphs/contributors for the full list of contributors.
+	 * Thank you all, you're awesome!
+	 */
 	
-	window.SquareOverlay = SquareOverlay
+	// Include a performance.now polyfill
+	(function () {
+	
+		if ('performance' in window === false) {
+			window.performance = {};
+		}
+	
+		// IE 8
+		Date.now = (Date.now || function () {
+			return new Date().getTime();
+		});
+	
+		if ('now' in window.performance === false) {
+			var offset = window.performance.timing && window.performance.timing.navigationStart ? window.performance.timing.navigationStart
+			                                                                                    : Date.now();
+	
+			window.performance.now = function () {
+				return Date.now() - offset;
+			};
+		}
+	
+	})();
+	
+	var TWEEN = TWEEN || (function () {
+	
+		var _tweens = [];
+	
+		return {
+	
+			getAll: function () {
+	
+				return _tweens;
+	
+			},
+	
+			removeAll: function () {
+	
+				_tweens = [];
+	
+			},
+	
+			add: function (tween) {
+	
+				_tweens.push(tween);
+	
+			},
+	
+			remove: function (tween) {
+	
+				var i = _tweens.indexOf(tween);
+	
+				if (i !== -1) {
+					_tweens.splice(i, 1);
+				}
+	
+			},
+	
+			update: function (time) {
+	
+				if (_tweens.length === 0) {
+					return false;
+				}
+	
+				var i = 0;
+	
+				time = time !== undefined ? time : window.performance.now();
+	
+				while (i < _tweens.length) {
+	
+					if (_tweens[i].update(time)) {
+						i++;
+					} else {
+						_tweens.splice(i, 1);
+					}
+	
+				}
+	
+				return true;
+	
+			}
+		};
+	
+	})();
+	
+	TWEEN.Tween = function (object) {
+	
+		var _object = object;
+		var _valuesStart = {};
+		var _valuesEnd = {};
+		var _valuesStartRepeat = {};
+		var _duration = 1000;
+		var _repeat = 0;
+		var _yoyo = false;
+		var _isPlaying = false;
+		var _reversed = false;
+		var _delayTime = 0;
+		var _startTime = null;
+		var _easingFunction = TWEEN.Easing.Linear.None;
+		var _interpolationFunction = TWEEN.Interpolation.Linear;
+		var _chainedTweens = [];
+		var _onStartCallback = null;
+		var _onStartCallbackFired = false;
+		var _onUpdateCallback = null;
+		var _onCompleteCallback = null;
+		var _onStopCallback = null;
+	
+		// Set all starting values present on the target object
+		for (var field in object) {
+			_valuesStart[field] = parseFloat(object[field], 10);
+		}
+	
+		this.to = function (properties, duration) {
+	
+			if (duration !== undefined) {
+				_duration = duration;
+			}
+	
+			_valuesEnd = properties;
+	
+			return this;
+	
+		};
+	
+		this.start = function (time) {
+	
+			TWEEN.add(this);
+	
+			_isPlaying = true;
+	
+			_onStartCallbackFired = false;
+	
+			_startTime = time !== undefined ? time : window.performance.now();
+			_startTime += _delayTime;
+	
+			for (var property in _valuesEnd) {
+	
+				// Check if an Array was provided as property value
+				if (_valuesEnd[property] instanceof Array) {
+	
+					if (_valuesEnd[property].length === 0) {
+						continue;
+					}
+	
+					// Create a local copy of the Array with the start value at the front
+					_valuesEnd[property] = [_object[property]].concat(_valuesEnd[property]);
+	
+				}
+	
+				// If `to()` specifies a property that doesn't exist in the source object,
+				// we should not set that property in the object
+				if (_valuesStart[property] === undefined) {
+					continue;
+				}
+	
+				_valuesStart[property] = _object[property];
+	
+				if ((_valuesStart[property] instanceof Array) === false) {
+					_valuesStart[property] *= 1.0; // Ensures we're using numbers, not strings
+				}
+	
+				_valuesStartRepeat[property] = _valuesStart[property] || 0;
+	
+			}
+	
+			return this;
+	
+		};
+	
+		this.stop = function () {
+	
+			if (!_isPlaying) {
+				return this;
+			}
+	
+			TWEEN.remove(this);
+			_isPlaying = false;
+	
+			if (_onStopCallback !== null) {
+				_onStopCallback.call(_object);
+			}
+	
+			this.stopChainedTweens();
+			return this;
+	
+		};
+	
+		this.stopChainedTweens = function () {
+	
+			for (var i = 0, numChainedTweens = _chainedTweens.length; i < numChainedTweens; i++) {
+				_chainedTweens[i].stop();
+			}
+	
+		};
+	
+		this.delay = function (amount) {
+	
+			_delayTime = amount;
+			return this;
+	
+		};
+	
+		this.repeat = function (times) {
+	
+			_repeat = times;
+			return this;
+	
+		};
+	
+		this.yoyo = function (yoyo) {
+	
+			_yoyo = yoyo;
+			return this;
+	
+		};
+	
+	
+		this.easing = function (easing) {
+	
+			_easingFunction = easing;
+			return this;
+	
+		};
+	
+		this.interpolation = function (interpolation) {
+	
+			_interpolationFunction = interpolation;
+			return this;
+	
+		};
+	
+		this.chain = function () {
+	
+			_chainedTweens = arguments;
+			return this;
+	
+		};
+	
+		this.onStart = function (callback) {
+	
+			_onStartCallback = callback;
+			return this;
+	
+		};
+	
+		this.onUpdate = function (callback) {
+	
+			_onUpdateCallback = callback;
+			return this;
+	
+		};
+	
+		this.onComplete = function (callback) {
+	
+			_onCompleteCallback = callback;
+			return this;
+	
+		};
+	
+		this.onStop = function (callback) {
+	
+			_onStopCallback = callback;
+			return this;
+	
+		};
+	
+		this.update = function (time) {
+	
+			var property;
+			var elapsed;
+			var value;
+	
+			if (time < _startTime) {
+				return true;
+			}
+	
+			if (_onStartCallbackFired === false) {
+	
+				if (_onStartCallback !== null) {
+					_onStartCallback.call(_object);
+				}
+	
+				_onStartCallbackFired = true;
+	
+			}
+	
+			elapsed = (time - _startTime) / _duration;
+			elapsed = elapsed > 1 ? 1 : elapsed;
+	
+			value = _easingFunction(elapsed);
+	
+			for (property in _valuesEnd) {
+	
+				// Don't update properties that do not exist in the source object
+				if (_valuesStart[property] === undefined) {
+					continue;
+				}
+	
+				var start = _valuesStart[property] || 0;
+				var end = _valuesEnd[property];
+	
+				if (end instanceof Array) {
+	
+					_object[property] = _interpolationFunction(end, value);
+	
+				} else {
+	
+					// Parses relative end values with start as base (e.g.: +10, -3)
+					if (typeof (end) === 'string') {
+	
+						if (end.startsWith('+') || end.startsWith('-')) {
+							end = start + parseFloat(end, 10);
+						} else {
+							end = parseFloat(end, 10);
+						}
+					}
+	
+					// Protect against non numeric properties.
+					if (typeof (end) === 'number') {
+						_object[property] = start + (end - start) * value;
+					}
+	
+				}
+	
+			}
+	
+			if (_onUpdateCallback !== null) {
+				_onUpdateCallback.call(_object, value);
+			}
+	
+			if (elapsed === 1) {
+	
+				if (_repeat > 0) {
+	
+					if (isFinite(_repeat)) {
+						_repeat--;
+					}
+	
+					// Reassign starting values, restart by making startTime = now
+					for (property in _valuesStartRepeat) {
+	
+						if (typeof (_valuesEnd[property]) === 'string') {
+							_valuesStartRepeat[property] = _valuesStartRepeat[property] + parseFloat(_valuesEnd[property], 10);
+						}
+	
+						if (_yoyo) {
+							var tmp = _valuesStartRepeat[property];
+	
+							_valuesStartRepeat[property] = _valuesEnd[property];
+							_valuesEnd[property] = tmp;
+						}
+	
+						_valuesStart[property] = _valuesStartRepeat[property];
+	
+					}
+	
+					if (_yoyo) {
+						_reversed = !_reversed;
+					}
+	
+					_startTime = time + _delayTime;
+	
+					return true;
+	
+				} else {
+	
+					if (_onCompleteCallback !== null) {
+						_onCompleteCallback.call(_object);
+					}
+	
+					for (var i = 0, numChainedTweens = _chainedTweens.length; i < numChainedTweens; i++) {
+						// Make the chained tweens start exactly at the time they should,
+						// even if the `update()` method was called way past the duration of the tween
+						_chainedTweens[i].start(_startTime + _duration);
+					}
+	
+					return false;
+	
+				}
+	
+			}
+	
+			return true;
+	
+		};
+	
+	};
+	
+	
+	TWEEN.Easing = {
+	
+		Linear: {
+	
+			None: function (k) {
+	
+				return k;
+	
+			}
+	
+		},
+	
+		Quadratic: {
+	
+			In: function (k) {
+	
+				return k * k;
+	
+			},
+	
+			Out: function (k) {
+	
+				return k * (2 - k);
+	
+			},
+	
+			InOut: function (k) {
+	
+				if ((k *= 2) < 1) {
+					return 0.5 * k * k;
+				}
+	
+				return - 0.5 * (--k * (k - 2) - 1);
+	
+			}
+	
+		},
+	
+		Cubic: {
+	
+			In: function (k) {
+	
+				return k * k * k;
+	
+			},
+	
+			Out: function (k) {
+	
+				return --k * k * k + 1;
+	
+			},
+	
+			InOut: function (k) {
+	
+				if ((k *= 2) < 1) {
+					return 0.5 * k * k * k;
+				}
+	
+				return 0.5 * ((k -= 2) * k * k + 2);
+	
+			}
+	
+		},
+	
+		Quartic: {
+	
+			In: function (k) {
+	
+				return k * k * k * k;
+	
+			},
+	
+			Out: function (k) {
+	
+				return 1 - (--k * k * k * k);
+	
+			},
+	
+			InOut: function (k) {
+	
+				if ((k *= 2) < 1) {
+					return 0.5 * k * k * k * k;
+				}
+	
+				return - 0.5 * ((k -= 2) * k * k * k - 2);
+	
+			}
+	
+		},
+	
+		Quintic: {
+	
+			In: function (k) {
+	
+				return k * k * k * k * k;
+	
+			},
+	
+			Out: function (k) {
+	
+				return --k * k * k * k * k + 1;
+	
+			},
+	
+			InOut: function (k) {
+	
+				if ((k *= 2) < 1) {
+					return 0.5 * k * k * k * k * k;
+				}
+	
+				return 0.5 * ((k -= 2) * k * k * k * k + 2);
+	
+			}
+	
+		},
+	
+		Sinusoidal: {
+	
+			In: function (k) {
+	
+				return 1 - Math.cos(k * Math.PI / 2);
+	
+			},
+	
+			Out: function (k) {
+	
+				return Math.sin(k * Math.PI / 2);
+	
+			},
+	
+			InOut: function (k) {
+	
+				return 0.5 * (1 - Math.cos(Math.PI * k));
+	
+			}
+	
+		},
+	
+		Exponential: {
+	
+			In: function (k) {
+	
+				return k === 0 ? 0 : Math.pow(1024, k - 1);
+	
+			},
+	
+			Out: function (k) {
+	
+				return k === 1 ? 1 : 1 - Math.pow(2, - 10 * k);
+	
+			},
+	
+			InOut: function (k) {
+	
+				if (k === 0) {
+					return 0;
+				}
+	
+				if (k === 1) {
+					return 1;
+				}
+	
+				if ((k *= 2) < 1) {
+					return 0.5 * Math.pow(1024, k - 1);
+				}
+	
+				return 0.5 * (- Math.pow(2, - 10 * (k - 1)) + 2);
+	
+			}
+	
+		},
+	
+		Circular: {
+	
+			In: function (k) {
+	
+				return 1 - Math.sqrt(1 - k * k);
+	
+			},
+	
+			Out: function (k) {
+	
+				return Math.sqrt(1 - (--k * k));
+	
+			},
+	
+			InOut: function (k) {
+	
+				if ((k *= 2) < 1) {
+					return - 0.5 * (Math.sqrt(1 - k * k) - 1);
+				}
+	
+				return 0.5 * (Math.sqrt(1 - (k -= 2) * k) + 1);
+	
+			}
+	
+		},
+	
+		Elastic: {
+	
+			In: function (k) {
+	
+				var s;
+				var a = 0.1;
+				var p = 0.4;
+	
+				if (k === 0) {
+					return 0;
+				}
+	
+				if (k === 1) {
+					return 1;
+				}
+	
+				if (!a || a < 1) {
+					a = 1;
+					s = p / 4;
+				} else {
+					s = p * Math.asin(1 / a) / (2 * Math.PI);
+				}
+	
+				return - (a * Math.pow(2, 10 * (k -= 1)) * Math.sin((k - s) * (2 * Math.PI) / p));
+	
+			},
+	
+			Out: function (k) {
+	
+				var s;
+				var a = 0.1;
+				var p = 0.4;
+	
+				if (k === 0) {
+					return 0;
+				}
+	
+				if (k === 1) {
+					return 1;
+				}
+	
+				if (!a || a < 1) {
+					a = 1;
+					s = p / 4;
+				} else {
+					s = p * Math.asin(1 / a) / (2 * Math.PI);
+				}
+	
+				return (a * Math.pow(2, - 10 * k) * Math.sin((k - s) * (2 * Math.PI) / p) + 1);
+	
+			},
+	
+			InOut: function (k) {
+	
+				var s;
+				var a = 0.1;
+				var p = 0.4;
+	
+				if (k === 0) {
+					return 0;
+				}
+	
+				if (k === 1) {
+					return 1;
+				}
+	
+				if (!a || a < 1) {
+					a = 1;
+					s = p / 4;
+				} else {
+					s = p * Math.asin(1 / a) / (2 * Math.PI);
+				}
+	
+				if ((k *= 2) < 1) {
+					return - 0.5 * (a * Math.pow(2, 10 * (k -= 1)) * Math.sin((k - s) * (2 * Math.PI) / p));
+				}
+	
+				return a * Math.pow(2, -10 * (k -= 1)) * Math.sin((k - s) * (2 * Math.PI) / p) * 0.5 + 1;
+	
+			}
+	
+		},
+	
+		Back: {
+	
+			In: function (k) {
+	
+				var s = 1.70158;
+	
+				return k * k * ((s + 1) * k - s);
+	
+			},
+	
+			Out: function (k) {
+	
+				var s = 1.70158;
+	
+				return --k * k * ((s + 1) * k + s) + 1;
+	
+			},
+	
+			InOut: function (k) {
+	
+				var s = 1.70158 * 1.525;
+	
+				if ((k *= 2) < 1) {
+					return 0.5 * (k * k * ((s + 1) * k - s));
+				}
+	
+				return 0.5 * ((k -= 2) * k * ((s + 1) * k + s) + 2);
+	
+			}
+	
+		},
+	
+		Bounce: {
+	
+			In: function (k) {
+	
+				return 1 - TWEEN.Easing.Bounce.Out(1 - k);
+	
+			},
+	
+			Out: function (k) {
+	
+				if (k < (1 / 2.75)) {
+					return 7.5625 * k * k;
+				} else if (k < (2 / 2.75)) {
+					return 7.5625 * (k -= (1.5 / 2.75)) * k + 0.75;
+				} else if (k < (2.5 / 2.75)) {
+					return 7.5625 * (k -= (2.25 / 2.75)) * k + 0.9375;
+				} else {
+					return 7.5625 * (k -= (2.625 / 2.75)) * k + 0.984375;
+				}
+	
+			},
+	
+			InOut: function (k) {
+	
+				if (k < 0.5) {
+					return TWEEN.Easing.Bounce.In(k * 2) * 0.5;
+				}
+	
+				return TWEEN.Easing.Bounce.Out(k * 2 - 1) * 0.5 + 0.5;
+	
+			}
+	
+		}
+	
+	};
+	
+	TWEEN.Interpolation = {
+	
+		Linear: function (v, k) {
+	
+			var m = v.length - 1;
+			var f = m * k;
+			var i = Math.floor(f);
+			var fn = TWEEN.Interpolation.Utils.Linear;
+	
+			if (k < 0) {
+				return fn(v[0], v[1], f);
+			}
+	
+			if (k > 1) {
+				return fn(v[m], v[m - 1], m - f);
+			}
+	
+			return fn(v[i], v[i + 1 > m ? m : i + 1], f - i);
+	
+		},
+	
+		Bezier: function (v, k) {
+	
+			var b = 0;
+			var n = v.length - 1;
+			var pw = Math.pow;
+			var bn = TWEEN.Interpolation.Utils.Bernstein;
+	
+			for (var i = 0; i <= n; i++) {
+				b += pw(1 - k, n - i) * pw(k, i) * v[i] * bn(n, i);
+			}
+	
+			return b;
+	
+		},
+	
+		CatmullRom: function (v, k) {
+	
+			var m = v.length - 1;
+			var f = m * k;
+			var i = Math.floor(f);
+			var fn = TWEEN.Interpolation.Utils.CatmullRom;
+	
+			if (v[0] === v[m]) {
+	
+				if (k < 0) {
+					i = Math.floor(f = m * (1 + k));
+				}
+	
+				return fn(v[(i - 1 + m) % m], v[i], v[(i + 1) % m], v[(i + 2) % m], f - i);
+	
+			} else {
+	
+				if (k < 0) {
+					return v[0] - (fn(v[0], v[0], v[1], v[1], -f) - v[0]);
+				}
+	
+				if (k > 1) {
+					return v[m] - (fn(v[m], v[m], v[m - 1], v[m - 1], f - m) - v[m]);
+				}
+	
+				return fn(v[i ? i - 1 : 0], v[i], v[m < i + 1 ? m : i + 1], v[m < i + 2 ? m : i + 2], f - i);
+	
+			}
+	
+		},
+	
+		Utils: {
+	
+			Linear: function (p0, p1, t) {
+	
+				return (p1 - p0) * t + p0;
+	
+			},
+	
+			Bernstein: function (n, i) {
+	
+				var fc = TWEEN.Interpolation.Utils.Factorial;
+	
+				return fc(n) / fc(i) / fc(n - i);
+	
+			},
+	
+			Factorial: (function () {
+	
+				var a = [1];
+	
+				return function (n) {
+	
+					var s = 1;
+	
+					if (a[n]) {
+						return a[n];
+					}
+	
+					for (var i = n; i > 1; i--) {
+						s *= i;
+					}
+	
+					a[n] = s;
+					return s;
+	
+				};
+	
+			})(),
+	
+			CatmullRom: function (p0, p1, p2, p3, t) {
+	
+				var v0 = (p2 - p0) * 0.5;
+				var v1 = (p3 - p1) * 0.5;
+				var t2 = t * t;
+				var t3 = t * t2;
+	
+				return (2 * p1 - 2 * p2 + v0 + v1) * t3 + (- 3 * p1 + 3 * p2 - 2 * v0 - v1) * t2 + v0 * t + p1;
+	
+			}
+	
+		}
+	
+	};
+	
+	// UMD (Universal Module Definition)
+	(function (root) {
+	
+		if (true) {
+	
+			// AMD
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return TWEEN;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	
+		} else if (typeof module !== 'undefined' && typeof exports === 'object') {
+	
+			// Node.js
+			module.exports = TWEEN;
+	
+		} else if (root !== undefined) {
+	
+			// Global variable
+			root.TWEEN = TWEEN;
+	
+		}
+	
+	})(this);
 
 
 /***/ }
