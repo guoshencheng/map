@@ -1,14 +1,22 @@
 var TWEEN = require('tween.js')
 var p = window.point;
 var map = new AMap.Map("map_container"); 
+clearMarks()
 map.on('complete', function() {
+  drawline(getPoint(p))
+})
+map.setZoom(4)
+
+function clearMarks() {
   var mark = document.getElementsByClassName('amap-logo')[0]
   if (mark && mark.parentElement) {
     mark.parentElement.removeChild(mark)
   }
-  drawline(getPoint(p))
-})
-map.setZoom(4)
+  var copyright = document.getElementsByClassName('amap-copyright')[0]
+  if (copyright && copyright.parentElement) {
+    copyright.parentElement.removeChild(copyright)
+  }
+}
 
 function getPoint(point) {
   if (!point) return null

@@ -3,7 +3,7 @@
 <head>  
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-<title>renyan map test</title>  
+<title><%= user.nickname %>的传播分享</title>  
   <link href="/stylesheets/map.css" rel="stylesheet">
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5658086d6c430da1b17d0452dc1952c6"></script>
 </head>  
@@ -14,19 +14,19 @@
   <div class="renyan_container">
     <div class='title_block'>
       <div class="spread_text_container">
-        <p class="spread_text">好友传播数 9 </p>
+        <p class="spread_text">好友传播数 <%= current_spread_count %> </p>
       </div>
       <div class="spread_img_container">
         <img src="/images/spread_icon.png" alt="">
       </div>
       <div class="spread_text_container">
-        <p class="spread_text">增加浏览数 10</p>
+        <p class="spread_text">增加浏览数 <%= view_raise_count %></p>
       </div>
     </div>
     <div class="data_container">
       <div id="view_container">
         <div class="text_container">
-            <p class="number">1332</p>
+          <p class="number"><%= user_view_count %></p>
             <p class="description">位用户浏览我的内容</p>
         </div>
         <div class="line"></div>
@@ -34,8 +34,8 @@
       <div id="spread_rate">
         <div class="container">
           <div class="text_container">
-            <p class="number">83% </p>
-            <p class="description">用户选择传播</p>
+            <p class="number"><%= spread_rate %></p>
+            <p class="description">% 用户选择传播</p>
           </div>
         </div>
        <div class="line"></div>
@@ -43,7 +43,7 @@
       <div id="spread_distance">
         <div class="text_container">
           <p class="description">已传播</p>
-          <p class="number">13397km</p>
+          <p class="number"><%= spread_distance %>km</p>
         </div>
         <div class="line"></div>
       </div>
@@ -58,15 +58,13 @@
       <div class="content_card">
         <div class="main_container">
           <div class="rect_image_container">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
+            <img src="<%= content.image %>" alt="">
           </div>
-          <p class="content_text">HTML5 提供了两种在客户端存储数据的新方法：
-localStorage - 没有时间限制的数据存储
-sessionStorage - 针对一个 session 的数据存储
-之前，这些都是由 cookie 完成的。但是 cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得 cookie 速度很慢而且效率也不高。
-在 HTML5 中</p>
+          <p class="content_text">
+            <%= content.text %>
+          </p>
           <div class="album_name_container">
-            <p class="album_name">言集名</p>
+            <p class="album_name">「 <%= content.album_name %> 」</p>
           </div>
         </div>
       </div>
@@ -76,11 +74,11 @@ sessionStorage - 针对一个 session 的数据存储
     </div>
     <div class="user_info_block">
       <div class="user_info_container">
-          <img class="user_avatar" src="/images/avatar_demo.png" alt="">
-          <p>GUOSHENCHENG</p>
+        <img class="user_avatar" src="<%= user.avatar %>" alt="">
+          <p><%= user.nickname %></p>
           <div class="user_data">
-            <p>浏览数: 123</p>
-            <p>关注数: 120</p>
+            <p>浏览数: <%= user.view_count %></p>
+            <p>关注数: <%= user.follow_count %></p>
           </div>
       </div>
     </div>
@@ -89,19 +87,19 @@ sessionStorage - 针对一个 session 的数据存储
         <div class="album_cover_container">
           <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
         </div>
-        <p>「 GUOSHENCHENG 」</p>
+        <p>「 <%= album_name %> 」</p>
       </div>
       <div class="album_content">
         <div class="album_cover_container">
           <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
         </div>
-        <p>「 GUOSHENCHENG 」</p>
+        <p>「 <%= album_name %> 」</p>
       </div>
       <div class="album_content">
         <div class="album_cover_container">
           <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
         </div>
-        <p>「 GUOSHENCHENG 」</p>
+        <p>「 <%= album_name %> 」</p>
       </div>
     </div>
     <div class="download_banner">
