@@ -18,25 +18,51 @@ body {
   height: 360px; }
 
 .renyan_container {
-  display: flex;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
   display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
   flex-direction: column;
   position: absolute;
   margin-top: -50px;
   width: 100%; }
 
 .title_block {
-  display: flex;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
   display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
   height: 100px;
   width: 100%; }
   .title_block .spread_img_container {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    -o-flex-grow: 1;
     flex-grow: 1;
     height: 100%;
     text-align: center; }
     .title_block .spread_img_container img {
       height: 100%; }
   .title_block .spread_text_container {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    -o-flex-grow: 1;
     flex-grow: 1;
     text-align: center; }
     .title_block .spread_text_container p {
@@ -59,19 +85,52 @@ body {
     margin-left: 10%;
     width: 80%; }
   .data_container .text_container {
-    display: flex;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
     display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
     justify-content: center; }
   .data_container #view_container .text_container {
     margin: 15px;
-    display: flex;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
     display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
     justify-content: center; }
   .data_container #spread_rate .container {
     margin: 15px; }
     .data_container #spread_rate .container .text_container {
-      display: flex;
+      display: -webkit-box;
+      /* OLD - iOS 6-, Safari 3.1-6 */
+      display: -moz-box;
+      /* OLD - Firefox 19- (buggy but mostly works) */
+      display: -ms-flexbox;
+      /* TWEENER - IE 10 */
       display: -webkit-flex;
+      /* NEW - Chrome */
+      display: flex;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      -ms-justify-content: center;
+      -o-justify-content: center;
       justify-content: center; }
   .data_container #spread_distance .text_container {
     margin: 15px; }
@@ -94,8 +153,19 @@ body {
     margin-bottom: 20px;
     margin-left: 10%; }
     .content_container .content_card .main_container {
-      display: flex;
+      display: -webkit-box;
+      /* OLD - iOS 6-, Safari 3.1-6 */
+      display: -moz-box;
+      /* OLD - Firefox 19- (buggy but mostly works) */
+      display: -ms-flexbox;
+      /* TWEENER - IE 10 */
       display: -webkit-flex;
+      /* NEW - Chrome */
+      display: flex;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      -o-flex-direction: column;
       flex-direction: column; }
       .content_container .content_card .main_container .rect_image_container {
         position: relative;
@@ -111,8 +181,19 @@ body {
         margin-left: 5%; }
       .content_container .content_card .main_container .album_name_container {
         width: 100%;
-        display: flex;
+        display: -webkit-box;
+        /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box;
+        /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox;
+        /* TWEENER - IE 10 */
         display: -webkit-flex;
+        /* NEW - Chrome */
+        display: flex;
+        -webkit-justify-content: flex-end;
+        -moz-justify-content: flex-end;
+        -ms-justify-content: flex-end;
+        -o-justify-content: flex-end;
         justify-content: flex-end; }
         .content_container .content_card .main_container .album_name_container .album_name {
           font-size: 13px;
@@ -142,16 +223,42 @@ body {
     .user_info_block .user_info_container p {
       font-size: 15px; }
   .user_info_block .user_data {
-    display: flex;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
     display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
     flex-direction: row; }
     .user_info_block .user_data p {
       font-size: 15px;
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      -ms-flex-grow: 1;
+      -o-flex-grow: 1;
       flex-grow: 1; }
 
 .download_banner {
-  display: flex;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
   display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
   justify-content: space-between;
   width: 100%;
   background-color: #222222;

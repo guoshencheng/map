@@ -12,12 +12,11 @@
 }
  
 @mixin flex-grow($value: 1) {
-  -webkit-flex-grow: $wrap;
-  -moz-flex-grow: $wrap;
-  -ms-flex-grow: $wrap;
-  -o-flex-grow: $wrap;
-  flex-grow: $wrap;
-
+  -webkit-flex-grow: $value;
+  -moz-flex-grow: $value;
+  -ms-flex-grow: $value;
+  -o-flex-grow: $value;
+  flex-grow: $value;
 }
 
 @mixin flex-wrap($wrap: wrap) {
@@ -122,7 +121,7 @@ body {
   height: 100px;
   width: 100%;
   .spread_img_container {
-    flex-grow:1; 
+    @include flex-grow(1);
     height: 100%;
     text-align: center;
     img {
@@ -130,7 +129,7 @@ body {
     }
   }
   .spread_text_container {
-    flex-grow:1; 
+    @include flex-grow(1);
     text-align: center;
     p {
       margin-top: 50px;
@@ -264,7 +263,7 @@ body {
     @include flex-direction(row);
     p {
       font-size: 15px;
-      flex-grow: 1;
+      @include flex-grow(1);
     }
   }
 }
