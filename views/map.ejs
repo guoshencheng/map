@@ -83,24 +83,12 @@
       </div>
     </div>
     <div class="album_list">
-      <div class="album_content">
-        <div class="album_cover_container">
-          <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
-        </div>
-        <p>「 <%= album_name %> 」</p>
-      </div>
-      <div class="album_content">
-        <div class="album_cover_container">
-          <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
-        </div>
-        <p>「 <%= album_name %> 」</p>
-      </div>
-      <div class="album_content">
-        <div class="album_cover_container">
-          <img src="http://www.codeblocq.com/assets/projects/hexo-theme-magnetic/assets/work1.jpg" alt="">
-        </div>
-        <p>「 <%= album_name %> 」</p>
-      </div>
+      <% for( var index in albums ) {%> <% var album = albums[index] %><div class="album_content">
+          <div class="album_cover_container">
+            <img src="<%= album.cover %>" alt="">
+          </div>
+          <p>「 <%= album.name %> 」</p>
+        </div><% } %>
     </div>
     <div class="download_banner">
       <img src="/images/logo.png" alt="" class="logo">
@@ -118,7 +106,6 @@
   <script type="text/javascript">
     var pointString = '<%- JSON.stringify(point) %>'
     var point = JSON.parse(pointString)
-    console.log(point)
     window.point = point
   </script>
   <script type="text/javascript" src="/javascripts/map/dist/dist.js"></script>

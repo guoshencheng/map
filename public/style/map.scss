@@ -3,10 +3,47 @@
   box-shadow: 0px 0px 5px #dedede;
 }
 
-@mixin flex {
-   display: flex;
-   display: -webkit-flex;
+@mixin justify-content($value: center) {
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  -ms-justify-content: $value;
+  -o-justify-content: $value;
+  justify-content: $value;
 }
+ 
+@mixin flex-grow($value: 1) {
+  -webkit-flex-grow: $wrap;
+  -moz-flex-grow: $wrap;
+  -ms-flex-grow: $wrap;
+  -o-flex-grow: $wrap;
+  flex-grow: $wrap;
+
+}
+
+@mixin flex-wrap($wrap: wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  -o-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-direction($direction: row) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  -o-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+}
+
 
 @mixin vertical-align($position: relative) {
   position: $position;
@@ -74,7 +111,7 @@ body {
 
 .renyan_container {
   @include flex;
-  flex-direction: column;
+  @include flex-direction(column);
   position:absolute;
   margin-top: -50px;
   width: 100%;
@@ -122,13 +159,13 @@ body {
   }
   .text_container {
       @include flex;
-      justify-content: center;
+      @include justify-content(center);
   }
   #view_container {
     .text_container {
       margin: 15px;
       @include flex;
-      justify-content: center;
+      @include justify-content(center);
     }
   }
  #spread_rate {
@@ -136,7 +173,7 @@ body {
       margin: 15px;
       .text_container {
          @include flex;
-         justify-content: center;
+         @include justify-content(center);
       } 
    }
  }
@@ -167,7 +204,7 @@ body {
     margin-left:10%;
     .main_container {
       @include flex;
-      flex-direction: column;
+      @include flex-direction(column);
       .rect_image_container {
         position: relative;
         overflow: hidden;
@@ -186,7 +223,7 @@ body {
       .album_name_container {
         width: 100%;
         @include flex;
-          justify-content: flex-end;
+        @include justify-content(flex-end);
          .album_name {
            font-size: 13px;
            margin: 0px;
@@ -224,7 +261,7 @@ body {
   }
   .user_data {
     @include flex;
-    flex-direction: row;
+    @include flex-direction(row);
     p {
       font-size: 15px;
       flex-grow: 1;
@@ -234,7 +271,7 @@ body {
 
 .download_banner {
   @include flex;
-  justify-content:space-between;
+  @include justify-content(space-between);
   width: 100%;
   background-color: #222222;
   @include radius(2px);
