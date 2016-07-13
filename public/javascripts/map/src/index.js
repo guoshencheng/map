@@ -1,9 +1,11 @@
 var TWEEN = require('tween.js')
 var p = window.point;
+console.log(p)
 var map = new AMap.Map("map_container"); 
 clearMarks()
 map.on('complete', function() {
-  drawline(getPoint(p))
+  drawPoint(p)
+  drawline(p, callBack)
 })
 map.setZoom(4)
 
@@ -18,18 +20,11 @@ function clearMarks() {
   }
 }
 
-function getPoint(point) {
-  if (!point) return null
-  var result = [point.lon, point.lat]
-  if (point.nodes && point.nodes.length > 0) result.nodes = point.nodes
-  return result
-}
-
-function drawline(point) {
+function drawPoint(point) {
   if (!point) return
   new AMap.Marker({
     map: map,
-		position: point,
+		position: [point.lon, point.lat],
         icon: new AMap.Icon({            
             size: new AMap.Size(78, 78), 
             image: "/images/point.png",
@@ -37,22 +32,44 @@ function drawline(point) {
             imageOffset: new AMap.Pixel(5, 25)
         })        
    });
-  if (point.nodes && point.nodes.length > 0) {
-    for (var index in point.nodes) {
-      var child = point.nodes[index]
-      if (child) {
-        child = getPoint(child)
-        animationDrawLine(point, child)
-      }
+}
+
+var callBack = function(node) {
+  if (node && node.nodes && node.nodes.length - 1 > node.currentIndex) {
+    var current = (node.nodes[node.currentIndex])
+    node.currentIndex ++
+    if (current.nodes) {
+      drawline(current, callBack)
+    } else {
+      callBack(node)
+    }
+  } else {
+    if (node.parent) {
+      callBack(node.parent)
     }
   }
 }
 
-function animationDrawLine(origin, tar) {
+function drawline(point, cb) {
+  if (!point) return
+  if (point.nodes && point.nodes.length > 0) {
+    point.currentIndex = 0
+    for (var index = 0; index < point.nodes.length; index++) {
+      var child = point.nodes[index]
+      if (child) {
+        child.parent = point
+        index === 0 ? animationDrawLine(point, child, cb) : animationDrawLine(point, child)
+      }
+    }
+  } 
+}
+
+function animationDrawLine(origin, tar, cb) {
+  var parent = tar.parent
   var nodes = tar.nodes
-  var originTar = [origin[0], origin[1]]
+  var originTar = [origin.lon, origin.lat]
   var polyline = new AMap.Polyline({ map: map,
-            path: [origin, originTar],
+            path: [[origin.lon, origin.lat], originTar],
             strokeColor: 'red' ,
             strokeOpacity: 0.4,
             strokeWeight: 1, 
@@ -60,13 +77,15 @@ function animationDrawLine(origin, tar) {
         })
   var tween = new TWEEN.Tween(originTar)
   tween.easing(TWEEN.Easing.Quadratic.In);
-  tween.to(tar, 800)
+  tween.to([tar.lon, tar.lat], 800)
   tween.onUpdate(function () {
-    polyline.setPath([origin, this])
+    polyline.setPath([[origin.lon, origin.lat], this])
   })
   tween.onComplete(function() {
-    tar.nodes = nodes
-    drawline(tar)
+    drawPoint(tar)
+    if (cb) {
+      cb(tar)
+    }
   })
   tween.start()
 }
