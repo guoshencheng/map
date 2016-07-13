@@ -1,4 +1,5 @@
 module.exports = function(req, res, next) {
+  //Auth: RyZxAuth
   var request = require('request')
   var cid = req.cardId
   request('http://operation.renyan.cn/rest/share/position/' + cid, function (error, response, body) {

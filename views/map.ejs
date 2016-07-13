@@ -3,7 +3,7 @@
 <head>  
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-<title><%= user.nickname %>的传播分享</title>  
+<title><%= contentInfo.profile.name %>的传播分享</title>  
   <link href="/stylesheets/map.css" rel="stylesheet">
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5658086d6c430da1b17d0452dc1952c6"></script>
 </head>  
@@ -14,19 +14,19 @@
   <div class="renyan_container">
     <div class='title_block'>
       <div class="spread_text_container">
-        <p class="spread_text">好友传播数 <%= current_spread_count %> </p>
+        <p class="spread_text">好友传播数 <%= contentInfo.friendPushCount %> </p>
       </div>
       <div class="spread_img_container">
         <img src="/images/spread_icon.png" alt="">
       </div>
       <div class="spread_text_container">
-        <p class="spread_text">增加浏览数 <%= view_raise_count %></p>
+        <p class="spread_text">增加浏览数 <%= contentInfo.viewPrePush %></p>
       </div>
     </div>
     <div class="data_container">
       <div id="view_container">
         <div class="text_container">
-          <p class="number"><%= user_view_count %></p>
+          <p class="number"><%= contentInfo.card.view %></p>
             <p class="description">位用户浏览我的内容</p>
         </div>
         <div class="line"></div>
@@ -34,7 +34,8 @@
       <div id="spread_rate">
         <div class="container">
           <div class="text_container">
-            <p class="number"><%= spread_rate %></p>
+            <p class="number"><%= Math.round(contentInfo.ratio * 100)
+ %></p>
             <p class="description">% 用户选择传播</p>
           </div>
         </div>
@@ -43,7 +44,7 @@
       <div id="spread_distance">
         <div class="text_container">
           <p class="description">已传播</p>
-          <p class="number"><%= spread_distance %>km</p>
+          <p class="number"><%= contentInfo.distance %>km</p>
         </div>
         <div class="line"></div>
       </div>
@@ -54,17 +55,19 @@
         <div class="line"></div>
       </div>
     </div>
+
+    <% if ( share ) { %>
     <div class="content_container">
       <div class="content_card">
         <div class="main_container">
           <div class="rect_image_container">
-            <img src="<%= content.image %>" alt="">
+            <img src="<%= contentInfo.card.pictureCut %>" alt="">
           </div>
           <p class="content_text">
-            <%= content.text %>
+            <%= contentInfo.card.text %>
           </p>
           <div class="album_name_container">
-            <p class="album_name">「 <%= content.album_name %> 」</p>
+            <p class="album_name">「 <%= contentInfo.card.albumName %> 」</p>
           </div>
         </div>
       </div>
@@ -74,16 +77,16 @@
     </div>
     <div class="user_info_block">
       <div class="user_info_container">
-        <img class="user_avatar" src="<%= user.avatar %>" alt="">
-          <p><%= user.nickname %></p>
+        <img class="user_avatar" src="<%= contentInfo.profile.coverPicture %>" alt="">
+          <p><%= contentInfo.profile.name %></p>
           <div class="user_data">
-            <p>浏览数: <%= user.view_count %></p>
-            <p>关注数: <%= user.follow_count %></p>
+            <p>浏览数: <%= contentInfo.profile.view %></p>
+            <p>关注数: <%= contentInfo.profile.subscribe %></p>
           </div>
       </div>
     </div>
     <div class="album_list">
-      <% for( var index in albums ) {%> <% var album = albums[index] %><div class="album_content">
+      <% for( var index in contentInfo.albums ) {%> <% var album = contentInfo.albums[index] %><div class="album_content">
           <div class="album_cover_container">
             <img src="<%= album.cover %>" alt="">
           </div>
@@ -103,8 +106,9 @@
       </a>
     </div>
   </div>
+  <% } %>
   <script type="text/javascript">
-    var pointString = '<%- JSON.stringify(point) %>'
+    var pointString = '<%- JSON.stringify(contentInfo.position) %>'
     var point = JSON.parse(pointString)
     window.point = point
   </script>

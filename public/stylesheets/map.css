@@ -19,13 +19,9 @@ body {
 
 .renyan_container {
   display: -webkit-box;
-  /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
-  /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox;
-  /* TWEENER - IE 10 */
   display: -webkit-flex;
-  /* NEW - Chrome */
   display: flex;
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
@@ -38,13 +34,9 @@ body {
 
 .title_block {
   display: -webkit-box;
-  /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
-  /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox;
-  /* TWEENER - IE 10 */
   display: -webkit-flex;
-  /* NEW - Chrome */
   display: flex;
   height: 100px;
   width: 100%; }
@@ -86,13 +78,9 @@ body {
     width: 80%; }
   .data_container .text_container {
     display: -webkit-box;
-    /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;
-    /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;
-    /* TWEENER - IE 10 */
     display: -webkit-flex;
-    /* NEW - Chrome */
     display: flex;
     -webkit-justify-content: center;
     -moz-justify-content: center;
@@ -102,13 +90,9 @@ body {
   .data_container #view_container .text_container {
     margin: 15px;
     display: -webkit-box;
-    /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;
-    /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;
-    /* TWEENER - IE 10 */
     display: -webkit-flex;
-    /* NEW - Chrome */
     display: flex;
     -webkit-justify-content: center;
     -moz-justify-content: center;
@@ -119,13 +103,9 @@ body {
     margin: 15px; }
     .data_container #spread_rate .container .text_container {
       display: -webkit-box;
-      /* OLD - iOS 6-, Safari 3.1-6 */
       display: -moz-box;
-      /* OLD - Firefox 19- (buggy but mostly works) */
       display: -ms-flexbox;
-      /* TWEENER - IE 10 */
       display: -webkit-flex;
-      /* NEW - Chrome */
       display: flex;
       -webkit-justify-content: center;
       -moz-justify-content: center;
@@ -154,13 +134,9 @@ body {
     margin-left: 10%; }
     .content_container .content_card .main_container {
       display: -webkit-box;
-      /* OLD - iOS 6-, Safari 3.1-6 */
       display: -moz-box;
-      /* OLD - Firefox 19- (buggy but mostly works) */
       display: -ms-flexbox;
-      /* TWEENER - IE 10 */
       display: -webkit-flex;
-      /* NEW - Chrome */
       display: flex;
       -webkit-flex-direction: column;
       -moz-flex-direction: column;
@@ -182,13 +158,9 @@ body {
       .content_container .content_card .main_container .album_name_container {
         width: 100%;
         display: -webkit-box;
-        /* OLD - iOS 6-, Safari 3.1-6 */
         display: -moz-box;
-        /* OLD - Firefox 19- (buggy but mostly works) */
         display: -ms-flexbox;
-        /* TWEENER - IE 10 */
         display: -webkit-flex;
-        /* NEW - Chrome */
         display: flex;
         -webkit-justify-content: flex-end;
         -moz-justify-content: flex-end;
@@ -224,13 +196,9 @@ body {
       font-size: 15px; }
   .user_info_block .user_data {
     display: -webkit-box;
-    /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;
-    /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;
-    /* TWEENER - IE 10 */
     display: -webkit-flex;
-    /* NEW - Chrome */
     display: flex;
     -webkit-flex-direction: row;
     -moz-flex-direction: row;
@@ -247,13 +215,9 @@ body {
 
 .download_banner {
   display: -webkit-box;
-  /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
-  /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox;
-  /* TWEENER - IE 10 */
   display: -webkit-flex;
-  /* NEW - Chrome */
   display: flex;
   -webkit-justify-content: space-between;
   -moz-justify-content: space-between;
