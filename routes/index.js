@@ -8,22 +8,22 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/map/share/:id', function(req, res, next) {
-  
+router.get('/map/share/:id', checkCidParam, fetchContent, function(req, res, next) {
+  renderMap(req, res, true)
 })
 
 router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
+  renderMap(req, res, false)
+})
+
+var renderMap = function(req, res, share) {
   var cid = req.cardId
   var contentInfo = req.contentInfo
-  contentInfo.ratio = parseInt(contentInfo.ratio * 100)
-  contentInfo.card.view = contentInfo.card.view || 0
-  contentInfo.distance = (contentInfo.distance / 1000).toFixed(1)
-  contentInfo.friendPushCount = contentInfo.friendPushCount || 0
   res.render('map', {
-    share: true,
+    share: share,
     contentInfo: contentInfo,
     cid: req.params.id
   });
-}) 
+}
 
 module.exports = router;
