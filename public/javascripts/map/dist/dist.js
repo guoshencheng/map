@@ -122,8 +122,8 @@
 	            strokeStyle: "solid"
 	        })
 	  var tween = new TWEEN.Tween(originTar)
-	  tween.easing(TWEEN.Easing.Quadratic.In);
-	  tween.to([tar.lon, tar.lat], 800)
+	  tween.easing(TWEEN.Easing.Quartic.In);
+	  tween.to([tar.lon, tar.lat], 1500)
 	  tween.onUpdate(function () {
 	    polyline.setPath([[origin.lon, origin.lat], this])
 	  })
