@@ -1,14 +1,20 @@
 module.exports = function(req, res, next) {
   //Auth: RyZxAuth
-  var request = require('request')
   var cid = req.cardId
-  request('http://operation.renyan.cn/rest/share/position/' + cid, function (error, response, body) {
+  var request = require('request')
+  var options = {
+    url: 'http://operation.renyan.cn/rest/share/position/' + cid,
+    headers: {
+      'Auth': 'RyZxAuth'
+    }
+  }
+  request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var result = JSON.parse(body)
       req.contentInfo = result
       next()
     } else {
-      res.json({url: 'http://operation.renyan.cn/rest/share/position/' + cid})
+      res.json({url: 'http://operation.renyan.cn/rest/share/position/' + cid, body: body})
     }
   })
 }

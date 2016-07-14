@@ -91,11 +91,17 @@
   font-style: normal;
 }
 
-html{
-  font-family: 'PingFang Regular';
-  height:100%
+@mixin background {
+  background: -webkit-linear-gradient(top, #58707A, #264A62);
+  background: -o-linear-gradient(bottom, #58707A, #264A62);
+  background: -moz-linear-gradient(bottom, #58707A, #264A62);
+  background: linear-gradient(to bottom, #58707A, #264A62);
 }
 
+html{
+  font-family: 'PingFang Regular';
+  background-color: #264A62;
+}
 
 body {
   height:100%;
@@ -112,13 +118,16 @@ body {
   @include flex;
   @include flex-direction(column);
   position:absolute;
-  margin-top: -50px;
+  margin-top: -42px;
   width: 100%;
 }
 
 .title_block {
+  p {
+    color: white;
+  }
   @include flex;
-  height: 100px;
+  height: 85px;
   width: 100%;
   .spread_img_container {
     @include flex-grow(1);
@@ -138,23 +147,25 @@ body {
   }
 }
 
+.line {
+  height: 1px;
+  background-color: rgba(4, 219, 199, 0.5);
+  margin-left: 10%;
+  width: 80%;
+}
+
 .data_container {
+  color: white;
   text-align: center;
   width: 100%;
   .number {
-    font-size:30px;
+    font-size:32px;
     margin: 0px;
   }
   .description {
-    font-size: 20px; 
+    font-size: 15px; 
     margin: 0px;
-    margin-top: 10px;
-  }
-  .line {
-    height: 1px;
-    background-color: gray;
-    margin-left: 10%;
-    width: 80%;
+    margin-top: 17px;
   }
   .text_container {
       @include flex;
@@ -168,12 +179,20 @@ body {
     }
   }
  #spread_rate {
+   text-align: center;
    .container {
       margin: 15px;
-      .text_container {
-         @include flex;
-         @include justify-content(center);
-      } 
+      img {
+        width: 200px;
+        height: 200px;
+      }
+      .hot_level {
+        @include flex;
+        @include justify-content(center);
+        p {
+          font-size: 15;
+        }
+      }
    }
  }
  #spread_distance {
@@ -192,7 +211,6 @@ body {
 .content_container {
   font-family:Helvetica-Light;
   width:100%;
-  @include gray;
   .content_card {
     @include card;
     @include radius(10px);
@@ -235,16 +253,19 @@ body {
 }
 
 .notice_download {
-  @include gray;
+  color: white;
   width: 100%;
   text-align: center;
   p {
     font-size: 15px;
   }
+  .line {
+    margin-bottom: 10px;
+  }
 }
 
 .user_info_block {
-  @include gray;
+  color: white;
   width: 100%;
   .user_info_container {
     width: 60%;
@@ -301,26 +322,39 @@ body {
 }
 
 .album_list {
+  color: white;
+  text-align:center;
   width: 100%;
   margin-top:10px;
   margin-bottom: 10px;
+  .line {
+    width: 30%;
+    margin-left: 35%;
+  }
   .album_content {
     width: 90%;
     height: 100px;
     margin: 5%;
     text-align: center;
+    @include preserve-3d;
     .album_cover_container {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      @include preserve-3d;
       img {
         width: 100%;
         @include vertical-align();
       }
     }
+    .mask {
+      margin-top:- 100px;
+      width: 100%;
+      height: 100px;
+      transform: translateZ(1px);
+      background-color: rgba(0, 0, 0, 0.25);
+    }
     p {
-      color: white;
+      transform: translateZ(1px);
       margin-top: -90px;
     }
   }

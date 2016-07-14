@@ -20,7 +20,8 @@ router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
   contentInfo.friendPushCount = contentInfo.friendPushCount || 0
   res.render('map', {
     share: true,
-    contentInfo: contentInfo
+    contentInfo: contentInfo,
+    cid: req.params.id
   });
 }) 
 

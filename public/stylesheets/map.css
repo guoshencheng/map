@@ -6,7 +6,7 @@
   font-style: normal; }
 html {
   font-family: 'PingFang Regular';
-  height: 100%; }
+  background-color: #264A62; }
 
 body {
   height: 100%;
@@ -29,7 +29,7 @@ body {
   -o-flex-direction: column;
   flex-direction: column;
   position: absolute;
-  margin-top: -50px;
+  margin-top: -42px;
   width: 100%; }
 
 .title_block {
@@ -38,8 +38,10 @@ body {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  height: 100px;
+  height: 85px;
   width: 100%; }
+  .title_block p {
+    color: white; }
   .title_block .spread_img_container {
     -webkit-flex-grow: 1;
     -moz-flex-grow: 1;
@@ -61,21 +63,23 @@ body {
       margin-top: 50px;
       font-size: 14px; }
 
+.line {
+  height: 1px;
+  background-color: rgba(4, 219, 199, 0.5);
+  margin-left: 10%;
+  width: 80%; }
+
 .data_container {
+  color: white;
   text-align: center;
   width: 100%; }
   .data_container .number {
-    font-size: 30px;
+    font-size: 32px;
     margin: 0px; }
   .data_container .description {
-    font-size: 20px;
+    font-size: 15px;
     margin: 0px;
-    margin-top: 10px; }
-  .data_container .line {
-    height: 1px;
-    background-color: gray;
-    margin-left: 10%;
-    width: 80%; }
+    margin-top: 17px; }
   .data_container .text_container {
     display: -webkit-box;
     display: -moz-box;
@@ -99,19 +103,26 @@ body {
     -ms-justify-content: center;
     -o-justify-content: center;
     justify-content: center; }
-  .data_container #spread_rate .container {
-    margin: 15px; }
-    .data_container #spread_rate .container .text_container {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-justify-content: center;
-      -moz-justify-content: center;
-      -ms-justify-content: center;
-      -o-justify-content: center;
-      justify-content: center; }
+  .data_container #spread_rate {
+    text-align: center; }
+    .data_container #spread_rate .container {
+      margin: 15px; }
+      .data_container #spread_rate .container img {
+        width: 200px;
+        height: 200px; }
+      .data_container #spread_rate .container .hot_level {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        -o-justify-content: center;
+        justify-content: center; }
+        .data_container #spread_rate .container .hot_level p {
+          font-size: 15; }
   .data_container #spread_distance .text_container {
     margin: 15px; }
   .data_container #spread_hot_rate .text_container {
@@ -119,8 +130,7 @@ body {
 
 .content_container {
   font-family: Helvetica-Light;
-  width: 100%;
-  background-color: #F9F9F9; }
+  width: 100%; }
   .content_container .content_card {
     margin-bottom: 8px;
     box-shadow: 0px 0px 5px #dedede;
@@ -174,14 +184,16 @@ body {
           margin-bottom: 30px; }
 
 .notice_download {
-  background-color: #F9F9F9;
+  color: white;
   width: 100%;
   text-align: center; }
   .notice_download p {
     font-size: 15px; }
+  .notice_download .line {
+    margin-bottom: 10px; }
 
 .user_info_block {
-  background-color: #F9F9F9;
+  color: white;
   width: 100%; }
   .user_info_block .user_info_container {
     width: 60%;
@@ -255,21 +267,26 @@ body {
     text-align: center; }
 
 .album_list {
+  color: white;
+  text-align: center;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px; }
+  .album_list .line {
+    width: 30%;
+    margin-left: 35%; }
   .album_list .album_content {
     width: 90%;
     height: 100px;
     margin: 5%;
-    text-align: center; }
+    text-align: center;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
     .album_list .album_content .album_cover_container {
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      -webkit-transform-style: preserve-3d;
-      -moz-transform-style: preserve-3d;
-      transform-style: preserve-3d; }
+      overflow: hidden; }
       .album_list .album_content .album_cover_container img {
         width: 100%;
         position: relative;
@@ -277,8 +294,14 @@ body {
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%); }
+    .album_list .album_content .mask {
+      margin-top: -100px;
+      width: 100%;
+      height: 100px;
+      transform: translateZ(1px);
+      background-color: rgba(0, 0, 0, 0.25); }
     .album_list .album_content p {
-      color: white;
+      transform: translateZ(1px);
       margin-top: -90px; }
 
 .location_circle {
