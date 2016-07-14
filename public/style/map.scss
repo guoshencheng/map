@@ -10,7 +10,15 @@
   -o-justify-content: $value;
   justify-content: $value;
 }
- 
+
+@mixin flex-basis($length: 100px) {
+  -webkit-flex-basis: $length;
+  -moz-flex-basis: $length;
+  -ms-flex-basis: $length;
+  -o-flex-basis: $length;
+  flex-basis: $length;
+}
+
 @mixin flex-grow($value: 1) {
   -webkit-flex-grow: $value;
   -moz-flex-grow: $value;
@@ -209,9 +217,12 @@ body {
 }
 
 .content_container {
+  @include flex;
+  @include flex-direction(column);
   font-family:Helvetica-Light;
   width:100%;
   .content_card {
+    @include flex-basis(450px);
     @include card;
     @include radius(10px);
     background-color: white;

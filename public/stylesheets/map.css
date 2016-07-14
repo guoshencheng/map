@@ -129,9 +129,24 @@ body {
     margin: 15px; }
 
 .content_container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
   font-family: Helvetica-Light;
   width: 100%; }
   .content_container .content_card {
+    -webkit-flex-basis: 450px;
+    -moz-flex-basis: 450px;
+    -ms-flex-basis: 450px;
+    -o-flex-basis: 450px;
+    flex-basis: 450px;
     margin-bottom: 8px;
     box-shadow: 0px 0px 5px #dedede;
     -moz-border-radius: 10px;
