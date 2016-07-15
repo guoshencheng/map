@@ -234,7 +234,8 @@ body {
     -moz-flex-direction: row;
     -ms-flex-direction: row;
     -o-flex-direction: row;
-    flex-direction: row; }
+    flex-direction: row;
+    margin-top: 20px; }
     .user_info_block .user_data p {
       -webkit-flex-grow: 1;
       -moz-flex-grow: 1;
@@ -290,7 +291,7 @@ body {
   color: white;
   text-align: center;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px; }
   .album_list .line {
     width: 30%;
