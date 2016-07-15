@@ -126,6 +126,7 @@
     var point = JSON.parse(pointString)
     window.point = point
     var spread = document.getElementById('spread_button')
+    var spreadText = document.getElementById('spread_text')
     if (spread) {
       spread.addEventListener('touchend', function() {
       if (!renyanContentShare['<%= cid %>']) {
@@ -133,12 +134,14 @@
           if (result == 'success') {
             renyanContentShare['<%= cid %>'] = true;
             localStorage.renyanContentShare = JSON.stringify(renyanContentShare)
+            var viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
+            var added = parseInt(<%= contentInfo.viewPrePush %>)
+            spreadText.textContent = '增加浏览数 ' + (viewed + added)
           }
         })
       } else {
         console.log('has sended')
       }
-
     })
   }
   </script>
