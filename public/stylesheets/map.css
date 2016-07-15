@@ -217,7 +217,8 @@ body {
     margin-left: 20%;
     text-align: center; }
     .user_info_block .user_info_container .user_avatar {
-      width: 40%;
+      width: 90px;
+      height: 90px;
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
       border-radius: 50%; }

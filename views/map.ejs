@@ -33,7 +33,7 @@
         <img src="http://7u2min.com1.z0.glb.clouddn.com/new_spread_button_icon.png" alt="">
       </div>
       <div class="spread_text_container">
-        <p class="spread_text">增加浏览数 <%= contentInfo.viewPrePush %></p>
+        <p id="spread_text" class="spread_text">增加浏览数 <%= contentInfo.viewPrePush * contentInfo.friendPushCount  %></p>
       </div>
     </div>
     <% } %>

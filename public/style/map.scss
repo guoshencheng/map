@@ -285,7 +285,8 @@ body {
     margin-left: 20%;
     text-align:center;
     .user_avatar {
-      width: 40%;
+      width: 90px;
+      height: 90px;
       @include radius(50%);
     }
     p {
