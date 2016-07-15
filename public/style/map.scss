@@ -1,6 +1,6 @@
 @mixin card {
   margin-bottom: 8px;
-  box-shadow: 0px 0px 5px #dedede;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 @mixin justify-content($value: center) {
@@ -65,7 +65,7 @@
 }
 
 @mixin shadow {
-  box-shadow:0px 0px 10px 2px red;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 @mixin radius($value: 5px) {
@@ -99,11 +99,11 @@
   font-style: normal;
 }
 
-@mixin background {
-  background: -webkit-linear-gradient(top, #58707A, #264A62);
-  background: -o-linear-gradient(bottom, #58707A, #264A62);
-  background: -moz-linear-gradient(bottom, #58707A, #264A62);
-  background: linear-gradient(to bottom, #58707A, #264A62);
+@mixin gradient-mask {
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 html{
@@ -228,7 +228,7 @@ body {
     background-color: white;
     width: 80%;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     margin-left:10%;
     .main_container {
       @include flex;
@@ -268,6 +268,7 @@ body {
   width: 100%;
   text-align: center;
   p {
+    margin-top: 0px;
     font-size: 15px;
   }
   .line {
@@ -287,6 +288,8 @@ body {
       @include radius(50%);
     }
     p {
+      margin-top: 5px;
+      margin-bottom: 5px;
       font-size: 15px;
     }
   }
@@ -294,7 +297,6 @@ body {
     @include flex;
     @include flex-direction(row);
     p {
-      font-size: 15px;
       @include flex-grow(1);
     }
   }
@@ -320,11 +322,15 @@ body {
       height: 30%;
       margin: 6px;
     }
+    .title {
+      font-size: 15px; 
+    }
   }
   .download_button {
-    margin: 8px;
-    height: 40px;
-    width: 80px;
+    margin: 14px;
+    margin-left: 5px;
+    margin-right: 8px;
+    height: 30px;
     background-color: yellow;
     @include radius(5px);
     color: black;
@@ -349,6 +355,7 @@ body {
     text-align: center;
     @include preserve-3d;
     .album_cover_container {
+      @include shadow;
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -360,13 +367,13 @@ body {
     .mask {
       margin-top:- 100px;
       width: 100%;
-      height: 100px;
+      height: 50px;
       transform: translateZ(1px);
-      background-color: rgba(0, 0, 0, 0.25);
+      @include gradient-mask;
     }
     p {
       transform: translateZ(1px);
-      margin-top: -90px;
+      margin-top: -40px;
     }
   }
 }
