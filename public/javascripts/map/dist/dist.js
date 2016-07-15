@@ -47,11 +47,17 @@
 	var TWEEN = __webpack_require__(1)
 	var p = window.point;
 	var map = new AMap.Map("map_container"); 
+	var animationPoint= {}
+	var lines = []
+	var currentIndex = 0
 	clearMarks()
 	map.on('complete', function() {
+	  generateAnimationPoint()
 	  drawAllPoint(p)
-	  // drawPoint(p)
-	  // drawline(p, callBack)
+	  lines = []
+	  currentIndex = 0
+	  generateLines(p)
+	  animationLine(lines[currentIndex])
 	})
 	map.setZoom(4)
 	
@@ -60,6 +66,38 @@
 	  for (var index in point.nodes) {
 	    drawAllPoint(point.nodes[index])
 	  }
+	}
+	
+	var generateAnimationPoint = function() {
+	  if (p) {
+	    animationPoint = new AMap.Marker({
+	    map: map,
+			position: [p.lon, p.lat],
+	        icon: new AMap.Icon({            
+	            size: new AMap.Size(20, 20), 
+	            image: "/images/point.png",
+	            imageSize: new AMap.Size(20, 20),
+	            imageOffset: new AMap.Pixel(0, 0)
+	        })        
+	   });
+	  }
+	}
+	
+	var animationLine = function(line) {
+	  var p1 = line[0]
+	  var p2 = line[1]
+	  var tween = new TWEEN.Tween(p1)
+	  tween.to(p2, 1500)
+	  tween.onUpdate(function () {
+	    animationPoint.setPosition(new AMap.LngLat(this[0], this[1]))
+	  })
+	  tween.onComplete(function() {
+	    currentIndex ++
+	    if (currentIndex < lines.length) {
+	      animationLine(lines[currentIndex])
+	    }
+	  })
+	  tween.start()
 	}
 	
 	function clearMarks() {
@@ -79,68 +117,21 @@
 	    map: map,
 			position: [point.lon, point.lat],
 	        icon: new AMap.Icon({            
-	            size: new AMap.Size(78, 78), 
+	            size: new AMap.Size(15, 15), 
 	            image: "/images/point.png",
-	            imageSize: new AMap.Size(10, 10),
-	            imageOffset: new AMap.Pixel(5, 25)
+	            imageSize: new AMap.Size(15, 15),
+	            imageOffset: new AMap.Pixel(0, 0)
 	        })        
 	   });
 	}
 	
-	var callBack = function(node) {
-	  if (node && node.nodes && node.nodes.length - 1 > node.currentIndex) {
-	    var current = (node.nodes[node.currentIndex])
-	    node.currentIndex ++
-	    if (current.nodes) {
-	      drawline(current, callBack)
-	    } else {
-	      callBack(node)
-	    }
-	  } else {
-	    if (node.parent) {
-	      callBack(node.parent)
-	    }
+	var generateLines = function(point) {
+	  if (point.nodes && point.nodes.length) {
+	    point.nodes.forEach(function(node, key) {
+	      lines.push([[point.lon, point.lat], [node.lon, node.lat]])
+	      generateLines(node)
+	    })
 	  }
-	}
-	
-	function drawline(point, cb) {
-	  if (!point) return
-	  if (point.nodes && point.nodes.length > 0) {
-	    point.currentIndex = 0
-	    for (var index = 0; index < point.nodes.length; index++) {
-	      var child = point.nodes[index]
-	      if (child) {
-	        child.parent = point
-	        index === 0 ? animationDrawLine(point, child, cb) : animationDrawLine(point, child)
-	      }
-	    }
-	  } 
-	}
-	
-	function animationDrawLine(origin, tar, cb) {
-	  var parent = tar.parent
-	  var nodes = tar.nodes
-	  var originTar = [origin.lon, origin.lat]
-	  var polyline = new AMap.Polyline({ map: map,
-	            path: [[origin.lon, origin.lat], originTar],
-	            strokeColor: 'red' ,
-	            strokeOpacity: 0.4,
-	            strokeWeight: 1, 
-	            strokeStyle: "solid"
-	        })
-	  var tween = new TWEEN.Tween(originTar)
-	  tween.easing(TWEEN.Easing.Quartic.In);
-	  tween.to([tar.lon, tar.lat], 1500)
-	  tween.onUpdate(function () {
-	    polyline.setPath([[origin.lon, origin.lat], this])
-	  })
-	  tween.onComplete(function() {
-	    drawPoint(tar)
-	    if (cb) {
-	      cb(tar)
-	    }
-	  })
-	  tween.start()
 	}
 	
 	animate();
@@ -148,6 +139,7 @@
 	  requestAnimationFrame(animate);
 	  TWEEN.update()
 	}
+	
 
 
 /***/ },

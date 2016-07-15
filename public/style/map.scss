@@ -224,7 +224,7 @@ body {
   .content_card {
     @include flex-basis(450px);
     @include card;
-    @include radius(10px);
+    @include radius(5px);
     background-color: white;
     width: 80%;
     margin-top: 20px;
