@@ -46,14 +46,21 @@
 
 	var TWEEN = __webpack_require__(1)
 	var p = window.point;
-	console.log(p)
 	var map = new AMap.Map("map_container"); 
 	clearMarks()
 	map.on('complete', function() {
-	  drawPoint(p)
-	  drawline(p, callBack)
+	  drawAllPoint(p)
+	  // drawPoint(p)
+	  // drawline(p, callBack)
 	})
 	map.setZoom(4)
+	
+	var drawAllPoint = function(point) {
+	  drawPoint(point)
+	  for (var index in point.nodes) {
+	    drawAllPoint(point.nodes[index])
+	  }
+	}
 	
 	function clearMarks() {
 	  var mark = document.getElementsByClassName('amap-logo')[0]
