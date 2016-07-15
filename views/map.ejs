@@ -5,13 +5,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
 <title><%= contentInfo.profile.name %>的传播分享</title>  
   <link href="/stylesheets/map.css" rel="stylesheet">
-  <% if (!share) { %>
   <style type="text/css">
+    #hot_text {
+      margin-left: 10px;
+      color: rgba(230, <%= parseInt(64 + (168 - 64) * (contentInfo.ratio / 100))%>, 130, 1)
+    }
+  <% if (!share) { %>
     .renyan_container {
       margin-top: 0px;
     }
-  </style>
   <% } %>
+  </style>
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5658086d6c430da1b17d0452dc1952c6"></script>
   <script type="text/javascript" src='/javascripts/map/ajax.js'></script>
 </head>  
@@ -46,7 +50,7 @@
           <img src="http://7xpecj.com1.z0.glb.clouddn.com/assets/1607141730/heat_combine<%= contentInfo.ratio %>.png" alt="">
           <div class="hot_level">
             <p>传播热度: </p>
-            <p>一般热</p>
+            <p id="hot_text">一般热</p>
           </div>
         </div>
        <div class="line"></div>
