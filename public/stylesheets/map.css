@@ -212,6 +212,7 @@ body {
   color: white;
   width: 100%; }
   .user_info_block .user_info_container {
+    margin-top: 16px;
     width: 60%;
     margin-left: 20%;
     text-align: center; }
