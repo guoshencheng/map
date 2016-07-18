@@ -234,13 +234,15 @@ body {
       @include flex;
       @include flex-direction(column);
       .rect_image_container {
+        text-align: center;
         position: relative;
         overflow: hidden;
         width: 80%;
         margin-top:20px;
         margin-left: 10%;
         img {
-          width: 100%;
+          position: relative;
+          display: none;
         }
       }
       .content_text {

@@ -169,13 +169,15 @@ body {
       -o-flex-direction: column;
       flex-direction: column; }
       .content_container .content_card .main_container .rect_image_container {
+        text-align: center;
         position: relative;
         overflow: hidden;
         width: 80%;
         margin-top: 20px;
         margin-left: 10%; }
         .content_container .content_card .main_container .rect_image_container img {
-          width: 100%; }
+          position: relative;
+          display: none; }
       .content_container .content_card .main_container .content_text {
         font-size: 15px;
         width: 80%;
