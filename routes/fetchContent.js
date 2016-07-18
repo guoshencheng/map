@@ -11,13 +11,17 @@ module.exports = function(req, res, next) {
   request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var result = JSON.parse(body)
-      req.contentInfo = result
-      result.hotText = textForHotRate(result.ratio)
-      result.ratio = parseInt(result.ratio * 100)
-      result.card.view = result.card.view || 0
-      result.distance = (result.distance / 1000).toFixed(1)
-      result.friendPushCount = result.friendPushCount || 0
-      next()
+      if (result.card) {
+        req.contentInfo = result
+        result.hotText = textForHotRate(result.ratio)
+        result.ratio = parseInt(result.ratio * 100)
+        result.card.view = result.card.view || 0
+        result.distance = (result.distance / 1000).toFixed(1)
+        result.friendPushCount = result.friendPushCount || 0
+        next()
+      } else {
+        res.json('该内容不存在')
+      }
     } else {
       res.json({url: 'http://operation.renyan.cn/rest/share/position/' + cid, body: body})
     }
