@@ -47,6 +47,8 @@
 	var TWEEN = __webpack_require__(1)
 	var p = window.point;
 	var map = new AMap.Map("map_container"); 
+	var canvas = __webpack_require__(2)(map)
+	canvas.addIcon()
 	var animationPoint= {}
 	var lines = []
 	var currentIndex = 0
@@ -1036,6 +1038,44 @@
 		}
 	
 	})(this);
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	var canvas = document.createElement('canvas')
+	
+	canvas.addIcon = function() {
+	  var beauty = new Image();  
+	  beauty.src = "http://localhost:8092/images/point.png"
+	  if(beauty.complete){
+	    drawBeauty(beauty)
+	  }else{
+	    beauty.onload = function(){
+	      drawBeauty(beauty)
+	    }
+	    beauty.onerror = function(){
+	    }
+	  }
+	}
+	
+	function drawBeauty(beauty){
+	  var myctx = canvas.getContext("2d");
+	  myctx.drawImage(beauty, 20, 20, 20, 20);
+	}
+	
+	module.exports = function(map) {
+	  canvas.width = map.getSize().width
+	  canvas.height = map.getSize().height
+	  var layer = new AMap.CustomLayer(canvas, {
+				zooms: [3, 8],
+				zIndex: 12
+	  })
+	  layer.setMap(map)
+	  return canvas
+	}
+	
 
 
 /***/ }

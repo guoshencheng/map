@@ -1,6 +1,8 @@
 var TWEEN = require('tween.js')
 var p = window.point;
 var map = new AMap.Map("map_container"); 
+var canvas = require('./canvas')(map)
+canvas.addIcon()
 var animationPoint= {}
 var lines = []
 var currentIndex = 0

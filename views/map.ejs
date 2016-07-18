@@ -47,7 +47,7 @@
       </div>
       <div id="spread_rate">
         <div class="container">
-          <img src="http://7xpecj.com1.z0.glb.clouddn.com/assets/1607141730/heat_combine<%= contentInfo.ratio %>.png" alt="">
+          <img id="hot_level_icon" src="http://7xpecj.com1.z0.glb.clouddn.com/assets/1607141730/heat_combine<%= contentInfo.ratio %>.png" alt="">
           <div class="hot_level">
             <p>传播热度: </p>
             <p id="hot_text"><%= contentInfo.hotText %></p>
@@ -65,8 +65,10 @@
     </div>
 
     <% if ( share ) { %>
+    <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
+    <% var template = templates[contentInfo.card.template] %>
     <div class="content_container">
-      <div class="content_card">
+      <div class="content_card <%= template %>">
         <div class="main_container">
           <div class="rect_image_container">
             <img src="<%= contentInfo.card.pictureCut %>" alt="">
@@ -146,5 +148,6 @@
   }
   </script>
   <script type="text/javascript" src="/javascripts/map/dist/dist.js"></script>
+  <script type="text/javascript" src="/javascripts/map/dist/template.js"></script>
 </body>  
 </html>
