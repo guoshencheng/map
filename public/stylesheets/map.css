@@ -243,11 +243,14 @@ body {
       flex-grow: 1; }
 
 .download_banner {
+  background-color: rgba(0, 0, 0, 0.8);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  position: fixed;
+  bottom: 0px;
   -webkit-justify-content: space-between;
   -moz-justify-content: space-between;
   -ms-justify-content: space-between;
@@ -290,7 +293,7 @@ body {
   text-align: center;
   width: 100%;
   margin-top: 5px;
-  margin-bottom: 10px; }
+  margin-bottom: 100px; }
   .album_list .line {
     width: 30%;
     margin-left: 35%; }
