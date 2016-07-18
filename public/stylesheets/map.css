@@ -142,11 +142,6 @@ body {
   font-family: Helvetica-Light;
   width: 100%; }
   .content_container .content_card {
-    -webkit-flex-basis: 450px;
-    -moz-flex-basis: 450px;
-    -ms-flex-basis: 450px;
-    -o-flex-basis: 450px;
-    flex-basis: 450px;
     margin-bottom: 8px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     -moz-border-radius: 5px;

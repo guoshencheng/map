@@ -222,7 +222,7 @@ body {
   font-family:Helvetica-Light;
   width:100%;
   .content_card {
-    @include flex-basis(450px);
+    // @include flex-basis(450px);
     @include card;
     @include radius(5px);
     background-color: white;
