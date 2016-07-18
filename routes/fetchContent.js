@@ -16,8 +16,9 @@ module.exports = function(req, res, next) {
         result.hotText = textForHotRate(result.ratio)
         result.ratio = parseInt(result.ratio * 100)
         result.card.view = result.card.view || 0
-        result.distance = (result.distance / 1000).toFixed(1)
         result.friendPushCount = result.friendPushCount || 0
+        var distance = result.distance / 1000
+        result.distance = distance.toFixed(1)
         next()
       } else {
         res.json('该内容不存在')
