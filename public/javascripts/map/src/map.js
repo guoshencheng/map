@@ -57,7 +57,10 @@ var generateAnimationPoint = function() {
 
 var animationLine = function(p1, p2) {
   var tween = new TWEEN.Tween(p1.lnglat)
-  tween.to(p2.lnglat, 1500)
+  var lnglat1 = new AMap.LngLat(p1.lnglat[0], p1.lnglat[1])
+  var lnglat2 = new AMap.LngLat(p2.lnglat[0], p2.lnglat[1])
+  var time = 1500 * (lnglat1.distance(lnglat2) / 1500000)
+  tween.to(p2.lnglat, time)
   tween.onUpdate(function () {
     pointLayer.setData([{lnglat: this}])
   })
