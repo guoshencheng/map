@@ -15,25 +15,25 @@ if (templateCicle  && templateCicle.length > 0) {
 }
 
 if (templateRect && templateRect.length > 0) {
-  var block = templateCicle[0]
+  var block = templateRect[0]
   var image = block.getElementsByTagName('img')[0]
   image.height = image.width
 }
 
 if (templateTall && templateTall.length > 0) {
-  var block = templateCicle[0]
+  var block = templateTall[0]
   var image = block.getElementsByTagName('img')[0]
   image.height = image.width * 4 / 3.0
 }
 
 if (templateFlat && templateFlat.length > 0) {
-  var block = templateCicle[0]
+  var block = templateFlat[0]
   var image = block.getElementsByTagName('img')[0]
   image.height = image.width * 3 / 4.0
 }
 
 if (templateText && templateText.length > 0) {
-  var block = templateCicle[0]
+  var block = templateText[0]
   var image = block.getElementsByTagName('img')[0]
   var contentText = block.getElementsByClassName('content_text')[0]
   contentText.style.marginTop = '0px'
@@ -42,7 +42,7 @@ if (templateText && templateText.length > 0) {
 }
 
 if (templatePicture && templatePicture.length > 0) {
-  var block = templateCicle[0]
+  var block = templatePicture[0]
   var image = block.getElementsByTagName('img')[0]
   image.height = image.width * 4 / 3.0
 }
