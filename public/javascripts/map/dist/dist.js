@@ -54,21 +54,18 @@
 	var currentIndex = 0
 	clearMarks()
 	map.on('complete', function() {
-	  generateAnimationPoint()
-	  drawAllPoint(p)
-	  lines = []
-	  currentIndex = 0
-	  generateLines(p)
-	  animationLine(lines[currentIndex])
+	  var list = pointArrary(p)
+	  var mass = new AMap.MassMarks(list, {
+	     url: '/images/point.png',
+	     anchor: new AMap.Pixel(10, 10),
+	     size: new AMap.Size(20, 20),
+	     opacity:1,
+	     cursor:'pointer',
+	     zIndex: 1
+	  });
+	  mass.setMap(map)
 	})
 	map.setZoom(4)
-	
-	var drawAllPoint = function(point) {
-	  drawPoint(point)
-	  for (var index in point.nodes) {
-	    drawAllPoint(point.nodes[index])
-	  }
-	}
 	
 	var generateAnimationPoint = function() {
 	  if (p) {
@@ -113,18 +110,18 @@
 	  }
 	}
 	
-	function drawPoint(point) {
-	  if (!point) return
-	  new AMap.Marker({
-	    map: map,
-			position: [point.lon, point.lat],
-	        icon: new AMap.Icon({            
-	            size: new AMap.Size(15, 15), 
-	            image: "/images/point.png",
-	            imageSize: new AMap.Size(15, 15),
-	            imageOffset: new AMap.Pixel(0, 0)
-	        })        
-	   });
+	function pointArrary(p) {
+	  var points = []
+	  getArray(p)
+	  function getArray(p) {
+	    points.push({lnglat: [p.lon, p.lat]})
+	    if (p.nodes && p.nodes.length > 0) {
+	      p.nodes.forEach(function(node) {
+	        getArray(node)
+	      })
+	    }
+	  }
+	  return points
 	}
 	
 	var generateLines = function(point) {
@@ -1059,6 +1056,12 @@
 	    }
 	  }
 	}
+	
+	canvas.drawPoints = function (p) {
+	   
+	}
+	
+	
 	
 	function drawBeauty(beauty){
 	  var myctx = canvas.getContext("2d");
