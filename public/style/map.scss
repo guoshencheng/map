@@ -309,7 +309,6 @@ body {
   @include flex;
   @include justify-content(space-between);
   width: 100%;
-  background-color: #222222;
   @include radius(2px);
   .logo {
     @include radius(5px);

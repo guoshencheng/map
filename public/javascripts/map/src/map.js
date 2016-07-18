@@ -2,11 +2,18 @@ var TWEEN = require('tween.js')
 var p = window.point;
 var map = new AMap.Map("map_container"); 
 var animationPoint= {}
-var lines = []
+var list 
 var currentIndex = 0
 clearMarks()
 map.on('complete', function() {
-  var list = pointArrary(p)
+  configureData(p)
+  drawPoints()
+  generateAnimationPoint()
+  animationLine(list[0], list[1])
+})
+map.setZoom(4)
+
+function drawPoints() {
   var mass = new AMap.MassMarks(list, {
      url: '/images/point.png',
      anchor: new AMap.Pixel(10, 10),
@@ -16,8 +23,7 @@ map.on('complete', function() {
      zIndex: 1
   });
   mass.setMap(map)
-})
-map.setZoom(4)
+}
 
 var generateAnimationPoint = function() {
   if (p) {
@@ -34,18 +40,16 @@ var generateAnimationPoint = function() {
   }
 }
 
-var animationLine = function(line) {
-  var p1 = line[0]
-  var p2 = line[1]
-  var tween = new TWEEN.Tween(p1)
-  tween.to(p2, 1500)
+var animationLine = function(p1, p2) {
+  var tween = new TWEEN.Tween(p1.lnglat)
+  tween.to(p2.lnglat, 1500)
   tween.onUpdate(function () {
-    animationPoint.setPosition(new AMap.LngLat(this[0], this[1]))
+    animationPoint.setPosition(this)
   })
   tween.onComplete(function() {
     currentIndex ++
-    if (currentIndex < lines.length) {
-      animationLine(lines[currentIndex])
+    if (currentIndex < list.length - 1) {
+      animationLine(list[currentIndex], list[currentIndex + 1])
     }
   })
   tween.start()
@@ -62,26 +66,16 @@ function clearMarks() {
   }
 }
 
-function pointArrary(p) {
-  var points = []
+function configureData(p) {
+  list = []
   getArray(p)
   function getArray(p) {
-    points.push({lnglat: [p.lon, p.lat]})
+    list.push({lnglat: [p.lon, p.lat]})
     if (p.nodes && p.nodes.length > 0) {
       p.nodes.forEach(function(node) {
         getArray(node)
       })
     }
-  }
-  return points
-}
-
-var generateLines = function(point) {
-  if (point.nodes && point.nodes.length) {
-    point.nodes.forEach(function(node, key) {
-      lines.push([[point.lon, point.lat], [node.lon, node.lat]])
-      generateLines(node)
-    })
   }
 }
 

@@ -1,7 +1,7 @@
 var animation = {}
 
 animation.update = function() {
-
+  
 }
 
 animate();
