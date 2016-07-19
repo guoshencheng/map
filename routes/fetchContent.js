@@ -1,9 +1,10 @@
 module.exports = function(req, res, next) {
   //Auth: RyZxAuth
   var cid = req.cardId
+  var url = 'http://app.ry.api.renyan.cn/rest/share/position/' + cid
   var request = require('request')
   var options = {
-    url: 'http://operation.renyan.cn/rest/share/position/' + cid,
+    url: url,
     headers: {
       'Auth': 'RyZxAuth'
     }
@@ -24,7 +25,7 @@ module.exports = function(req, res, next) {
         res.json('该内容不存在')
       }
     } else {
-      res.json({url: 'http://operation.renyan.cn/rest/share/position/' + cid, body: body})
+      res.json({url: url, body: body})
     }
   })
 }

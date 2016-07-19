@@ -100,12 +100,12 @@
       <div class="line"></div>
       <p>TA的言集</p>
       <% for( var index in contentInfo.albums ) {%> <% var album = contentInfo.albums[index] %><div class="album_content">
-            <div class="album_cover_container">
-            <img src="<%= album.cover %>" alt="">
-            </div>
           <a href="<%= album.url %>" >
-            <div class="mask"></div>
+            <div class="album_cover_container">
+              <img src="<%= album.cover %>" alt="">
+            </div>
           </a>
+          <div class="mask"></div>
           <p>「 <%= album.name %> 」</p>
         </div><% } %>
     </div>
