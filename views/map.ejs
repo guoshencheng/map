@@ -30,7 +30,7 @@
         <p class="spread_text">好友传播数 <%= contentInfo.friendPushCount %> </p>
       </div>
       <div id="spread_button" class="spread_img_container">
-        <img src="http://7u2min.com1.z0.glb.clouddn.com/new_spread_button_icon.png" alt="">
+        <img id="spread_button_image" src="http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png" alt="">
       </div>
       <div class="spread_text_container">
         <p id="spread_text" class="spread_text">增加浏览数 <%= contentInfo.viewPrePush * contentInfo.friendPushCount  %></p>
@@ -41,7 +41,7 @@
       <div id="view_container">
         <div class="text_container">
           <p class="number"><%= contentInfo.card.view %></p>
-            <p class="description">位用户浏览我的内容</p>
+            <p class="description">位用户浏览他的内容</p>
         </div>
         <div class="line"></div>
       </div>
@@ -123,7 +123,14 @@
   <% } %>
   <script type="text/javascript">
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
+    var spreadImage = document.getElementById('spread_button_image')
+    
     var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
+  if (!renyanContentShare['<%= cid %>']) {
+    spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png'
+  } else {
+    spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
+  }
     var pointString = '<%- JSON.stringify(contentInfo.position) %>'
     var point = JSON.parse(pointString)
     window.point = point
@@ -139,6 +146,7 @@
             var viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
             var added = parseInt(<%= contentInfo.viewPrePush %>)
             spreadText.textContent = '增加浏览数 ' + (viewed + added)
+            spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
           }
         })
       } else {
