@@ -66,7 +66,7 @@
 
     <% if ( share ) { %>
     <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
-    <% var template = templates[contentInfo.card.template] %>
+    <% var template = templates[contentInfo.card.template - 1] %>
     <div class="content_container">
       <div class="content_card <%= template %>">
         <div class="main_container">
