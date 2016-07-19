@@ -123,14 +123,13 @@
   <% } %>
   <script type="text/javascript">
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
-    var spreadImage = document.getElementById('spread_button_image')
-    
+    var spreadImage = document.getElementById('spread_button_image') || {}
     var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
-  if (!renyanContentShare['<%= cid %>']) {
-    spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png'
-  } else {
-    spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
-  }
+    if (!renyanContentShare['<%= cid %>']) {
+      spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png'
+    } else {
+      spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
+    }
     var pointString = '<%- JSON.stringify(contentInfo.position) %>'
     var point = JSON.parse(pointString)
     window.point = point

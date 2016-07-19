@@ -1,4 +1,5 @@
 var contentCard = document.getElementsByClassName('content_card')[0]
+if (contentCard) {
 var image = contentCard.getElementsByTagName('img')[0]
 var imageContainer = contentCard.getElementsByClassName('rect_image_container')[0]
 
@@ -65,4 +66,5 @@ if (templateText && templateText.length > 0) {
 
 if (templatePicture && templatePicture.length > 0) {
   imageContainer.style.height = imageContainer.clientWidth * 4 / 3.0 + 'px'
+}
 }
