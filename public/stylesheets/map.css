@@ -165,6 +165,11 @@ body {
       -o-flex-direction: column;
       flex-direction: column; }
       .content_container .content_card .main_container .rect_image_container {
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         text-align: center;
         position: relative;
         overflow: hidden;

@@ -70,8 +70,7 @@
     <div class="content_container">
       <div class="content_card <%= template %>">
         <div class="main_container">
-          <div class="rect_image_container">
-            <img src="<%= contentInfo.card.pictureCut %>" alt="">
+          <div class="rect_image_container" id="content_image" style="background-image: url('<%= contentInfo.card.pictureCut %>')">
           </div>
           <p class="content_text">
             <%= contentInfo.card.text %>
