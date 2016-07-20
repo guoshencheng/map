@@ -138,7 +138,7 @@
     if (spread) {
       spread.addEventListener('touchend', function() {
       if (!renyanContentShare['<%= cid %>']) {
-        Ajax('http://testry.renyan.cn/rest/share/spread/<%= cid %>').post({a: 1}).done(function(result) {
+        Ajax('http://app.ry.api.renyan.cn/rest/share/spread/<%= cid %>').post({a: 1}).done(function(result) {
           if (result == 'success') {
             renyanContentShare['<%= cid %>'] = true;
             localStorage.renyanContentShare = JSON.stringify(renyanContentShare)
