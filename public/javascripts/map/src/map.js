@@ -10,7 +10,7 @@ map.on('complete', function() {
   configurePoint()
   animationLine()
 })
-map.setZoom(4)
+map.setZoom(5)
 
 function drawPoints() {
   var mass = new AMap.MassMarks(list, {
@@ -29,14 +29,14 @@ function configurePoint() {
   animation = new AMap.Marker({
     map: map,
     position: start,
-    icon: "/images/point.png",
-    offset: new AMap.Pixel(-26, -13),
+    icon: "http://7xpecj.com1.z0.glb.clouddn.com/3/fire_ball.png",
+    offset: new AMap.Pixel(-40, -20),
     autoRotation: true
   });
 }
 
 var animationLine = function() {
-  animation.moveAlong(list2, 300000);
+  animation.moveAlong(list2, 600000);
 }
 
 function clearMarks() {
