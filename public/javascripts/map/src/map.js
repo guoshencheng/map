@@ -29,7 +29,7 @@ function configurePoint() {
   animation = new AMap.Marker({
     map: map,
     position: start,
-    icon: "http://7xpecj.com1.z0.glb.clouddn.com/6/fire_ball.png",
+    icon: "http://7xpecj.com1.z0.glb.clouddn.com/1/point.png",
     offset: new AMap.Pixel(-40, -20),
     autoRotation: true
   });
