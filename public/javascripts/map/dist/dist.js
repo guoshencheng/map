@@ -60,7 +60,7 @@
 	
 	function drawPoints() {
 	  var mass = new AMap.MassMarks(list, {
-	     url: '/images/point.png',
+	     url: 'http://7xpecj.com1.z0.glb.clouddn.com/1/point.png',
 	     anchor: new AMap.Pixel(10, 10),
 	     size: new AMap.Size(20, 20),
 	     opacity:1,
@@ -75,7 +75,7 @@
 	  animation = new AMap.Marker({
 	    map: map,
 	    position: start,
-	    icon: "http://7xpecj.com1.z0.glb.clouddn.com/1/point.png",
+	    icon: "http://7xpecj.com1.z0.glb.clouddn.com/6/fire_ball.png",
 	    offset: new AMap.Pixel(-40, -20),
 	    autoRotation: true
 	  });
