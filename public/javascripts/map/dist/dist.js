@@ -60,7 +60,7 @@
 	
 	function drawPoints() {
 	  var mass = new AMap.MassMarks(list, {
-	     url: 'http://7xpecj.com1.z0.glb.clouddn.com/1/point.png',
+	     url: 'http://7xpecj.com1.z0.glb.clouddn.com/2/point.png',
 	     anchor: new AMap.Pixel(10, 10),
 	     size: new AMap.Size(20, 20),
 	     opacity:1,
