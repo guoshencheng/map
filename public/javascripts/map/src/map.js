@@ -14,7 +14,7 @@ map.setZoom(5)
 
 function drawPoints() {
   var mass = new AMap.MassMarks(list, {
-     url: 'http://7xpecj.com1.z0.glb.clouddn.com/3/point.png',
+     url: 'http://7xpecj.com1.z0.glb.clouddn.com/4/point.png',
      anchor: new AMap.Pixel(10, 10),
      size: new AMap.Size(20, 20),
      opacity:1,
