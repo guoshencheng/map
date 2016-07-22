@@ -19,7 +19,7 @@ module.exports = function(req, res, next) {
         result.card.view = result.card.view || 0
         result.friendPushCount = result.friendPushCount || 0
         var distance = result.distance / 1000
-        result.distance = distance.toFixed(1)
+        result.distance = distance.toFixed(0)
         if (result.profile && result.profile.name && result.profile.name.indexOf('未命名') != -1) {
           result.profile.name = '新用户'
         }
