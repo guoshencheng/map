@@ -1,6 +1,9 @@
 var TWEEN = require('tween.js')
 var p = window.point;
 var map = new AMap.Map("map_container"); 
+if (p) {
+  map.setCenter([p.lon, p.lat])
+}
 var list, list2, animation
 var currentIndex = 0
 clearMarks()
