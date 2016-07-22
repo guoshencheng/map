@@ -124,7 +124,7 @@
   <script type="text/javascript">
     configureShare({
       text: '分享了分享了一条<%= contentInfo.profile.name %>的人言，快来帮他传播一下~',
-      image:  "<%= contentInfo.card.pictureCut %>"
+      image: "<%= contentInfo.card.pictureCut %>"
     })
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
     var spreadImage = document.getElementById('spread_button_image') || {}
