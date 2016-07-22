@@ -20,6 +20,9 @@ module.exports = function(req, res, next) {
         result.friendPushCount = result.friendPushCount || 0
         var distance = result.distance / 1000
         result.distance = distance.toFixed(1)
+        if (result.profile && result.profile.name && result.profile.name.indexOf('未命名') != -1) {
+          result.profile.name = '新用户'
+        }
         next()
       } else {
         res.json('该内容不存在')
