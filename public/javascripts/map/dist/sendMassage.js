@@ -1,6 +1,6 @@
 function configureShare (shareConfig) {
-  if (window.Android && Android.configureShare) {
-    Android.configureShare(JSON.stringify(shareConfig))
+  if (window.android && android.configureShare) {
+    android.configureShare(JSON.stringify(shareConfig))
   } 
 }
 
