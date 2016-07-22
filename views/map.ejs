@@ -123,7 +123,7 @@
   <% } %>
   <script type="text/javascript">
     configureShare({
-      text: '分享了分享了一条<%= contentInfo.profile.name %>的人言，快来帮他传播一下~',
+      text: '<%= contentInfo.profile.name %> 分享了分享了一条<%= contentInfo.hotText %>的人言，快来帮他传播一下~',
       image: "<%= contentInfo.card.pictureCut %>"
     })
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
