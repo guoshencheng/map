@@ -7,4 +7,9 @@ function configureShare (shareConfig) {
   }
 }
 
+function share() {
+  if (window.android && android.share) {
+    android.share()
+  }
+}
 
