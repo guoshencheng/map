@@ -99,7 +99,7 @@ textAnimation.update = function() {
   if (this.running) {
     this.timer ++
   }
-  if (this.timer % 100 === 0 && this.running) {
+  if (this.timer % 10 === 0 && this.running) {
     textAnimation.currentValue ++
     var text = document.getElementById('spread_text')
     if (text) {
