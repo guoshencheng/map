@@ -126,6 +126,9 @@
       text: '<%= contentInfo.profile.name %> 分享了一条<%= contentInfo.hotText %>的人言，快来帮他传播一下~',
       image: "<%= contentInfo.card.pictureCut %>"
     })
+    window.spreadParams = {}
+    spreadParams.viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
+    spreadParams.added = parseInt(<%= contentInfo.viewPrePush %>)
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
     var spreadImage = document.getElementById('spread_button_image') || {}
     var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
@@ -146,9 +149,7 @@
           if (result == 'success') {
             renyanContentShare['<%= cid %>'] = true;
             localStorage.renyanContentShare = JSON.stringify(renyanContentShare)
-            var viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
-            var added = parseInt(<%= contentInfo.viewPrePush %>)
-            spreadText.textContent = '增加浏览数 ' + (viewed + added)
+            setSpeadCount(spreadParams.viewed, spreadParams.added)
             spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
           }
         })
@@ -156,6 +157,12 @@
         console.log('has sended')
       }
     })
+  }
+  function setSpeadCount(viewed, added) {
+    var text = document.getElementById('spread_text')
+    if (text) {
+      text.textContent = '增加浏览数 ' + (viewed + added)
+    }
   }
   </script>
   <script type="text/javascript" src="/javascripts/map/dist/dist.js"></script>

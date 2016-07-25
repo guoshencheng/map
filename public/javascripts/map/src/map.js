@@ -1,4 +1,3 @@
-var TWEEN = require('tween.js')
 var p = window.point;
 var map = new AMap.Map("map_container"); 
 if (p) {
@@ -68,9 +67,50 @@ function configureData(p) {
   }
 }
 
+window.setSpeadCount = function(viewed, added){
+  textAnimation.beginValue = viewed
+  textAnimation.endValue = viewed + added
+  textAnimation.start()
+}
+
+var textAnimation = {}
+textAnimation.timer = 0
+textAnimation.running = false
+textAnimation.beginValue = 0
+textAnimation.currentValue = 0
+textAnimation.endValue = 0
+textAnimation.start = function() {
+  this.currentValue = textAnimation.beginValue
+  this.timer = 0 
+  this.running = true 
+}
+
+textAnimation.stop = function() {
+  this.running = false
+}
+
+textAnimation.continue = function() {
+  if (this.currentValue < this.endValue) {
+    this.running = true
+  }
+}
+
+textAnimation.update = function() {
+  if (this.timer % 10 === 0 && this.running) {
+    textAnimation.currentValue ++
+    var text = document.getElementById('spread_text')
+    if (text) {
+      text.textContent = '增加浏览数 ' + textAnimation.currentValue
+    }
+    if (textAnimation.currentValue >= textAnimation.endValue) {
+      this.running = false
+    }
+  }
+}
+
 animate();
 function animate() {
+  textAnimation.update()
   requestAnimationFrame(animate);
-  TWEEN.update()
 }
 
