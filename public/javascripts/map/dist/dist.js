@@ -142,8 +142,9 @@
 	}
 	
 	textAnimation.update = function() {
-	  if (this.timer % 5000 === 0 && this.running) {
+	  if (this.timer % 100 === 0 && this.running) {
 	    textAnimation.currentValue ++
+	    this.timmer ++
 	    var text = document.getElementById('spread_text')
 	    if (text) {
 	      text.textContent = '增加浏览数 ' + textAnimation.currentValue
