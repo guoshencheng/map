@@ -84,7 +84,7 @@
 	}
 	
 	var animationLine = function() {
-	  animation.moveAlong(list2, 600000);
+	  animation.moveAlong(list2, 600000, function(k){return k}, true);
 	}
 	
 	function clearMarks() {

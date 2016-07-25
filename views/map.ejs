@@ -64,7 +64,9 @@
         <div class="line"></div>
       </div>
     </div>
-
+    <% if (!share) { %>
+      <button class="share_button">分享让好友帮助传播</button>
+    <% } %>
     <% if ( share ) { %>
     <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
     <% var template = templates[contentInfo.card.template - 1] %>
@@ -124,7 +126,7 @@
   <script type="text/javascript">
     configureShare({
       text: '<%= contentInfo.profile.name %> 分享了一条<%= contentInfo.hotText %>的人言，快来帮他传播一下~',
-      image: "<%= contentInfo.card.pictureCut %>"
+      image: "<%- contentInfo.card.pictureCut %>"
     })
     window.spreadParams = {}
     spreadParams.viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
