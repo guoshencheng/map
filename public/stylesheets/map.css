@@ -219,6 +219,8 @@ body {
     width: 60%;
     margin-left: 20%;
     text-align: center; }
+    .user_info_block .user_info_container .profle_name {
+      font-family: Helvetica-Light; }
     .user_info_block .user_info_container .user_avatar {
       width: 90px;
       height: 90px;
@@ -333,6 +335,7 @@ body {
       background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent); }
     .album_list .album_content p {
+      font-family: Helvetica-Light;
       transform: translateZ(1px);
       margin-top: -40px; }
 
@@ -352,5 +355,18 @@ body {
   height: 10%;
   width: 40%;
   position: relative; }
+
+.share_button {
+  height: 40px;
+  width: 60%;
+  margin: 10px;
+  margin-left: 20%;
+  font-size: 15px;
+  background-color: #ffea00;
+  border: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px 0px black; }
 
 /*# sourceMappingURL=map.css.map */

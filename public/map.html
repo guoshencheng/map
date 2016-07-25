@@ -3,18 +3,14 @@
 <head>  
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-<title><%= contentInfo.profile.name %></title>  
-  <link href="/stylesheets/map.css" rel="stylesheet">
+<title></title>  
+  <link href="./stylesheets/map.css" rel="stylesheet">
   <style type="text/css">
     #hot_text {
       margin-left: 10px;
-      color: rgba(230, <%= parseInt(64 + (168 - 64) * (contentInfo.ratio / 100))%>, 130, 1)
+      color: rgba(230, 127, 130, 1)
     }
-  <% if (!share) { %>
-    .renyan_container {
-      margin-top: 0px;
-    }
-  <% } %>
+  
   </style>
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5658086d6c430da1b17d0452dc1952c6"></script>
   <script type="text/javascript" src='/javascripts/map/ajax.js'></script>
@@ -25,33 +21,33 @@
  
   <div id="map_container"></div> 
   <div class="renyan_container">
-    <% if (share)  { %>
+    
     <div class='title_block'>
       <div class="spread_text_container">
-        <p class="spread_text">好友传播数 <%= contentInfo.friendPushCount %> </p>
+        <p class="spread_text">好友传播数 1 </p>
       </div>
       <div id="spread_button" class="spread_img_container">
         <img id="spread_button_image" src="http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png" alt="">
       </div>
       <div class="spread_text_container">
-        <p id="spread_text" class="spread_text">增加浏览数 <%= contentInfo.viewPrePush * contentInfo.friendPushCount  %></p>
+        <p id="spread_text" class="spread_text">增加浏览数 10</p>
       </div>
     </div>
-    <% } %>
+    
     <div class="data_container">
       <div id="view_container">
         <div class="text_container">
-          <p class="number"><%= contentInfo.card.view %></p>
+          <p class="number">4300</p>
             <p class="description">位用户浏览他的内容</p>
         </div>
         <div class="line"></div>
       </div>
       <div id="spread_rate">
         <div class="container">
-          <img id="hot_level_icon" src="http://7xpecj.com1.z0.glb.clouddn.com/assets/1607141730/heat_combine<%= contentInfo.ratio %>.png" alt="">
+          <img id="hot_level_icon" src="http://7xpecj.com1.z0.glb.clouddn.com/assets/1607141730/heat_combine61.png" alt="">
           <div class="hot_level">
             <p>传播热度: </p>
-            <p id="hot_text"><%= contentInfo.hotText %></p>
+            <p id="hot_text">'冰冰凉', '有点冷', '一般热', '草鸡热', '爆炸热'</p>
           </div>
         </div>
        <div class="line"></div>
@@ -59,27 +55,24 @@
       <div id="spread_distance">
         <div class="text_container">
           <p class="description">已传播</p>
-          <p class="number"><%= contentInfo.distance %>km</p>
+          <p class="number">1568716km</p>
         </div>
         <div class="line"></div>
       </div>
     </div>
-    <% //if (!share) { %>
       <button class="share_button">分享让好友帮助传播</button>
-    <% //} %>
-    <% if ( share ) { %>
-    <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
-    <% var template = templates[contentInfo.card.template - 1] %>
     <div class="content_container">
-      <div class="content_card <%= template %>">
+      <div class="content_card circle_template">
         <div class="main_container">
-          <div class="rect_image_container" id="content_image" style="background-image: url('<%= contentInfo.card.pictureCut %>')">
+          <div class="rect_image_container" id="content_image" style="background-image: url('http://prodimg.renyan.cn/card/albumId101519_big_2A2F58BE-3233-4432-AEF9-9782C5A02D4C.jpg%40750h_750w_1l?Expires=1469430635&amp;OSSAccessKeyId=RElDKIQs0SDLZVnu&amp;Signature=cMufW3VqdUTg1h2KTtI0f8ZAFyI%3D')">
           </div>
           <p class="content_text">
-            <%= contentInfo.card.text %>
+            说要剪undercut好久了 
+明天就去剪！(☆_☆)
+画成这样…理发师应该能看得懂吧ˊ_&gt;ˋ
           </p>
           <div class="album_name_container">
-            <p class="album_name">「 <%= contentInfo.card.albumName %> 」</p>
+            <p class="album_name">「 给我药 还能治 」</p>
           </div>
         </div>
       </div>
@@ -90,26 +83,42 @@
     </div>
     <div class="user_info_block">
       <div class="user_info_container">
-        <img class="user_avatar" src="<%= contentInfo.profile.smallPicture %>" alt="">
-          <p class="profle_name"><%= contentInfo.profile.name %></p>
+        <img class="user_avatar" src="http://prodimg.renyan.cn/profile/userId85537_1A49BA21-91C3-4A1A-A8CF-A15D18D4F7B2.jpg%40240h_240w_1l?Expires=1469430635&amp;OSSAccessKeyId=RElDKIQs0SDLZVnu&amp;Signature=PY3DW5vvvwNJ2emY6cSezzeJh%2Bs%3D" alt="">
+          <p class="profle_name">阿喵燃烧吧阿喵</p>
           <div class="user_data">
-            <p>浏览数: <%= contentInfo.profile.view %></p>
-            <p>关注数: <%= contentInfo.profile.subscribe %></p>
+            <p>浏览数: 5258</p>
+            <p>关注数: 45</p>
           </div>
       </div>
     </div>
     <div class="album_list">
       <div class="line"></div>
       <p>TA的言集</p>
-      <% for( var index in contentInfo.albums ) {%> <% var album = contentInfo.albums[index] %><div class="album_content">
-          <a href="<%= album.url %>" >
+       <div class="album_content">
+          <a href="http://share.renyan.cn/share/aMN8E" >
             <div class="album_cover_container">
-              <img src="<%= album.cover %>" alt="">
+              <img src="http://prodimg.renyan.cn/album/userId0_big_3DF4AA89-9193-4AFC-A7A4-AE2D46394F54.jpg?Expires=1469430635&amp;OSSAccessKeyId=RElDKIQs0SDLZVnu&amp;Signature=pYcEO5ckMptDt0lYezYZpSU2dXk%3D" alt="">
             </div>
           </a>
           <div class="mask"></div>
-          <p>「 <%= album.name %> 」</p>
-        </div><% } %>
+          <p>「 到处走走 」</p>
+        </div> <div class="album_content">
+          <a href="http://share.renyan.cn/share/dEMFB" >
+            <div class="album_cover_container">
+              <img src="http://prodimg.renyan.cn/album/userId0_big_F2F01E6D-FEB5-479E-A206-82B8F1CA4DC1.jpg?Expires=1469430635&amp;OSSAccessKeyId=RElDKIQs0SDLZVnu&amp;Signature=Cbrb421ag5KQa00Bi78OcbOg4Ls%3D" alt="">
+            </div>
+          </a>
+          <div class="mask"></div>
+          <p>「 给我药，还能治 」</p>
+        </div> <div class="album_content">
+          <a href="http://share.renyan.cn/share/pCL56" >
+            <div class="album_cover_container">
+              <img src="http://prodimg.renyan.cn/official/album_default_cover01.jpg?Expires=1469430635&amp;OSSAccessKeyId=RElDKIQs0SDLZVnu&amp;Signature=9NAHm1K%2Bjathu8IuejNI3HuwrSE%3D" alt="">
+            </div>
+          </a>
+          <div class="mask"></div>
+          <p>「 给我药 还能治 」</p>
+        </div>
     </div>
     <div class="download_banner">
       <img src="/images/logo.png" alt="" class="logo">
@@ -122,34 +131,34 @@
       </a>
     </div>
   </div>
-  <% } %>
+  
   <script type="text/javascript">
     configureShare({
-      text: '<%= contentInfo.profile.name %> 分享了一条<%= contentInfo.hotText %>的人言，快来帮他传播一下~',
-      image: "<%- contentInfo.card.pictureCut %>"
+      text: '阿喵燃烧吧阿喵 分享了一条草鸡热的人言，快来帮他传播一下~',
+      image: "http://prodimg.renyan.cn/card/albumId101519_big_2A2F58BE-3233-4432-AEF9-9782C5A02D4C.jpg%40750h_750w_1l?Expires=1469430635&OSSAccessKeyId=RElDKIQs0SDLZVnu&Signature=cMufW3VqdUTg1h2KTtI0f8ZAFyI%3D"
     })
     window.spreadParams = {}
-    spreadParams.viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
-    spreadParams.added = parseInt(<%= contentInfo.viewPrePush %>)
+    spreadParams.viewed = parseInt(10)
+    spreadParams.added = parseInt(10)
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
     var spreadImage = document.getElementById('spread_button_image') || {}
     var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
-    if (!renyanContentShare['<%= cid %>']) {
+    if (!renyanContentShare['japb86']) {
       spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png'
     } else {
       spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
     }
-    var pointString = '<%- JSON.stringify(contentInfo.position) %>'
+    var pointString = 'null'
     var point = JSON.parse(pointString)
     window.point = point
     var spread = document.getElementById('spread_button')
     var spreadText = document.getElementById('spread_text')
     if (spread) {
       spread.addEventListener('touchend', function() {
-      if (!renyanContentShare['<%= cid %>']) {
-        Ajax('http://app.ry.api.renyan.cn/rest/share/spread/<%= cid %>').post({a: 1}).done(function(result) {
+      if (!renyanContentShare['japb86']) {
+        Ajax('http://app.ry.api.renyan.cn/rest/share/spread/japb86').post({a: 1}).done(function(result) {
           if (result == 'success') {
-            renyanContentShare['<%= cid %>'] = true;
+            renyanContentShare['japb86'] = true;
             localStorage.renyanContentShare = JSON.stringify(renyanContentShare)
             setSpeadCount(spreadParams.viewed, spreadParams.added)
             spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
@@ -171,3 +180,4 @@
   <script type="text/javascript" src="/javascripts/map/dist/template.js"></script>
 </body>  
 </html>
+
