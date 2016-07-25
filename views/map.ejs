@@ -64,9 +64,9 @@
         <div class="line"></div>
       </div>
     </div>
-    <% //if (!share) { %>
+    <% if (!share) { %>
       <button class="share_button">分享让好友帮助传播</button>
-    <% //} %>
+    <% } %>
     <% if ( share ) { %>
     <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
     <% var template = templates[contentInfo.card.template - 1] %>
