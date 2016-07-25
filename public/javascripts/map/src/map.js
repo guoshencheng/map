@@ -14,7 +14,7 @@ map.on('complete', function() {
 })
 map.setZoom(5)
 
-if (!(window.webkit && webkit.messageHandlers && webkit.messageHandlers.share && webkit.messageHandlers.share.postMessage) || !(window.android && android.share)) {
+if (!(window.webkit && webkit.messageHandlers && webkit.messageHandlers.share && webkit.messageHandlers.share.postMessage) && !(window.android && android.share)) {
   var button = document.getElementById('share_button')
   if (button) {
     button.style.display = 'none'
