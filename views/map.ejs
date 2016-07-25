@@ -30,9 +30,7 @@
       <div class="spread_text_container">
         <p class="spread_text">好友传播数 <%= contentInfo.friendPushCount %> </p>
       </div>
-      <div id="spread_button" class="spread_img_container">
-        <img id="spread_button_image" src="http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png" alt="">
-      </div>
+      <button id="spread_button" class="spread_img_container" onclick="clickSpreadButton()"></button>
       <div class="spread_text_container">
         <p id="spread_text" class="spread_text">增加浏览数 <%= contentInfo.viewPrePush * contentInfo.friendPushCount  %></p>
       </div>
@@ -129,43 +127,24 @@
       image: "<%- contentInfo.card.pictureCut %>"
     })
     window.spreadParams = {}
+    spreadParams.cid = '<%= cid %>'
     spreadParams.viewed = parseInt(<%= contentInfo.viewPrePush * contentInfo.friendPushCount  %>)
     spreadParams.added = parseInt(<%= contentInfo.viewPrePush %>)
     if (!localStorage.renyanContentShare) localStorage.renyanContentShare = JSON.stringify({})
-    var spreadImage = document.getElementById('spread_button_image') || {}
     var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
-    if (!renyanContentShare['<%= cid %>']) {
-      spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spread_button_icon.png'
-    } else {
-      spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
-    }
     var pointString = '<%- JSON.stringify(contentInfo.position) %>'
     var point = JSON.parse(pointString)
     window.point = point
     var spread = document.getElementById('spread_button')
-    var spreadText = document.getElementById('spread_text')
-    if (spread) {
-      spread.addEventListener('touchend', function() {
-      if (!renyanContentShare['<%= cid %>']) {
-        Ajax('http://app.ry.api.renyan.cn/rest/share/spread/<%= cid %>').post({a: 1}).done(function(result) {
-          if (result == 'success') {
-            renyanContentShare['<%= cid %>'] = true;
-            localStorage.renyanContentShare = JSON.stringify(renyanContentShare)
-            setSpeadCount(spreadParams.viewed, spreadParams.added)
-            spreadImage.src = 'http://7xpecj.com1.z0.glb.clouddn.com/spreaded_button_icon.png'
-          }
-        })
-      } else {
-        console.log('has sended')
-      }
-    })
-  }
-  function setSpeadCount(viewed, added) {
-    var text = document.getElementById('spread_text')
-    if (text) {
-      text.textContent = '增加浏览数 ' + (viewed + added)
+    function clickSpreadButton() {
+    
     }
-  }
+    function setSpeadCount(viewed, added) {
+      var text = document.getElementById('spread_text')
+      if (text) {
+        text.textContent = '增加浏览数 ' + (viewed + added)
+      }
+    }
   </script>
   <script type="text/javascript" src="/javascripts/map/dist/dist.js"></script>
   <script type="text/javascript" src="/javascripts/map/dist/template.js"></script>

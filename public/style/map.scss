@@ -145,12 +145,14 @@ body {
   height: 85px;
   width: 100%;
   .spread_img_container {
-    @include flex-grow(1);
-    height: 100%;
+    height: 85px;
+    width: 85px;
+    border: 0px;
+    padding: 0px;
+    background-position: center;
+    @include background-size-cover;
     text-align: center;
-    img {
-       height: 100%;
-    }
+    background-color: Transparent;
   }
   .spread_text_container {
     @include flex-grow(1);
