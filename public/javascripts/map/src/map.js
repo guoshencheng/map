@@ -14,6 +14,13 @@ map.on('complete', function() {
 })
 map.setZoom(5)
 
+if (!window.webkit || !webkit.messageHandlers && webkit.messageHandlers.share && webkit.messageHandlers.share.postMessage) {
+  var button = document.getElementById('share_button')
+  if (button) {
+    button.style.display = 'none'
+  }
+}
+
 function drawPoints() {
   var mass = new AMap.MassMarks(list, {
      url: 'http://7xpecj.com1.z0.glb.clouddn.com/2/point.png',
