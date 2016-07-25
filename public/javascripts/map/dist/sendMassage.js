@@ -11,5 +11,8 @@ function share() {
   if (window.android && android.share) {
     android.share()
   }
+  if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.share && webkit.messageHandlers.share.postMessage) {
+    window.webkit.messageHandlers.share.postMessage('');
+  }
 }
 
