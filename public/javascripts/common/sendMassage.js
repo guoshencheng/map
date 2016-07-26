@@ -20,8 +20,8 @@ function joinActivity() {
   if (window.android && android.startPublishActivity) {
     android.startPublishActivity()
   }
-  if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.startPublish && webkit.messageHandlers.startPublish.postMessage) {
-    window.webkit.messageHandlers.startPublish.postMessage('');
+  if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.startPublishViewController && webkit.messageHandlers.startPublishViewController.postMessage) {
+    window.webkit.messageHandlers.startPublishViewController.postMessage('');
   }
 }
 
