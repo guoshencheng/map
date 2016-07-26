@@ -17,8 +17,8 @@ function share() {
 }
 
 function joinActivity() {
-  if (window.android && android.startPublish) {
-    android.startPublish()
+  if (window.android && android.startPublishActivity) {
+    android.startPublishActivity()
   }
   if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.startPublish && webkit.messageHandlers.startPublish.postMessage) {
     window.webkit.messageHandlers.startPublish.postMessage('');
