@@ -1,0 +1,46 @@
+@import "./common/define.scss";
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+.error_icon_area {
+  @include flex;
+  @include justify-content(center);
+  align-items:center;
+  @include flex-direction(column);
+  width: 100%;
+  text-align: center;
+  div {
+    margin-top: 10px;
+  }
+  .error_icon {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    @include flex;
+    @include justify-content(center);
+    align-items:center;
+    height: 100px;
+    width: 100px;
+    @include radius(75px);
+    background-color: rgb(240, 96, 80);
+    font-size: 100px;
+    color: white;
+  }
+  .error_message {
+    font-size: 20px;
+  }
+  .error_status {
+    font-size: 20px;
+  }
+  .error_stack {
+    width: 90%;
+  }
+}
+

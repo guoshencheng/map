@@ -5,7 +5,9 @@ var checkCidParam = function(req, res, next) {
     req.cardId = cardId  
     next()
   } else {
-    res.json({err: 'invaild cid param'})
+    var err = new Error('Invaild cid param');
+    err.status = 510;
+    next(err);
   }
 }
 

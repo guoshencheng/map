@@ -25,10 +25,14 @@ module.exports = function(req, res, next) {
         }
         next()
       } else {
-        res.json('该内容不存在')
+        var err = new Error('该内容不存在');
+        err.status = 511;
+        next(err);
       }
     } else {
-      res.json({url: url, body: body})
+      var err = new Error('服务器异常');
+      err.status = 512;
+      next(err);
     }
   })
 }

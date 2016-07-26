@@ -16,6 +16,10 @@ router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
   renderMap(req, res, false)
 })
 
+router.get('/activity', function(req, res, next) {
+  res.render('activity', {title: '活动'})
+})
+
 var renderMap = function(req, res, share) {
   var cid = req.cardId
   var contentInfo = req.contentInfo

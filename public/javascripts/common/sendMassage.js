@@ -16,3 +16,12 @@ function share() {
   }
 }
 
+function joinActivity() {
+  if (window.android && android.startPublish) {
+    android.startPublish()
+  }
+  if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.startPublish && webkit.messageHandlers.startPublish.postMessage) {
+    window.webkit.messageHandlers.startPublish.postMessage('');
+  }
+}
+
