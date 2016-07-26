@@ -16,7 +16,6 @@ body {
   align-items:center;
   @include flex-direction(column);
   width: 100%;
-  text-align: center;
   div {
     margin-top: 10px;
   }
@@ -41,6 +40,9 @@ body {
   }
   .error_stack {
     width: 90%;
+    text-align:left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 }
 
