@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
 <% var shareText = contentInfo.profile.name + '分享了一条'+ contentInfo.hotText + '的人言，快来帮他传播一下~' %>
 <% var title = share ? shareText : contentInfo.profile.name %>
-<title><%= contentInfo.profile.name %></title>  
+<title><%= title %></title>  
   <link href="/stylesheets/map.css" rel="stylesheet">
   <style type="text/css">
     #hot_text {
@@ -24,7 +24,7 @@
 </head>  
 
 <body>  
-  <img src="http://7xpecj.com1.z0.glb.clouddn.com/renyan_logo.png" alt="" style="display:none">
+  <img src="http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png" alt="" style="display:none">
   <div id="map_container"></div> 
   <div class="renyan_container">
     <% if (share)  { %>
