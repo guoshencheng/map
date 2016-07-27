@@ -14,7 +14,7 @@ var http = require('http');
 
 var commonPort = process.env.NODE_ENV == "production" ? 8092 : 8093
 
-var port = normalizePort(process.env.PORT || '8092');
+var port = normalizePort(process.env.PORT || commonPort);
 app.set('port', port);
 
 /**
