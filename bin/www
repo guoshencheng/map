@@ -12,6 +12,8 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
+var commonPort = process.env.NODE_ENV == "production" ? 8092 : 8093
+
 var port = normalizePort(process.env.PORT || '8092');
 app.set('port', port);
 

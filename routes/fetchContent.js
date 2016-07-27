@@ -1,7 +1,8 @@
+var prefix = process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest/share/position/' : 'http://testry.renyan.cn/rest/share/position/'
 module.exports = function(req, res, next) {
   //Auth: RyZxAuth
   var cid = req.cardId
-  var url = 'http://app.ry.api.renyan.cn/rest/share/position/' + cid
+  var url = prefix + cid
   var request = require('request')
   var options = {
     url: url,
