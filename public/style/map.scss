@@ -274,16 +274,12 @@ body {
     height: 100px;
     margin: 5%;
     text-align: center;
-    @include preserve-3d;
     .album_cover_container {
+      background-position: center;
       @include shadow;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      img {
-        width: 100%;
-        @include vertical-align();
-      }
     }
     .mask {
       margin-top:- 100px;
