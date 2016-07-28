@@ -24,19 +24,23 @@
 </head>  
 
 <body>  
+  <% if (share)  { %>
   <div style="margin: 0;display: none">
-      <img src="http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png" alt="logo"/>
-    </div>
+    <img src="<%= contentInfo.card.pictureSmall %>" alt="logo"/>
+  </div>
+  <% } %>
   <div id="map_container"></div> 
   <div class="renyan_container">
     <% if (share)  { %>
     <div class='title_block'>
-      <div class="spread_text_container">
-        <p class="spread_text">好友传播数 <%= contentInfo.friendPushCount %> </p>
+      <div class="friend_spread_text_container">
+        <p id="friend_push_count"> <%= contentInfo.friendPushCount %> </p>
+        <p class="spread_text">好友传播数 </p>
       </div>
       <button id="spread_button" class="spread_img_container" onclick="clickSpreadButton()"></button>
-      <div class="spread_text_container">
-        <p id="spread_text" class="spread_text">增加浏览数 <%= contentInfo.viewPrePush * contentInfo.friendPushCount  %></p>
+      <div class="add_spread_text_container">
+        <p id="spread_text" class="spread_text">增加浏览数</p>
+        <p id="view_push_count"> <%= contentInfo.viewPrePush * contentInfo.friendPushCount  %></p>
       </div>
     </div>
     <% } %>
@@ -142,9 +146,11 @@
     
     }
     function setSpeadCount(viewed, added) {
-      var text = document.getElementById('spread_text')
-      if (text) {
-        text.textContent = '增加浏览数 ' + (viewed + added)
+      var userCountText = document.getElementById('friend_push_count')
+      var viewCountText = document.getElementById('view_push_count')
+      if (userCountText && viewCountText) {
+        userCountText.textContent = viewed + 1
+        viewCountText.textContent = (viewed + 1) * added
       }
     }
   </script>

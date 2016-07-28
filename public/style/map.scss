@@ -42,8 +42,10 @@ body {
     color: white;
   }
   @include flex;
+  justify-content: center;
   height: 85px;
   width: 100%;
+  text-align: center;
   .spread_img_container {
     height: 85px;
     width: 85px;
@@ -54,12 +56,25 @@ body {
     text-align: center;
     background-color: Transparent;
   }
-  .spread_text_container {
-    @include flex-grow(1);
-    text-align: center;
+  .friend_spread_text_container {
+    @include flex-direction(row-reverse);
+    @include flex;
+    width: 33%;
+    align-items:center;
+    p {
+      margin-right: 8%;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+  }
+  .add_spread_text_container {
+    @include flex;
+    width: 33%;
+    align-items:center;
     p {
       margin-top: 50px;
       font-size: 14px;
+      margin-left: 8%;
     }
   }
 }

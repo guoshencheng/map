@@ -3,6 +3,7 @@ var map = new AMap.Map("map_container");
 if (p) {
   map.setCenter([p.lon, p.lat])
 }
+
 var list, list2, animation
 var currentIndex = 0
 var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
@@ -71,20 +72,27 @@ function configureData(p) {
 }
 
 window.setSpeadCount = function(viewed, added){
+  var userCountText = document.getElementById('friend_push_count')
+  var viewCountText = document.getElementById('view_push_count')
+  if (userCountText && viewCountText) {
+    userCountText.textContent = (viewed / added) + 1
+    viewCountText.style.color = '#FF3F3F'
+  }
   textAnimation.beginValue = viewed
   textAnimation.endValue = viewed + added
   textAnimation.start()
 }
 
 var textAnimation = {}
-textAnimation.timer = 0
 textAnimation.running = false
 textAnimation.beginValue = 0
-textAnimation.currentValue = 0
 textAnimation.endValue = 0
+textAnimation.progress = 0
+textAnimation.caculateCurrent = function () {
+  return (this.endValue - this.beginValue) * this.progress
+}
 textAnimation.start = function() {
-  this.currentValue = textAnimation.beginValue
-  this.timer = 0 
+  this.progress = 0
   this.running = true 
 }
 
@@ -93,25 +101,30 @@ textAnimation.stop = function() {
 }
 
 textAnimation.continue = function() {
-  if (this.currentValue < this.endValue) {
+  if (this.progress < 0) {
     this.running = true
   }
 }
 
 textAnimation.update = function() {
   if (this.running) {
-    this.timer ++
-  }
-  if (this.timer % 8 === 0 && this.running) {
-    textAnimation.currentValue ++
-    var text = document.getElementById('spread_text')
-    if (text) {
-      text.textContent = '增加浏览数 ' + textAnimation.currentValue
+    textAnimation.progress += 0.02
+    var current = textAnimation.caculateCurrent().toFixed(0)
+    var fontSize = (14 + 14 * getBounzeValue(textAnimation.progress))
+    var userCountText = document.getElementById('friend_push_count')
+    var viewCountText = document.getElementById('view_push_count')
+    if (userCountText && viewCountText) {
+      viewCountText.textContent = current
+      viewCountText.style.fontSize = fontSize + 'px'
     }
-    if (textAnimation.currentValue >= textAnimation.endValue) {
+    if (textAnimation.progress >= 1) {
       this.running = false
     }
   }
+}
+
+function getBounzeValue(value) {
+  return -4 * (value - 0.5) * (value - 0.5) + 1
 }
 
 animate();
