@@ -8,7 +8,7 @@ var signatureUrl =  function(req, res, next) {
     bucket: 'testrenyanpicture',
     region: 'oss-cn-hangzhou'
   })
-  var url = store.signatureUrl(req.params.imageKey, {
+  var url = store.signatureUrl(imageKey, {
     expires: 3600
   })
   if (url) {
