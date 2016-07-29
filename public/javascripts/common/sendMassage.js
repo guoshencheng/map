@@ -19,9 +19,10 @@ function share() {
 function joinActivity() {
   if (window.android && android.startPublishActivity) {
     android.startPublishActivity()
-  }
-  if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.startPublishViewController && webkit.messageHandlers.startPublishViewController.postMessage) {
+  } else if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.startPublishViewController && webkit.messageHandlers.startPublishViewController.postMessage) {
     window.webkit.messageHandlers.startPublishViewController.postMessage('');
+  } else {
+    window.location = redirectUrl
   }
 }
 

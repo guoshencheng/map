@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var checkCidParam = require('./decodeCid')
 var fetchContent = require('./fetchContent')
+var signatureUrl = require('./signature')
 var UA = require("useragent")
 
 /* GET home page. */
@@ -21,17 +22,11 @@ router.get('/activity', function(req, res, next) {
   res.render('activity', {title: '活动'})
 })
 
-router.get('/renyan', function(req, res, next) {
-  var useragent = req.headers['user-agent']
-  var result = UA.parse(req.headers['user-agent'])
-  if (result.os.family == 'iOS') {
-    res.redirect('renyanapp://')
-  } else if (result.os.family == 'Android') {
-    res.redirect('renyanapp://')
-  } else {
-    res.json('hello redirect')
-  }
- })
+router.get('/activity/image/:imageKey', function(req, res, next) {
+  var imageUrl = 'http://p2.qhimg.com/t011fc13354f12d1a46.jpg'
+  var redirectUrl = 'renyanapp://'
+  res.render('imageActivity', {imageUrl: imageUrl, title: '活动', redirectUrl: redirectUrl})
+})
 
 var renderMap = function(req, res, share) {
   var cid = req.cardId

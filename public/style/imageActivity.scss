@@ -1,0 +1,41 @@
+@import "./common/define.scss";
+
+html {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  margin: 0px;
+}
+
+
+.image_container {
+  text-align: center;
+  width: 100%;
+  margin: 0px;
+  .activity_img {
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+.join {
+  align-items: center;
+  justify-content: center;
+  @include flex;
+  position: fixed;
+  bottom: 0px;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  .join_button {
+    width: 60%;
+    height: 40px;
+    background-color: rgb(240, 96, 80);
+    @include radius(10px);
+    border: 0px;
+    color: white;
+    font-size: 15px;
+  }
+}
