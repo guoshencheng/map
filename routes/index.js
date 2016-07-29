@@ -22,7 +22,7 @@ router.get('/activity', function(req, res, next) {
   res.render('activity', {title: '活动'})
 })
 
-router.get('/activity/image/:imageKey', signatureUrl, function(req, res, next) {
+router.get('/activity/image', signatureUrl, function(req, res, next) {
   var imageUrl = req.signatureUrl
   var redirectUrl = 'renyanapp://'
   res.render('imageActivity', {imageUrl: imageUrl, title: '活动', redirectUrl: redirectUrl})

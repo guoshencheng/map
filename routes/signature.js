@@ -1,6 +1,7 @@
 var oss = require('ali-oss')
 
 var signatureUrl =  function(req, res, next) {
+  var imageKey = req.params.imageKey || req.query.imageKey
   var store = oss({
     accessKeyId: 'RElDKIQs0SDLZVnu',
     accessKeySecret: 'RiZVUGgVkH4r5Jp7bjzCgYzopVlZkr',
