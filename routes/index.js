@@ -22,8 +22,8 @@ router.get('/activity', function(req, res, next) {
   res.render('activity', {title: '活动'})
 })
 
-router.get('/activity/image/:imageKey', function(req, res, next) {
-  var imageUrl = 'http://p2.qhimg.com/t011fc13354f12d1a46.jpg'
+router.get('/activity/image/:imageKey', signatureUrl, function(req, res, next) {
+  var imageUrl = req.signatureUrl
   var redirectUrl = 'renyanapp://'
   res.render('imageActivity', {imageUrl: imageUrl, title: '活动', redirectUrl: redirectUrl})
 })
