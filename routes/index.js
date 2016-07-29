@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var checkCidParam = require('./decodeCid')
 var fetchContent = require('./fetchContent')
+var UA = require("useragent")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,6 +20,18 @@ router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
 router.get('/activity', function(req, res, next) {
   res.render('activity', {title: '活动'})
 })
+
+router.get('/renyan', function(req, res, next) {
+  var useragent = req.headers['user-agent']
+  var result = UA.parse(req.headers['user-agent'])
+  if (result.os.family == 'iOS') {
+    res.redirect('renyanapp://')
+  } else if (result.os.family == 'Android') {
+    res.redirect('renyanapp://')
+  } else {
+    res.json('hello redirect')
+  }
+ })
 
 var renderMap = function(req, res, share) {
   var cid = req.cardId
