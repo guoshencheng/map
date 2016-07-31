@@ -39,7 +39,7 @@ module.exports = function(req, res, next) {
 }
 
 function textForHotRate(rate) {
-  var hotTexts = ['冰冰凉', '有点冷', '一般热', '草鸡热', '爆炸热']
+  var hotTexts = ['冰冰凉', '有点冷', '一般热', '超级热', '爆炸热']
   var index = parseInt(rate * hotTexts.length)
   if (index >= hotTexts.length) {
     index = hotTexts.length - 1;
