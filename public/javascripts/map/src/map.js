@@ -89,7 +89,7 @@ textAnimation.beginValue = 0
 textAnimation.endValue = 0
 textAnimation.progress = 0
 textAnimation.caculateCurrent = function () {
-  return (this.endValue - this.beginValue) * this.progress
+  return (this.endValue - this.beginValue) * this.progress + this.beginValue
 }
 textAnimation.start = function() {
   this.progress = 0
