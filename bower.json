@@ -1,0 +1,22 @@
+{
+  "name": "renyan",
+  "description": "the renyan activity h5 server",
+  "main": "app.js",
+  "authors": [
+    "guoshencheng"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/guoshencheng/map",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/javascripts/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "drawingboard.js": "^0.4.6",
+    "zepto": "^1.1.6"
+  }
+}

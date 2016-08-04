@@ -20,6 +20,10 @@ router.get('/activity', function(req, res, next) {
   res.render('activity', {title: '活动'})
 })
 
+router.get('/drawingboard/:artId', function(req, res, next) {
+  res.render('drawingboard', {title: '画猫'})
+})
+
 var renderMap = function(req, res, share) {
   var cid = req.cardId
   var contentInfo = req.contentInfo

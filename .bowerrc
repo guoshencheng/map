@@ -1,0 +1,7 @@
+{
+  "directory":"public/javascripts/bower_components",
+  "ignoredDependencies": [
+    "jquery",
+    "simple-undo"
+  ]
+}

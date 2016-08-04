@@ -16,5 +16,9 @@
     "morgan": "~1.6.1",
     "request": "^2.72.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
   }
 }
