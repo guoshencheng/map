@@ -30,10 +30,9 @@ module.exports = function(gulp) {
     })
   })
 
-  gulp.task('watch', function() {
+  gulp.task('webpack:watch', function() {
     gulp.watch(all, ['webpack'])
   })
 
-  gulp.task('webpack-server', ['webpack-dev-server', 'watch'])
 }
 

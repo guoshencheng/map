@@ -7,4 +7,6 @@ webpack(gulp)
 
 gulp.task('default', ['webpack', 'sass'])
 
+gulp.task('dev', ['webpack-dev-server', 'sass:watch', 'webpack:watch'])
+
 module.exports = gulp

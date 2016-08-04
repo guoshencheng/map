@@ -12,7 +12,7 @@ module.exports = function(gulp) {
   });
 
   gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+    gulp.watch(input, ['sass']);
   });
 }
 
