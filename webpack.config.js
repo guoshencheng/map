@@ -20,6 +20,10 @@ module.exports = {
     new webpack.DefinePlugin({
       __DEBUG__:true
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      mangle: false
+    })
   ],
   externals:{
     'pixi':'PIXI',
@@ -30,6 +34,7 @@ module.exports = {
   },
   entry: entry,
   output: {
+    publicPath: path.resolve(__dirname, './public/javascripts/dist'),
     path: path.resolve(__dirname, './public/javascripts/dist'),
     filename: "[name].js"
   },
