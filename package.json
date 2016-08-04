@@ -19,6 +19,13 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-stream": "^3.2.0"
   }
 }

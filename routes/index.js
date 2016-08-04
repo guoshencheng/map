@@ -16,10 +16,6 @@ router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
   renderMap(req, res, false)
 })
 
-router.get('/activity', function(req, res, next) {
-  res.render('activity', {title: '活动'})
-})
-
 router.get('/drawingboard/:artId', function(req, res, next) {
   res.render('drawingboard', {title: '画猫'})
 })
