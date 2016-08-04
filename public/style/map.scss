@@ -60,7 +60,7 @@ body {
     @include flex-direction(row-reverse);
     @include flex;
     width: 33%;
-    align-items:center;
+    @include align-items(center);
     p {
       margin-right: 8%;
       margin-top: 50px;
@@ -70,7 +70,7 @@ body {
   .add_spread_text_container {
     @include flex;
     width: 33%;
-    align-items:center;
+    @include align-items(center);
     p {
       margin-top: 50px;
       font-size: 14px;
@@ -243,12 +243,12 @@ body {
   position: fixed;
   bottom: 0px;
   @include justify-content(space-between);
-  align-items: center;
+  @include align-items(center);
   width: 100%;
   @include radius(2px);
   .info_block {
     @include flex;
-    align-items: center;
+    @include align-items(center);
     .logo {
       @include radius(5px);
       height: 40px;

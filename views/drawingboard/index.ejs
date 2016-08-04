@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  <title><%= title %></title>
+  <link href="/stylesheets/drawingboard.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="top_bar">
+       <button class="drawingboard_button">围观作品</button>
+    </div>
+    <div class="drawingboard_container">
+      <canvas id="drawingboard" width="400px" height="400px"></canvas>
+    </div>
+    <div class="controls">
+      <button id="goback_button" class="control_button" onclick="goback()">撤销</button>
+      <div class="tools_container">
+        
+      </div>
+      <button class="control_button" id="clear_button" onclick="clearCanvas()">清除</button>
+      <button class="control_button" id="plan_button">计划</button>
+      <button class="control_button" id="upload_button"> 
+        <img class="upload_button_icon" src="/images/upload_button_icon.png" alt="">
+        <p>上传</p>
+      </button>
+    </div>
+  </div>
+  <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
+  <script src="/javascripts/dist/drawingboard.js" type="text/javascript"></script>
+</body>
+</html>

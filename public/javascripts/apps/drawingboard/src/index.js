@@ -120,12 +120,18 @@ var goForthInHistory = function() {
 
 window.goback = goBackInHistory
 window.gofont = goForthInHistory
+window.clearCanvas = function() {
+  var ctx = getContext()
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  saveHistory()
+}
 
 var getImage = function() {
   return canvas.toDataURL('image/png')
 }
 
 var setImage = function(src) {
+  if (!src) return
   var ctx = getContext()
   var img = new Image()
   var oldGCO = ctx.globalCompositeOperation

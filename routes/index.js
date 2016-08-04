@@ -16,9 +16,11 @@ router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
   renderMap(req, res, false)
 })
 
-router.get('/drawingboard/:artId', function(req, res, next) {
-  res.render('drawingboard', {title: '画猫'})
+router.get('/drawingboard/index', function(req, res, next) {
+  res.render('drawingboard/index', {title: '画猫'})
 })
+
+
 
 var renderMap = function(req, res, share) {
   var cid = req.cardId

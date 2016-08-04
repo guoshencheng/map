@@ -57,6 +57,11 @@
   flex-wrap: $wrap;
 }
 
+@mixin align-items($value: center) {
+  -webkit-box-align: $value;
+  align-items: $value;
+}
+
 @mixin flex-direction($direction: row) {
   -webkit-flex-direction: $direction;
   -moz-flex-direction: $direction;
