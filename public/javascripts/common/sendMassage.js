@@ -25,3 +25,13 @@ function joinActivity() {
   }
 }
 
+function showActivityDetail(topicId) {
+  topicId = topicId || 1
+ if (window.android && android.showActivityDetail) {
+    android.showActivityDetail(topicId)
+  }
+  if (window.webkit && webkit.messageHandlers && webkit.messageHandlers.showActivityDetail && webkit.messageHandlers.showActivityDetail.postMessage) {
+    window.webkit.messageHandlers.showActivityDetail.postMessage(topicId);
+  }
+}
+
