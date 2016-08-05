@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var checkCidParam = require('./decodeCid')
-var fetchContent = require('./fetchContent')
+var checkCidParam = require('../middleware/decodeCid')
+var fetchContent = require('../middleware/fetchContent')
+var signatureImage = require('../middleware/signatureImage')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,6 +25,14 @@ router.get('/sendMessage', function(req, res, next) {
   res.render('sendMessage', {})
 })
 
+
+router.get('/activity/image', signatureImage.signatureImage, function(req, res, next) {
+  var signatureUrl = req.signatureUrl
+  res.render('activities/image', {
+    title: 'title',
+    imageUrl: 'http://7xpecj.com1.z0.glb.clouddn.com/1.pic.jpg'
+  })
+})
 
 var renderMap = function(req, res, share) {
   var cid = req.cardId

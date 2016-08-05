@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  <title><%= title %></title>
+  <link href="/stylesheets/imageActivity.css" rel="stylesheet">
+  <script type="text/javascript" src="/javascripts/common/sendMassage.js"></script>
+</head>
+<body>
+  <div class="image_container">
+    <img src="<%= imageUrl %>" alt="" class="activity_image">
+  </div>
+    <div class="download_banner">
+      <div class="info_block">
+        <img src="/images/logo.png" alt="" class="logo">
+        <div class="text_container">
+          <p class="title">人言</p>
+          <p>赶紧试一下你的人言能传多远</p>
+        </div>
+      </div>
+      <button class="join_button" onclick="joinActivity()"></button>
+    </div>
+</body>
+</html>
