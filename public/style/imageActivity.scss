@@ -26,13 +26,12 @@ body {
   bottom: 0px;
   @include justify-content(space-between);
   @include align-items(center);
-  @include radius(4px);
   width: 100%;
   color: white;
-  font-size: 17px;
+  font-size: 14px;
   p {
     margin: 0px;
-    width: 70%;
+    width: 65%;
     margin-left: 20px;
   }
   .join_button {
