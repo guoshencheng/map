@@ -18,44 +18,30 @@ body {
   }
 }
 
-.download_banner {
+.join_container {
   background-color: rgba(0, 0, 0, 0.8);
+  height: 58px;
   @include flex;
   position: fixed;
   bottom: 0px;
   @include justify-content(space-between);
   @include align-items(center);
+  @include radius(4px);
   width: 100%;
-  @include radius(2px);
-  .info_block {
-    @include flex;
-    @include align-items(center);
-    .logo {
-      @include radius(5px);
-      height: 40px;
-      margin-left: 15px;
-      margin-right: 5px;
-    }
-    .text_container {
-      p {
-        font-size: 12px;
-        color: white;
-        height: 30%;
-        margin: 5px;
-      }
-      .title {
-        font-size: 15px; 
-      }
-    }
+  color: white;
+  font-size: 17px;
+  p {
+    margin: 0px;
+    width: 70%;
+    margin-left: 20px;
   }
-  .download_button {
-    margin: 14px;
-    margin-left: 5px;
-    margin-right: 8px;
+  .join_button {
+    @include radius(4px);
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0;
+    background-color: #FFEA00;
     height: 30px;
-    background-color: yellow;
-    @include radius(5px);
-    color: black;
-    text-align: center;
+    margin-right:20px;
   }
 }

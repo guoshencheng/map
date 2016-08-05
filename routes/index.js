@@ -30,7 +30,7 @@ router.get('/activity/image', signatureImage.signatureImage, function(req, res, 
   var signatureUrl = req.signatureUrl
   res.render('activities/image', {
     title: 'title',
-    imageUrl: 'http://7xpecj.com1.z0.glb.clouddn.com/1.pic.jpg'
+    imageUrl: signatureUrl
   })
 })
 

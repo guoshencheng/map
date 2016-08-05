@@ -14,8 +14,9 @@ var signatureImageFromServer = function (req, res, next) {
     qs: {resources:imageKey}
   }
   request(options, function(error, response, body) {
-    if (!error && response.statusCode == 200 && body.errorCode && body.errorCode === 0) {
-      var signatures = body.signatures
+    var result = JSON.parse(body)
+    if (!error && response.statusCode == 200 && result.errorCode === 0) {
+      var signatures = result.signatures
       if (signatures && signatures.length > 0) {
         var signature = signatures[0]
         if (signature.url) {
