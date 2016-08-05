@@ -1,10 +1,9 @@
-var devUrls = {
-  IMAGE_SIGNATURE_URL: "http://app.ry.api.renyan.cn/rest/selection/card/sign"
-}
-var urls = {
-  IMAGE_SIGNATURE_URL: "http://app.ry.api.renyan.cn/rest/selection/card/sign"
+var paths = {
+  IMAGE_SIGNATURE_URL: "/selection/card/sign",
+  FETCH_ACTIVITY: "/activity/get_by_acid/"
 }
 
 module.exports = {
-  urls: process.env.NODE_ENV == "production" ? urls : devUrls
+  paths: paths,
+  domin: process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest' : 'http://testry.renyan.cn/rest'
 }

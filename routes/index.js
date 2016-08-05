@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var checkCidParam = require('../middleware/decodeCid')
 var fetchContent = require('../middleware/fetchContent')
-var signatureImage = require('../middleware/signatureImage')
+var activity = require('../middleware/activity')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,12 +25,13 @@ router.get('/sendMessage', function(req, res, next) {
   res.render('sendMessage', {})
 })
 
-
-router.get('/activity/image', signatureImage.signatureImage, function(req, res, next) {
-  var signatureUrl = req.signatureUrl
-  res.render('activities/image', {
-    title: 'title',
-    imageUrl: signatureUrl
+router.get('/activity/:activityId', activity.fetchActivity, function(req, res, next) {
+  var data = req.renyan.activity
+  res.render('activity', {
+    name: data.name,
+    bigPicture: data.bigPicture,
+    picture: data.picture,
+    tpid: data.tpid
   })
 })
 

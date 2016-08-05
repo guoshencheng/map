@@ -3,17 +3,23 @@
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-  <title><%= title %></title>
+  <title><%= name %></title>
   <link href="/stylesheets/imageActivity.css" rel="stylesheet">
   <script type="text/javascript" src="/javascripts/common/sendMassage.js"></script>
 </head>
 <body>
   <div class="image_container">
-    <img src="<%= imageUrl %>" alt="" class="activity_image">
+    <img src="<%= bigPicture %>" alt="" class="activity_image">
   </div>
   <div class="join_container">
-    <p class="activity_name">#本期活动#活活活动活动活动动活动活动动活动活动</p>
+    <p class="activity_name">#本期活动#<%= name %></p>
     <button class="join_button" onclick="joinActivity()">立即参与</button>
   </div>
+  <script type="text/javascript">
+    window.activity = {}
+    activity.name = '<%= name %>'
+    activity.tpid = '<%= tpid %>'
+    activity.picture = '<%= picture %>'
+  </script>
 </body>
 </html>
