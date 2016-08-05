@@ -27,21 +27,12 @@ router.get('/sendMessage', function(req, res, next) {
 
 router.get('/activity/:activityId', activity.fetchActivity, function(req, res, next) {
   var data = req.renyan.activity
+  var close = data.status === 0 && data.finishPicture
   res.render('activity', {
     name: data.name,
-    bigPicture: data.bigPicture,
+    bigPicture: close ? data.finishPicture : data.bigPicture,
     picture: data.picture,
-    tpid: data.tpid
-  })
-})
-
-router.get('/activity/result/:activityId', activity.fetchActivity, function(req, res, next) {
-  var data = req.renyan.activity
-  res.render('activity', {
-    name: data.name,
-    bigPicture: data.finishPicture,
-    picture: data.picture,
-    tpid: data.tpid
+    tpid: data.tpid,
   })
 })
 
