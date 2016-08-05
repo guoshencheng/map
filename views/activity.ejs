@@ -29,7 +29,9 @@
     activity.finish = <%= finish %>
     function clickBottomButton() {
       if (activity.finish) {
-        activityDetail()
+        if (activity.tpid != 0) {
+           activityDetail()
+        }
       } else {
         joinActivity()
       }
