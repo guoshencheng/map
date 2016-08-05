@@ -20,6 +20,9 @@ router.get('/drawingboard/index', function(req, res, next) {
   res.render('drawingboard/index', {title: '画猫'})
 })
 
+router.get('/sendMessage', function(req, res, next) {
+  res.render('sendMessage', {})
+})
 
 
 var renderMap = function(req, res, share) {

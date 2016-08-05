@@ -89,4 +89,13 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  runGulpIfNeed()
+}
+
+function runGulpIfNeed() {
+  var env = process.env.NODE_ENV
+  if (env == 'development') {
+    var gulpfile = require('../gulpfile.js')   
+    gulpfile.start('dev')
+  }
 }
