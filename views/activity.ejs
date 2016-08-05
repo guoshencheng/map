@@ -10,28 +10,37 @@
 <body>
   <div class="image_container">
     <img src="<%= bigPicture %>" alt="" class="activity_image">
+    <% if (!finish) { %>
     <div class="activity_detail_container">
-      <button class="activity_detail_button">点击查看活动内容</button>
+      <button class="activity_detail_button" onclick="activityDetail()">点击查看活动内容</button>
     </div>
+    <% } %>
   </div>
-  <% if(!close) { %>
   <div class="join_container">
     <p class="activity_name">#本期活动#<%= name %></p>
-    <button class="join_button" onclick="joinActivity()">立即参与</button>
+    <% var text = finish ? '立即查看': '立即参与' %>
+    <button class="join_button" onclick="clickBottomButton()"><%= text %></button>
   </div>
-  <% } %>
   <script type="text/javascript">
     window.activity = {}
     activity.name = '<%= name %>'
     activity.tpid = '<%= tpid %>'
     activity.picture = '<%= picture %>'
+    activity.finish = <%= finish %>
+    function clickBottomButton() {
+      if (activity.finish) {
+        activityDetail()
+      } else {
+        joinActivity()
+      }
+    }
     function activityDetail() {
-      var activity = {
+      var  data = {
         imageUrl: activity.picture,
         topic: activity.name,
         tpid: activity.tpid
       }
-      showActivityDetail(JSON.stringify(activity))
+      showActivityDetail(JSON.stringify(data))
     }
   </script>
 </body>

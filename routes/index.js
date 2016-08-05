@@ -33,7 +33,8 @@ router.get('/activity/:activityId', activity.fetchActivity, function(req, res, n
     bigPicture: close ? data.finishPicture : data.bigPicture,
     picture: data.picture,
     tpid: data.tpid,
-    close: close
+    close: close,
+    finish: data.status === 0
   })
 })
 
