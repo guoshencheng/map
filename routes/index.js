@@ -35,6 +35,16 @@ router.get('/activity/:activityId', activity.fetchActivity, function(req, res, n
   })
 })
 
+router.get('/activity/result/:activityId', activity.fetchActivity, function(req, res, next) {
+  var data = req.renyan.activity
+  res.render('activity', {
+    name: data.name,
+    bigPicture: data.finishPicture,
+    picture: data.picture,
+    tpid: data.tpid
+  })
+})
+
 var renderMap = function(req, res, share) {
   var cid = req.cardId
   var contentInfo = req.contentInfo
