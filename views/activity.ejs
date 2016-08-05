@@ -10,16 +10,29 @@
 <body>
   <div class="image_container">
     <img src="<%= bigPicture %>" alt="" class="activity_image">
+    <div class="activity_detail_container">
+      <button class="activity_detail_button">点击查看活动内容</button>
+    </div>
   </div>
+  <% if(!close) { %>
   <div class="join_container">
     <p class="activity_name">#本期活动#<%= name %></p>
     <button class="join_button" onclick="joinActivity()">立即参与</button>
   </div>
+  <% } %>
   <script type="text/javascript">
     window.activity = {}
     activity.name = '<%= name %>'
     activity.tpid = '<%= tpid %>'
     activity.picture = '<%= picture %>'
+    function activityDetail() {
+      var activity = {
+        imageUrl: activity.picture,
+        topic: activity.name,
+        tpid: activity.tpid
+      }
+      showActivityDetail(JSON.stringify(activity))
+    }
   </script>
 </body>
 </html>

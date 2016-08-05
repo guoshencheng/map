@@ -11,10 +11,27 @@ body {
 }
 
 .image_container {
+  text-align: center;
+  @include flex;
+  @include flex-direction(column);
   width: 100%;
   .activity_image {
     display: block;
     width: 100%;
+  }
+  .activity_detail_container {
+    margin-top: -100px;
+    width: 100%;
+    .activity_detail_button {
+        font-size: 12px;
+        border: 0;
+        background-color: white;
+        @include shadow;
+        @include radius(5px);
+        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
   }
 }
 
@@ -44,3 +61,5 @@ body {
     margin-right:20px;
   }
 }
+
+
