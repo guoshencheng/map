@@ -55,6 +55,7 @@ body {
   }
   .tools_container {
     @include drawingboard_button;
+    padding: 0px;
     width: 60%;
     @include align-items(center);
     @include flex;
@@ -65,6 +66,7 @@ body {
       @include flex;
       @include align-items(center);
       div {
+        font-size: 15px;
         height: 90%;
         margin: 0px;
         padding-left: 10px;
@@ -86,7 +88,7 @@ body {
         @include flex;
         @include align-items(center); 
         height: 100%;
-        width: 30px;
+        width: 25px;
       }
       
       .size_icon {
