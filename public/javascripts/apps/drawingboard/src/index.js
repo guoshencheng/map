@@ -1,21 +1,7 @@
-
-var utils = require('../utils')
-var microevent = require('microevent')
 var canvas = require('./canvas')
 var undo = require('./undo')
 var drawingboard = require('./drawingboard')(canvas)
-drawingboard.draw()
-
-window.goback = undo.goBackInHistory
-window.gofont = undo.goForthInHistory
-window.clearCanvas = function() {
-  var ctx = canvas.context
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-  undo.saveHistory()
-}
-
-undo.saveHistory()
-
+var image = require('./image')
 var pencil = document.getElementById('pencil')
 var eraser = document.getElementById('eraser')
 var small = document.getElementById('small_size')
@@ -23,6 +9,15 @@ var middle = document.getElementById('middle_size')
 var large = document.getElementById('large_size')
 var tool = [pencil, eraser]
 var size = [small, middle, large]
+var ajax = require('./ajax')
+
+window.goback = undo.goBackInHistory
+window.gofront = undo.goForthInHistory
+window.clearCanvas = function() {
+  var ctx = canvas.context
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  undo.saveHistory()
+}
 
 var setSizeOfElement = function(element) {
   if (element == large) {
@@ -69,6 +64,21 @@ var clickSize = function() {
   })
 }
 
+var uploadImage = function() {
+  var data = image.getImage()
+  var base64Data = data.substr(22)
+  ajax({
+      type: 'POST',
+      url: 'http://testry.renyan.cn/rest/share/draw/image',
+      data: JSON.stringify({image: base64Data}),
+      success: function (data) {
+        console.log(data)
+      }
+  });
+}
+window.uploadImage = uploadImage
+
+drawingboard.draw()
 size.forEach(function(child) {
   child.clickSize = clickSize
   child.addEventListener('touchstart', clickSize)
@@ -79,5 +89,6 @@ tool.forEach(function(child) {
   child.addEventListener('touchstart', clicktool)
 })
 
+undo.saveHistory()
 pencil.clicktool()
 small.clickSize()
