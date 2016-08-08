@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
   <title><%= title %></title>
   <link href="/stylesheets/drawingboard.css" rel="stylesheet">
+  <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
 </head>
 <body>
   <div class="container">
@@ -17,17 +18,34 @@
     <div class="controls">
       <button id="goback_button" class="control_button" onclick="goback()">撤销</button>
       <div class="tools_container">
-        
+        <div class="tool">
+           <div class="pencil" id="pencil">
+            <p>画笔</p>
+           </div>
+           <div class="eraser" id="eraser">
+             <p>橡皮</p>
+           </div>
+        </div>
+        <div class="size">
+         <div class="size_item" id="small_size">
+          <div class="size_icon"></div>
+         </div>
+         <div class="size_item" id="middle_size">
+          <div class="size_icon"></div>
+         </div>
+         <div class="size_item" id="large_size">
+          <div class="size_icon"></div>
+         </div>
+        </div>
       </div>
       <button class="control_button" id="clear_button" onclick="clearCanvas()">清除</button>
       <button class="control_button" id="plan_button">计划</button>
-      <button class="control_button" id="upload_button"> 
+      <button class="control_button" id="upload_button" onclick="uploadImage()"> 
         <img class="upload_button_icon" src="/images/upload_button_icon.png" alt="">
         <p>上传</p>
       </button>
     </div>
   </div>
-  <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
   <script src="/javascripts/dist/drawingboard.js" type="text/javascript"></script>
 </body>
 </html>

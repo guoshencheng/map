@@ -5,8 +5,6 @@ if (p) {
 }
 
 var list, list2, animation
-var currentIndex = 0
-var renyanContentShare = JSON.parse(localStorage.renyanContentShare)
 clearMarks()
 map.on('complete', function() {
   configureData(p)
