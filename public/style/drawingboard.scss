@@ -2,6 +2,7 @@
 
 @mixin drawingboard_button {
   margin: 10px;
+  width: 20%;
   height: 32px;
   border: 1px solid white;
   background-color: transparent;
@@ -12,11 +13,21 @@
   font-size: 15px;
 }
 
+html {
+  height:100%;
+}
+
 body {
   width: 100%;
   height: 100%;
   margin: 0px;
   background-color: black;
+  @include flex;
+  @include align-items(center);
+}
+
+.container {
+  width: 100%;
 }
 
 .top_bar {
@@ -24,6 +35,7 @@ body {
   @include flex;
   .drawingboard_button {
     @include drawingboard_button;
+    width: 40%;
   }
 }
 
@@ -43,11 +55,69 @@ body {
   }
   .tools_container {
     @include drawingboard_button;
-    width: 50%
+    width: 60%;
+    @include align-items(center);
+    @include flex;
+    @include justify-content(space-between);
+    .tool {
+      text-align: center;
+      height: 100%;
+      @include flex;
+      @include align-items(center);
+      div {
+        height: 90%;
+        margin: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: 5px;
+        @include radius(8px);
+        p {
+          height: 100%;
+          margin: 0px;
+          margin-top: 10%;
+        }
+      }
+    }
+    .size {
+      height: 100%;
+      @include flex;
+      @include align-items(center); 
+      .size_item {
+        @include flex;
+        @include align-items(center); 
+        height: 100%;
+        width: 30px;
+      }
+      
+      .size_icon {
+        @include radius(50%);
+        border: 1px solid white;
+        background-color: black;
+      }
+      
+      #small_size {
+        .size_icon {
+          width: 5px;
+          height: 5px;
+        }
+      }
+      #middle_size {
+        .size_icon {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      #large_size {
+        .size_icon {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
   }
   
   #upload_button {
-    width: 45%;
+    width: 38%;
     @include flex;
     @include align-items(center);
     @include justify-content(center);
