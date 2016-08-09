@@ -10,7 +10,7 @@
   <div class="container">
     <% for (var index in works) { %>
     <% var work = works[index] %>
-    <div class="item_container">
+    <div onclick="clickItem(this)" class="item_container" index="<%= index %>" >
       <img src="<%= work.image %>" class="work_image"alt="">
       <p>不认识</p>
       <div class="likes_container">
@@ -27,12 +27,19 @@
   <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
   <script type="text/javascript">
   var dataString = '<%- JSON.stringify(works) %>'
-  var data = JSON.parse(dataString)
+  window.data = JSON.parse(dataString)
   function makeNew () {
     window.location.href = '/drawingboard/index'
   }
   function watchOthers() {
     window.location.href = '/drawingboard/works'
+  }
+  function clickItem(current) {
+    var index = current.getAttribute("index")
+    if (index < data.length) {
+      var work = data[index]
+      window.location.href = '/drawingboard/work/' + work.param
+    }
   }
   </script>
 </body>
