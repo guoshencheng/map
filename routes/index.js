@@ -29,8 +29,9 @@ router.get('/drawingboard/work/:workId', drawingboard.fetchWork, function(req, r
   res.render('drawingboard/work', {title: 'xxxx的作品', work: work})
 })
 
-router.get('/drawingboard/works', function(req, res, next) {
-  res.render('drawingboard/works')
+router.get('/drawingboard/works', drawingboard.fetchWorks, function(req, res, next) {
+  var works = req.renyan.works
+  res.render('drawingboard/works', {title: '围观作品', works: works})
 })
 
 router.get('/sendMessage', function(req, res, next) {

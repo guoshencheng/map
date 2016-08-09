@@ -2,7 +2,8 @@ var paths = {
   IMAGE_SIGNATURE_URL: "/selection/card/sign",
   FETCH_ACTIVITY: "/activity/get_by_acid/",
   POST_DRAW_IMAGE: '/share/draw/image',
-  GET_DRAW_IMAGE: '/share/draw/'
+  GET_DRAW_IMAGE: '/share/draw/',
+  GET_DRAW_WORKS: '/share/draw/paged'
 }
 
 module.exports = {

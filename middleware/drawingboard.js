@@ -22,7 +22,7 @@ var postImage = function (req, res, next) {
 var fetchWork = function(req, res, next) {
   var workId = req.params.workId
   var options = {
-    url: domin + paths.GET_DRAW_IMAGE + workId
+    url: domin + paths.GET_DRAW_IMAGE + workId,
   }
   request(options, function(error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -36,7 +36,19 @@ var fetchWork = function(req, res, next) {
 }
 
 var fetchWorks = function(req, res, next) {
-  
+  var options = {
+    url: domin + paths.GET_DRAW_WORKS,
+    qs:{curPage:1, pageSize: 20}
+  }
+  request(options, function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var result = JSON.parse(body)
+      req.renyan.works = result
+      next()
+    } else {
+      next(new Error())
+    }
+  })
 }
 
 module.exports = {
