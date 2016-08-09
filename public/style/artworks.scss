@@ -24,13 +24,14 @@ body {
 
 .container {
   margin-top: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   margin-left: 1%;
   color: white;
   text-align: center;
   @include flex;
   @include flex-wrap(wrap);
   .item_container {
+    margin-bottom: 20px;
     text-align: center;
     @include flex;
     @include flex-direction(column);
