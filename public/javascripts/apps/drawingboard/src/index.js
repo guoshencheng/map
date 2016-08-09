@@ -69,10 +69,13 @@ var uploadImage = function() {
   var base64Data = data.substr(22)
   ajax({
       type: 'POST',
-      url: 'http://testry.renyan.cn/rest/share/draw/image',
+      url: '/drawingboard/image',
       data: JSON.stringify({image: base64Data}),
       success: function (data) {
-        console.log(data)
+        if (data.param) {
+          var param = data.param
+          window.location.href = '/drawingboard/work/' + param
+        }
       }
   });
 }
