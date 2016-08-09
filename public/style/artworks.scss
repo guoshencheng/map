@@ -1,0 +1,71 @@
+@import "./common/define.scss";
+
+@mixin drawingboard_button {
+  margin: 10px;
+  height: 32px;
+  border: 1px solid white;
+  background-color: transparent;
+  @include radius(8px);
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 15px;
+}
+
+html {
+  height:100%;
+  font-family:Helvetica-Light;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+}
+
+.container {
+  margin-top: 20px;
+  color: white;
+  @include justify-content(center);
+  text-align: center;
+  @include flex;
+  @include flex-wrap(wrap);
+  .item_container {
+    text-align: center;
+    @include flex;
+    @include flex-direction(column);
+    font-size: 10px;
+    width: 33%;
+    .work_image {
+      margin-left: 5%;
+      background-color: white;
+      width: 90%;
+    }
+    .likes_container {
+      @include flex;
+      @include justify-content(center);
+      @include align-items(center);
+      width: 100%;
+      img {
+        height: 20px;
+      }
+      p {
+        margin:0;
+      }
+    }
+  }
+}
+
+.bottom_container {
+  @include flex;
+  @include justify-content(space-between);
+  color: white;
+  width: 100%;
+  background-color: #353535;
+  position: fixed;
+  bottom: 0px;
+  .bottom_button {
+    font-family: Helvetica-Light;
+    @include drawingboard_button;
+  }
+}
+

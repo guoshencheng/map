@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <div class="top_bar">
-       <button class="drawingboard_button">围观作品</button>
+       <button onclick="watchOthers()" class="drawingboard_button">围观作品</button>
     </div>
     <div class="drawingboard_container">
       <canvas id="drawingboard" width="400px" height="400px"></canvas>
@@ -47,5 +47,10 @@
     </div>
   </div>
   <script src="/javascripts/dist/drawingboard.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    function watchOthers() {
+      window.location.href = '/drawingboard/works'
+    }
+  </script>
 </body>
 </html>

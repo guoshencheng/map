@@ -3,6 +3,7 @@ var router = express.Router();
 var checkCidParam = require('../middleware/decodeCid')
 var fetchContent = require('../middleware/fetchContent')
 var activity = require('../middleware/activity')
+var drawingboard = require('../middleware/drawingboard')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,8 +18,20 @@ router.get('/map/:id', checkCidParam, fetchContent, function(req, res, next) {
   renderMap(req, res, false)
 })
 
+router.post('/drawingboard/image', drawingboard.postImage)
+
 router.get('/drawingboard/index', function(req, res, next) {
   res.render('drawingboard/index', {title: '画猫'})
+})
+
+router.get('/drawingboard/work/:workId', drawingboard.fetchWork, function(req, res, next) {
+  var work = req.renyan.work
+  res.render('drawingboard/work', {title: 'xxxx的作品', work: work})
+})
+
+router.get('/drawingboard/works', drawingboard.fetchWorks, function(req, res, next) {
+  var works = req.renyan.works
+  res.render('drawingboard/works', {title: '围观作品', works: works})
 })
 
 router.get('/sendMessage', function(req, res, next) {

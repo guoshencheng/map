@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  <title><%= title %></title>
+  <link href="/stylesheets/artworks.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <% for (var index in works) { %>
+    <% var work = works[index] %>
+    <div class="item_container">
+      <img src="<%= work.image %>" class="work_image"alt="">
+      <p>不认识</p>
+      <div class="likes_container">
+         <img src="http://7xpecj.com1.z0.glb.clouddn.com/drawingboard_like.png" alt="">
+         <p><%= work.like %></p>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <div class="bottom_container">
+    <button onclick='watchOther()' class="bottom_button">围观作品</button>
+    <button onclick='makeNew()' class="bottom_button">继续创作</button>
+  </div>
+  <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var dataString = '<%- JSON.stringify(works) %>'
+  var data = JSON.parse(dataString)
+  function makeNew () {
+    window.location.href = '/drawingboard/index'
+  }
+  function watchOthers() {
+    window.location.href = '/drawingboard/works'
+  }
+  </script>
+</body>
+</html>
+
