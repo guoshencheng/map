@@ -24,8 +24,9 @@ body {
 
 .container {
   margin-top: 20px;
+  margin-bottom: 60px;
+  margin-left: 1%;
   color: white;
-  @include justify-content(center);
   text-align: center;
   @include flex;
   @include flex-wrap(wrap);
