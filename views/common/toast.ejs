@@ -1,24 +1,19 @@
-<% var id = id, message = message, confirm = confirm, cancel = cancel %>
+<% var id = id, message = message, confirm = confirm, cancel = cancel, text = text %>
 <% if (id) { %>
-<div class="renyan_mask" id="<%= id %>">
+<div class="renyan_mask_hide renyan_mask" id="<%= id %>">
 <% } else { %>
 <div class="renyan_mask" >
 <% } %>
   <div class="renyan_mask_message_container">
-     <p class="renyan_mask_message"><%= message %></p>
+     <p class="renyan_mask_message"></p>
+    <% if (text) { %>
+        <input class="renyan_mask_text" type="text">
+     <% } %>
     <% if (confirm) { %>
-        <% if (confirm.onclick) { %>
-        <button class="renyan_mask_confirm_button" onclick="<%= confirm.onclick %>"><%= confirm.text %></button>
-        <% } else { %>
-        <button class="renyan_mask_confirm_button"><%= confirm.text %></button>
-        <% } %>
+        <button class="renyan_mask_confirm_button"></button>
      <% } %>
      <% if (cancel) { %>
-        <% if (cancel.onclick) { %>
-        <button class="renyan_mask_cancel_button" onclick="<%= cancel.onclick %>"><%= cancel.text %></button>
-        <% } else { %>
-        <button class="renyan_mask_cancel_button"><%= cancel.text %></button>
-        <% } %>
+        <button class="renyan_mask_cancel_button"></button>
      <% } %>
   </div> 
 </div>

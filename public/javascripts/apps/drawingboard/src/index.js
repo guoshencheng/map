@@ -64,13 +64,13 @@ var clickSize = function() {
   })
 }
 
-var uploadImage = function() {
+var uploadImage = function(username) {
   var data = image.getImage()
   var base64Data = data.substr(22)
   ajax({
       type: 'POST',
       url: '/drawingboard/image',
-      data: JSON.stringify({image: base64Data}),
+      data: JSON.stringify({image: base64Data, name: username}),
       success: function (data) {
         if (data.param) {
           var param = data.param
