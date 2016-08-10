@@ -24,6 +24,10 @@ router.get('/drawingboard/index', function(req, res, next) {
   res.render('drawingboard/index', {title: '画猫'})
 })
 
+router.get('/drawingboard/index/app', function(req, res, next) {
+  res.render('drawingboard/index_app', {title: '猫粮计划'})
+})
+
 router.get('/drawingboard/work/:workId', drawingboard.fetchWork, function(req, res, next) {
   var work = req.renyan.work
   res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: false})
