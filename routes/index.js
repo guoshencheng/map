@@ -40,14 +40,14 @@ router.get('/sendMessage', function(req, res, next) {
 
 router.get('/activity/:activityId', activity.fetchActivity, function(req, res, next) {
   var data = req.renyan.activity
-  var close = data.status === 0 && data.resultPicture
+  var close = data.status === 0 
   res.render('activity', {
     name: data.name,
     bigPicture: close ? data.resultPicture : data.bigPicture,
     picture: data.picture,
     tpid: data.tpid,
     close: close,
-    finish: data.status === 0
+    finish: close
   })
 })
 
