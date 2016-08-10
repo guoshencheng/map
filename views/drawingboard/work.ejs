@@ -11,7 +11,7 @@
   <div class="container">
     <p>赶快分享给大家看</p>
     <img src="<%= work.image %>" alt="">
-    <p><%= work.name %> 画出了一只天才才能画出来的猫！分享给大家，让大家快来围观啊！</p>
+    <p><%= me ? '我' : '这个人' %> 画出了一只叫做 <%= work.name %> 的猫！快分享给大家，让大家快来围观啊！</p>
     <% if (!me) { %>
     <button onclick="makeNew()" class="join_game">我也要画</button>
     <% } %>
@@ -36,7 +36,7 @@
     window.location.href = '/drawingboard/works'
   }
   configureShare({
-    text:  '艺术家 ' + '<%= work.name ? work.name : '叫我天才' %>' + ' 画出了一只天才才能画出来的猫',
+    text:  '<%= me ? '我' : '这个人' %> 画出了一只叫做 <%= work.name %> 的猫！快分享给大家，让大家快来围观啊！',
     image: '<%= work.image %>'
   })
   <% if (me) { %>
