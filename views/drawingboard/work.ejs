@@ -12,11 +12,11 @@
     <p>赶快分享给大家看</p>
     <img src="<%= work.image %>" alt="">
     <p><%= work.name %> 画出了一只天才才能画出来的猫！分享给大家，让大家快来围观啊！</p>
-    <% if (me) { %>
+    <% if (!me) { %>
     <button onclick="makeNew()" class="join_game">我也要画</button>
     <% } %>
   </div>
-  <% if (!me) { %>
+  <% if (me) { %>
     <div id="bottom_container" class="bottom_container container_in_app">
       <button onclick='share()' id="bottom_share_button" class="bottom_button in_app">我要分享</button>
       <button onclick='makeNew()' id="bottom_makenew_button" class="bottom_button in_app">继续创作</button>
@@ -39,7 +39,7 @@
     text:  '艺术家 ' + '<%= work.name ? work.name : '叫我天才' %>' + ' 画出了一只天才才能画出来的猫',
     image: '<%= work.image %>'
   })
-  <% if (!me) { %>
+  <% if (me) { %>
   if (!canRyShare()) {
     var makeNewButton = document.getElementById('bottom_makenew_button')
     var shareButton = document.getElementById('bottom_share_button')

@@ -74,7 +74,7 @@ var uploadImage = function(username) {
       success: function (data) {
         if (data.param) {
           var param = data.param
-          window.location.href = '/drawingboard/work/' + param
+          window.location.href = '/drawingboard/work/' + param + '/me'
         }
       }
   });
