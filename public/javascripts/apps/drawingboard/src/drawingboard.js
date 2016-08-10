@@ -1,7 +1,7 @@
 var undo = require('./undo')
 module.exports = function(canvas) {
   var drawingboard = {}
-  
+  drawingboard.mode = 'pencil'
   drawingboard.canvas = canvas
   drawingboard.coords = {}
   drawingboard.drawing = false
@@ -39,15 +39,16 @@ module.exports = function(canvas) {
   drawingboard.draw = function() {
     if (drawingboard.drawing) {
       var ctx = canvas.context
-      ctx.lineWidth = drawingboard.size
-      ctx.strokeStyle = drawingboard.color
+      ctx.globalCompositeOperation = drawingboard.mode == 'eraser' ? "destination-out" : "source-over";
+      ctx.lineWidth = drawingboard.mode == 'pencil' ? drawingboard.size : 3 * drawingboard.size
+      ctx.strokeStyle = drawingboard.color 
       var currentMid = drawingboard.getMidInputCoords(drawingboard.coords.current)
       ctx.beginPath()
       ctx.moveTo(currentMid.x, currentMid.y)
-      ctx.quadraticCurveTo(drawingboard.coords.old.x, drawingboard.coords.old.y, drawingboard.coords.oldMid.x, drawingboard.coords.oldMid.y);
-      ctx.stroke();
-      drawingboard.coords.old = drawingboard.coords.current;
-      drawingboard.coords.oldMid = currentMid;
+      ctx.quadraticCurveTo(drawingboard.coords.old.x, drawingboard.coords.old.y, drawingboard.coords.oldMid.x, drawingboard.coords.oldMid.y)
+      ctx.stroke()
+      drawingboard.coords.old = drawingboard.coords.current
+      drawingboard.coords.oldMid = currentMid
   }
   if (requestAnimationFrame) requestAnimationFrame(drawingboard.draw)
   }

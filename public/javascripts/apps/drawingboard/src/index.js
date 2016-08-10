@@ -31,9 +31,9 @@ var setSizeOfElement = function(element) {
 
 var setColorOfElement = function(element) {
   if (eraser == element) {
-    drawingboard.color = 'transparent'
+    drawingboard.mode = 'eraser'
   } else {
-    drawingboard.color = '#000000'
+    drawingboard.mode = 'pencil'
   }
 }
 
