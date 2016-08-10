@@ -26,6 +26,9 @@ body {
   @include align-items(center);
 }
 
+
+@import "./common/mask.scss";
+
 .container {
   width: 100%;
 }

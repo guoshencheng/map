@@ -1,0 +1,33 @@
+
+@import "./define.scss";
+
+.renyan_mask {
+  font-family:Helvetica-Light;
+  @include flex;
+  @include justify-content(center);
+  @include align-items(center);
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 0px;
+  .renyan_mask_message_container {
+    color: white;
+    text-align:center;
+    width: 60%;
+    @include radius(10px);
+    background-color: rgba(0, 0, 0, 0.8);
+    p {
+      margin: 10px;
+    }
+    .renyan_mask_confirm_button {
+      color: white;
+      width: 80%;
+    }
+    .renyan_mask_cancel_button {
+      color: white;
+      width: 80%;
+    }
+  }
+}
+

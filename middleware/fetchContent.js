@@ -14,16 +14,19 @@ module.exports = function(req, res, next) {
     if (!error && response.statusCode == 200) {
       var result = JSON.parse(body)
       if (result.card) {
-        req.contentInfo = result
+        result.card.view = result.card.view || 0
+        if (result.card.view !== 0 && result.ratio === 0) {
+          result.ratio = Math.random() * 0.05 + 0.25
+        }
         result.hotText = textForHotRate(result.ratio)
         result.ratio = parseInt(result.ratio * 100)
-        result.card.view = result.card.view || 0
         result.friendPushCount = result.friendPushCount || 0
         var distance = result.distance / 1000
         result.distance = distance.toFixed(0)
         if (result.profile && result.profile.name && result.profile.name.indexOf('未命名') != -1) {
           result.profile.name = '新用户'
         }
+        req.contentInfo = result
         next()
       } else {
         var err = new Error('该内容不存在');
