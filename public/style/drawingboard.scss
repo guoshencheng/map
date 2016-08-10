@@ -1,20 +1,19 @@
 @import "./common/define.scss";
 
 @mixin drawingboard_button {
-  margin: 10px;
-  width: 20%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   height: 32px;
   border: 1px solid white;
   background-color: transparent;
   @include radius(8px);
   color: white;
-  padding-left: 8px;
-  padding-right: 8px;
   font-size: 15px;
 }
 
 html {
   height:100%;
+  font-family: Helvetica-Light;
 }
 
 body {
@@ -25,6 +24,9 @@ body {
   @include flex;
   @include align-items(center);
 }
+
+
+@import "./common/mask.scss";
 
 .container {
   width: 100%;
@@ -51,12 +53,17 @@ body {
   @include flex;
   @include flex-wrap;
   .control_button {
+    font-size: 15px;
     @include drawingboard_button;
+    margin-left: 2%;
+    width: 18%;
+    padding: 0px;
   }
   .tools_container {
     @include drawingboard_button;
     padding: 0px;
-    width: 60%;
+    margin-left:2%;
+    width: 76%;
     @include align-items(center);
     @include flex;
     @include justify-content(space-between);
@@ -65,7 +72,11 @@ body {
       height: 100%;
       @include flex;
       @include align-items(center);
+      @include justify-content(center);
       div {
+        @include flex;
+        @include align-items(center);
+        @include justify-content(center);
         font-size: 15px;
         height: 90%;
         margin: 0px;
@@ -74,18 +85,18 @@ body {
         margin-left: 5px;
         @include radius(8px);
         p {
-          height: 100%;
           margin: 0px;
-          margin-top: 10%;
         }
       }
     }
     .size {
       height: 100%;
+      margin-right: 10px;
       @include flex;
       @include align-items(center); 
       .size_item {
         @include flex;
+        @include justify-content(center);
         @include align-items(center); 
         height: 100%;
         width: 25px;
@@ -119,13 +130,12 @@ body {
   }
   
   #upload_button {
-    width: 38%;
+    margin-left:2%;
+    width: 76%;
     @include flex;
     @include align-items(center);
     @include justify-content(center);
     background-color: white;
-    padding-left: 0px;
-    padding-right: 0px;
     color: black;
     .upload_button_icon {
       width: 20px;

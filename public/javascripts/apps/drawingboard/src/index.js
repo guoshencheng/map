@@ -31,9 +31,9 @@ var setSizeOfElement = function(element) {
 
 var setColorOfElement = function(element) {
   if (eraser == element) {
-    drawingboard.color = '#ffffff'
+    drawingboard.mode = 'eraser'
   } else {
-    drawingboard.color = '#000000'
+    drawingboard.mode = 'pencil'
   }
 }
 
@@ -64,17 +64,17 @@ var clickSize = function() {
   })
 }
 
-var uploadImage = function() {
+var uploadImage = function(username) {
   var data = image.getImage()
   var base64Data = data.substr(22)
   ajax({
       type: 'POST',
       url: '/drawingboard/image',
-      data: JSON.stringify({image: base64Data}),
+      data: JSON.stringify({image: base64Data, name: username}),
       success: function (data) {
         if (data.param) {
           var param = data.param
-          window.location.href = '/drawingboard/work/' + param
+          window.location.href = '/drawingboard/work/' + param + '/me'
         }
       }
   });
@@ -95,3 +95,10 @@ tool.forEach(function(child) {
 undo.saveHistory()
 pencil.clicktool()
 small.clickSize()
+
+var vendors = ['ms', 'moz', 'webkit', 'o'];
+for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+  window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+  window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+}
+
