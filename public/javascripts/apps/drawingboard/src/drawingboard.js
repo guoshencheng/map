@@ -7,7 +7,8 @@ module.exports = function(canvas) {
   drawingboard.drawing = false
   drawingboard.size = 1 
   drawingboard.color = '#000000'
-  
+  canvas.context.lineCap = "round";
+  canvas.context.lineJoin = "round";
   drawingboard.getInputCoords = function(e) {
     e = e.originalEvent ? e.originalEvent : e
     var rect = canvas.getBoundingClientRect()
@@ -42,7 +43,6 @@ module.exports = function(canvas) {
       ctx.strokeStyle = drawingboard.color
       var currentMid = drawingboard.getMidInputCoords(drawingboard.coords.current)
       ctx.beginPath()
-      ctx.strokeStyle = drawingboard.color
       ctx.moveTo(currentMid.x, currentMid.y)
       ctx.quadraticCurveTo(drawingboard.coords.old.x, drawingboard.coords.old.y, drawingboard.coords.oldMid.x, drawingboard.coords.oldMid.y);
       ctx.stroke();
