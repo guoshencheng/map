@@ -57,6 +57,7 @@ body {
     @include drawingboard_button;
     margin-left: 2%;
     width: 18%;
+    padding: 0px;
   }
   .tools_container {
     @include drawingboard_button;
