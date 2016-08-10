@@ -1,4 +1,4 @@
-@import "./common/define.scss";
+@import "../common/define.scss";
 
 @mixin drawingboard_button {
   margin-top: 5px;
@@ -26,7 +26,7 @@ body {
 }
 
 
-@import "./common/mask.scss";
+@import "../common/mask.scss";
 
 .container {
   width: 100%;

@@ -8,6 +8,8 @@ var renyan = require('./middleware/renyan')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var maps = require('./routes/maps')
+var drawingboard = require('./routes/drawingboard')
 
 var app = express();
 
@@ -26,6 +28,8 @@ app.use(renyan)
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/map', maps)
+app.use('/drawingboard', drawingboard)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

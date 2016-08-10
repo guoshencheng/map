@@ -1,7 +1,7 @@
 var sass = require('gulp-sass');
 var path = require('path')
 
-var input = path.resolve(__dirname, '../public/style/*.scss')
+var input = path.resolve(__dirname, '../public/style/**/*.scss')
 var output = path.resolve(__dirname, '../public/stylesheets')
 
 module.exports = function(gulp) {
