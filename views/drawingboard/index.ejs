@@ -58,7 +58,7 @@
       hideDeleMessage()
     }
     function clickUpload() {
-      showRyToast('alert_upload', '请输入你的昵称', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '取消', onclick: 'hideUploadAlert()'})
+      showRyToast('alert_upload', '给这只猫起个名字吧', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '取消', onclick: 'hideUploadAlert()'})
     }
 
     function hideUploadAlert() {
@@ -68,6 +68,7 @@
     function confirmUploadImage() {
       var textContainer = document.getElementsByClassName('renyan_mask_text')[0]
       var username = textContainer.value
+      if (!username || username == '') username = '不知名的猫'
       uploadImage(username)
       hideUploadAlert()
     }
