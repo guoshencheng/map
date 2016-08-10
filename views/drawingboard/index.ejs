@@ -59,12 +59,7 @@
       hideDeleMessage()
     }
     function clickUpload() {
-      if (!localStorage.renyan_nickname) {
-        showRyToast('alert_upload', '请输入你的昵称', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '取消', onclick: 'hideUploadAlert()'})
-      } else {
-        var username = localStorage.renyan_nickname
-        uploadImage(username)
-      }
+      showRyToast('alert_upload', '请输入你的昵称', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '取消', onclick: 'hideUploadAlert()'})
     }
 
     function hideUploadAlert() {
@@ -74,11 +69,8 @@
     function confirmUploadImage() {
       var textContainer = document.getElementsByClassName('renyan_mask_text')[0]
       var username = textContainer.value
-      if (username) {
-        localStorage.renyan_nickname = username
-        uploadImage(username)
-        hideUploadAlert()
-      }
+      uploadImage(username)
+      hideUploadAlert()
     }
 </script>
 </body>
