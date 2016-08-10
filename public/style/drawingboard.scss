@@ -13,6 +13,7 @@
 
 html {
   height:100%;
+  font-family: Helvetica-Light;
 }
 
 body {
@@ -53,14 +54,14 @@ body {
   @include flex-wrap;
   .control_button {
     @include drawingboard_button;
-    margin-left: 5%;
+    margin-left: 2%;
     width: 18%;
   }
   .tools_container {
     @include drawingboard_button;
     padding: 0px;
     margin-left:2%;
-    width: 70%;
+    width: 76%;
     @include align-items(center);
     @include flex;
     @include justify-content(space-between);
@@ -69,6 +70,7 @@ body {
       height: 100%;
       @include flex;
       @include align-items(center);
+      @include justify-content(center);
       div {
         font-size: 15px;
         height: 90%;
@@ -126,13 +128,11 @@ body {
   
   #upload_button {
     margin-left:2%;
-    width: 70%;
+    width: 76%;
     @include flex;
     @include align-items(center);
     @include justify-content(center);
     background-color: white;
-    padding-left: 0px;
-    padding-right: 0px;
     color: black;
     .upload_button_icon {
       width: 20px;

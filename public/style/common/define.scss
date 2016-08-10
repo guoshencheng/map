@@ -59,6 +59,9 @@
 
 @mixin align-items($value: center) {
   -webkit-box-align: $value;
+  -webkit-flex-align: $value;
+  -ms-flex-align: $value;
+  -webkit-align-items: $value;
   align-items: $value;
 }
 
