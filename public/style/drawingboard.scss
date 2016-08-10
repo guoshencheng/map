@@ -53,6 +53,7 @@ body {
   @include flex;
   @include flex-wrap;
   .control_button {
+    font-size: 15px;
     @include drawingboard_button;
     margin-left: 2%;
     width: 18%;
@@ -72,6 +73,9 @@ body {
       @include align-items(center);
       @include justify-content(center);
       div {
+        @include flex;
+        @include align-items(center);
+        @include justify-content(center);
         font-size: 15px;
         height: 90%;
         margin: 0px;
@@ -80,9 +84,7 @@ body {
         margin-left: 5px;
         @include radius(8px);
         p {
-          height: 100%;
           margin: 0px;
-          margin-top: 10%;
         }
       }
     }
