@@ -7,8 +7,6 @@
   background-color: transparent;
   @include radius(8px);
   color: white;
-  padding-left: 8px;
-  padding-right: 8px;
   font-size: 15px;
 }
 
@@ -59,7 +57,6 @@ body {
 
 .bottom_container {
   @include flex;
-  @include justify-content(space-between);
   color: white;
   width: 100%;
   background-color: #353535;
@@ -69,5 +66,19 @@ body {
     font-family: Helvetica-Light;
     @include drawingboard_button;
   }
+  .in_app {
+    width: 40%;
+  }
+  .out_app {
+    width: 80%;
+  }
+}
+
+.container_in_app {
+  @include justify-content(space-between);
+}
+
+.container_out_app {
+  @include justify-content(center);
 }
 

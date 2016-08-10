@@ -1,15 +1,13 @@
 @import "./common/define.scss";
 
 @mixin drawingboard_button {
-  margin: 10px;
-  width: 20%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   height: 32px;
   border: 1px solid white;
   background-color: transparent;
   @include radius(8px);
   color: white;
-  padding-left: 8px;
-  padding-right: 8px;
   font-size: 15px;
 }
 
@@ -55,11 +53,14 @@ body {
   @include flex-wrap;
   .control_button {
     @include drawingboard_button;
+    margin-left: 5%;
+    width: 18%;
   }
   .tools_container {
     @include drawingboard_button;
     padding: 0px;
-    width: 60%;
+    margin-left:2%;
+    width: 70%;
     @include align-items(center);
     @include flex;
     @include justify-content(space-between);
@@ -85,10 +86,12 @@ body {
     }
     .size {
       height: 100%;
+      margin-right: 10px;
       @include flex;
       @include align-items(center); 
       .size_item {
         @include flex;
+        @include justify-content(center);
         @include align-items(center); 
         height: 100%;
         width: 25px;
@@ -122,7 +125,8 @@ body {
   }
   
   #upload_button {
-    width: 38%;
+    margin-left:2%;
+    width: 70%;
     @include flex;
     @include align-items(center);
     @include justify-content(center);

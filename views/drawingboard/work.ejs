@@ -5,17 +5,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
   <title><%= '艺术家 ' + (work.name ? work.name : '叫我天才') + ' 的作品' %></title>
   <link href="/stylesheets/artwork.css" rel="stylesheet">
+  <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
 </head>
 <body>
   <div class="container">
     <p>赶快分享给大家看</p>
     <img src="<%= work.image %>" alt="">
-    <p>我画出了一只天才才能画出来的猫！大家快来围观啊！</p>
+    <p><%= work.name %> 画出了一只天才才能画出来的猫！分享给大家，让大家快来围观啊！</p>
+    <% if (me) { %>
+    <button onclick="makeNew()" class="join_game">我也要画</button>
+    <% } %>
   </div>
-  <div class="bottom_container">
-    <button onclick='watchOthers()' class="bottom_button">围观作品</button>
-    <button onclick='makeNew()' class="bottom_button">继续创作</button>
-  </div>
+  <% if (!me) { %>
+    <div id="bottom_container" class="bottom_container container_in_app">
+      <button onclick='share()' id="bottom_share_button" class="bottom_button in_app">我要分享</button>
+      <button onclick='makeNew()' id="bottom_makenew_button" class="bottom_button in_app">继续创作</button>
+    </div>
+    <% } else { %>
+    <div class="bottom_container container_in_app">
+      <button onclick="watchOthers()" class="bottom_button in_app">围观作品</button>
+      <button onclick="share()" class="bottom_button in_app">关于计划</button>
+    </div>
+    <% } %>
   <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
   <script type="text/javascript">
   function makeNew () {
@@ -24,6 +35,20 @@
   function watchOthers() {
     window.location.href = '/drawingboard/works'
   }
+  configureShare({
+    text:  '艺术家 ' + '<%= work.name ? work.name : '叫我天才' %>' + ' 画出了一只天才才能画出来的猫',
+    image: '<%= work.image %>'
+  })
+  <% if (!me) { %>
+  if (!canRyShare()) {
+    var makeNewButton = document.getElementById('bottom_makenew_button')
+    var shareButton = document.getElementById('bottom_share_button')
+    var bottomContainer = document.getElementById('bottom_container')
+    shareButton.style.display = 'none'
+    makeNewButton.className = 'bottom_button out_app'
+    bottomContainer.className = 'bottom_container container_out_app'
+  }
+  <% } %>
   </script>
 </body>
 </html>

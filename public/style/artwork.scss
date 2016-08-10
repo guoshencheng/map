@@ -5,7 +5,7 @@
   height: 32px;
   border: 1px solid white;
   background-color: transparent;
-  @include radius(8px);
+  @include radius(5px);
   color: white;
   padding-left: 8px;
   padding-right: 8px;
@@ -33,17 +33,41 @@ body {
     width: 80%;
     margin-left: 10%;
   }
+  .join_game {
+    @include drawingboard_button;
+    width: 30%;
+    color: black;
+    font-family: Helvetica-Light;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    background-color: white;
+  }
 }
 
 .bottom_container {
   @include flex;
-  @include justify-content(space-between);
   color: white;
   width: 100%;
   background-color: #353535;
   position: fixed;
   bottom: 0px;
   .bottom_button {
+    font-family: Helvetica-Light;
     @include drawingboard_button;
   }
+  .in_app {
+    width: 40%;
+  }
+  .out_app {
+    width: 80%;
+  }
 }
+
+.container_in_app {
+  @include justify-content(space-between);
+}
+
+.container_out_app {
+  @include justify-content(center);
+}
+

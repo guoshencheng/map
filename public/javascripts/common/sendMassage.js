@@ -1,3 +1,8 @@
+
+function canRyShare() {
+  return (window.android && android.configureShare) ||  (window.webkit && webkit.messageHandlers && webkit.messageHandlers.message && webkit.messageHandlers.message.postMessage)
+}
+
 function configureShare (shareConfig) {
   if (window.android && android.configureShare) {
     android.configureShare(JSON.stringify(shareConfig))
