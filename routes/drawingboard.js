@@ -28,7 +28,7 @@ router.get('/work/:workId', drawingboard.fetchWork, function(req, res, next) {
   var share = {
     text:   '这个人' + '画出了一只叫做' + work.name +  '的猫！快分享给大家，让大家快来围观啊！',
     image: work.image,
-    link: config.shareDomin + '/drawingboard/work' + req.params.workId
+    link: config.shareDomin + '/drawingboard/work/' + req.params.workId
   }
   res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: false, share: share})
 })
@@ -38,7 +38,7 @@ router.get('/work/:workId/me', drawingboard.fetchWork, function(req, res, next) 
   var share = {
     text:   '我' + '画出了一只叫做' + work.name +  '的猫！快分享给大家，让大家快来围观啊！',
     image: work.image,
-    link: config.shareDomin + '/drawingboard/work' + req.params.workId
+    link: config.shareDomin + '/drawingboard/work/' + req.params.workId
   }
   res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: true, share: share})
 })
