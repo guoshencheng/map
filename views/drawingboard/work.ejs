@@ -37,7 +37,7 @@
   }
   configureShare({
     text:  '<%= me ? '我' : '这个人' %> 画出了一只叫做 <%= work.name %> 的猫！快分享给大家，让大家快来围观啊！',
-    image: '<%= work.image %>'
+    image: "<%- work.image %>"
   })
   <% if (me) { %>
   if (!canRyShare()) {
