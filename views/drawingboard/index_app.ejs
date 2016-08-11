@@ -23,9 +23,11 @@
   function watchOthers() {
     window.location.href = '/drawingboard/works'
   }
+
   configureShare({
-    text:  '快来参加猫粮计划',
-    image: 'http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png'
+    text: '<%= share.text %>',
+    image: '<%= share.image %>',
+    link: '<%= share.link %>'
   })
   </script>
 </body>

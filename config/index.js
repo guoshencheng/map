@@ -8,5 +8,8 @@ var paths = {
 
 module.exports = {
   paths: paths,
-  domin: process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest' : 'http://testry.renyan.cn/rest'
+  domin: process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest' : 'http://testry.renyan.cn/rest',
+  shareDomin: process.env.NODE_ENV == "production" ? 'http://activity.renyan.cn' : 'http://activity.test.renyan.cn' 
 }
+
+
