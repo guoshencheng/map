@@ -36,9 +36,9 @@
     window.location.href = '/drawingboard/works'
   }
   configureShare({
-    text: '<%= share.text %>',
-    image: '<%= share.image %>',
-    link: '<%= share.link %>'
+    text: '<%- share.text %>',
+    image: '<%- share.image %>',
+    link: '<%- share.link %>'
   })
   <% if (me) { %>
   if (!canRyShare()) {
