@@ -1,3 +1,9 @@
+function setUserInfo(userInfo) {
+  alert(userInfo)
+  userInfo = JSON.parse(userInfo)
+  window.userInfo = userInfo
+}
+
 
 function canRyShare() {
   return (window.android && android.configureShare) ||  (window.webkit && webkit.messageHandlers && webkit.messageHandlers.message && webkit.messageHandlers.message.postMessage)
