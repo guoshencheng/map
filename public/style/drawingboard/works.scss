@@ -17,6 +17,8 @@ html {
 
 body {
   margin: 0;
+  @include flex;
+  @include flex-direction(column);
   background-color: black;
 }
 
