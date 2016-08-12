@@ -1,6 +1,7 @@
 function setUserInfo(userInfo) {
-  alert(userInfo)
-  userInfo = JSON.parse(userInfo)
+  if (typeof userInfo == String) {
+    userInfo = JSON.parse(userInfo)
+  }
   console.log(userInfo)
   window.userInfo = userInfo
 }
