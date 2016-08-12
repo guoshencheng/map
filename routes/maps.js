@@ -14,12 +14,12 @@ router.get('/:id', checkCidParam, fetchContent, function(req, res, next) {
 
 var renderMap = function(req, res, out) {
   var cid = req.params.id
+  var contentInfo = req.contentInfo
   var share = {
     text: contentInfo.profile.name + '分享了一条'+ contentInfo.hotText + '的人言，快来帮TA传播一下~',
     image: contentInfo.card.pictureCut,
     link: config.shareDomin + '/map/share/' + cid
   }
-  var contentInfo = req.contentInfo
   res.render('map', {
     in: out,
     contentInfo: contentInfo,
