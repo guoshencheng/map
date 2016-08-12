@@ -21,6 +21,7 @@ body {
   @include flex;
   @include align-items(center);
   @include justify-content(center);
+  @include flex-direction(column);
   height: 100%;
   margin: 0;
   background-color: black;
