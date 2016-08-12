@@ -14,6 +14,7 @@ module.exports = function(req, res, next) {
     if (!error && response.statusCode == 200) {
       var result = JSON.parse(body)
       if (result.card) {
+        replaceReturnKey(result.card)
         result.card.view = result.card.view || 0
         if (result.card.view !== 0 && result.ratio === 0) {
           result.ratio = Math.random() * 0.05 + 0.25
@@ -48,4 +49,8 @@ function textForHotRate(rate) {
     index = hotTexts.length - 1;
   }
   return hotTexts[index]
+}
+
+function replaceReturnKey(card) {
+  card.text = card.text.replace(/\n/g, "</br>");
 }
