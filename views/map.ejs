@@ -4,7 +4,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
 <% var shareText = contentInfo.profile.name + '分享了一条'+ contentInfo.hotText + '的人言，快来帮TA传播一下~' %>
-<% var title = share ? shareText : contentInfo.profile.name %>
+<% var title = out ? shareText : contentInfo.profile.name %>
 <title><%= title %></title>  
   <link href="/stylesheets/map.css" rel="stylesheet">
   <style type="text/css">
@@ -12,7 +12,7 @@
       margin-left: 10px;
       color: rgba(230, <%= parseInt(64 + (168 - 64) * (contentInfo.ratio / 100))%>, 130, 1)
     }
-  <% if (!share) { %>
+  <% if (!out) { %>
     .renyan_container {
       margin-top: 0px;
     }
@@ -24,14 +24,14 @@
 </head>  
 
 <body>  
-  <% if (share)  { %>
+  <% if (out)  { %>
   <div style="margin: 0;display: none">
     <img src="http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png" alt="logo"/>
   </div>
   <% } %>
   <div id="map_container"></div> 
   <div class="renyan_container">
-    <% if (share)  { %>
+    <% if (out)  { %>
     <div class='title_block'>
       <div class="friend_spread_text_container">
         <p id="friend_push_count"> <%= contentInfo.friendPushCount %> </p>
@@ -70,10 +70,10 @@
         <div class="line"></div>
       </div>
     </div>
-    <% if (!share) { %>
+    <% if (!out) { %>
       <button class="share_button" id="share_button" onclick="share()">分享让好友帮助传播</button>
     <% } %>
-    <% if ( share ) { %>
+    <% if ( out ) { %>
     <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
     <% var template = templates[contentInfo.card.template - 1] %>
     <div class="content_container">
@@ -131,9 +131,9 @@
   <% } %>
   <script type="text/javascript">
     configureShare({
-      text: '<%= shareText %>',
-      image: "<%- contentInfo.card.pictureCut %>",
-      link: "https://map.share.renyan.cn/map/share/<%= cid %>"
+      text: '<%- share.text %>',
+      image: '<%- share.image %>',
+      link: '<%- share.link %>',
     })
     window.spreadParams = {}
     spreadParams.cid = '<%= cid %>'
