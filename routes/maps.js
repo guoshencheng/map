@@ -21,7 +21,7 @@ var renderMap = function(req, res, out) {
     link: config.shareDomin + '/map/share/' + cid
   }
   res.render('map', {
-    in: out,
+    out: out,
     contentInfo: contentInfo,
     cid: req.params.id,
     share: share
