@@ -18,6 +18,9 @@ html {
 }
 
 body {
+  @include flex;
+  @include align-items(center);
+  @include justify-content(center);
   height: 100%;
   margin: 0;
   background-color: black;
@@ -26,9 +29,19 @@ body {
 .container {
   color: white;
   text-align: center;
-  img {
-    width: 80%;
-    background-color: white;
+  .game_icon_image {
+    width: 50%;
+    background-color: transparent;
+  }
+  .chinese_title {
+    font-size: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .english_title {
+    font-size: 12px;
+    margin-top: 0px;
+    color: #999999;
   }
   p {
     width: 80%;
