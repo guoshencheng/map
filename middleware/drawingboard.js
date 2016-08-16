@@ -29,7 +29,7 @@ var likeWork = function(req, res, next) {
     }
   }
   if (req.renyan.includes) {
-    res.json('liked')
+    res.json('\"liked\"')
   } else {
     request(options, function(error, response, body) {
      if (!error && response.statusCode == 200) {

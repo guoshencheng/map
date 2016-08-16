@@ -61,7 +61,12 @@
           text.textContent ++
           likes.push(work.param)
           localStorage.renyanLikes = JSON.stringify(likes)
-        } 
+        } else if (result == 'liked') {
+          var icon = current.getElementsByTagName('img')[0]
+          icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png"
+          likes.push(work.param)
+          localStorage.renyanLikes = JSON.stringify(likes)
+        }
     })
     }
   }
