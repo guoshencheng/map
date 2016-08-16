@@ -23,6 +23,9 @@ router.get('/index/app', function(req, res, next) {
   res.render('drawingboard/index_app', {title: '猫粮计划', share: share})
 })
 
+
+router.get('/like/:workId', drawingboard.likeWork)
+
 router.get('/work/:workId', drawingboard.fetchWork, function(req, res, next) {
   var work = req.renyan.work
   var share = {

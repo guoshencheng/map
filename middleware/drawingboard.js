@@ -19,6 +19,24 @@ var postImage = function (req, res, next) {
   })
 }
 
+var likeWork = function(req, res, next) {
+  var workId = req.params.workId
+  var options = {
+    method: 'POST',
+    url: domin + paths.DRAW_IMAGE_LIKE + workId,
+    headers: {
+      'Auth': 'RyZxAuth'
+    }
+  }
+  request(options, function(error, response, body) {
+   if (!error && response.statusCode == 200) {
+      res.json(body)
+    } else {
+      next(new Error())
+    }
+  })
+}
+
 var fetchWork = function(req, res, next) {
   var workId = req.params.workId
   var options = {
@@ -54,5 +72,6 @@ var fetchWorks = function(req, res, next) {
 module.exports = {
   postImage: postImage,
   fetchWork: fetchWork,
-  fetchWorks: fetchWorks
+  fetchWorks: fetchWorks,
+  likeWork: likeWork
 }

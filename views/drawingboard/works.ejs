@@ -6,16 +6,17 @@
   <title><%= title %></title>
   <link href="/stylesheets/drawingboard/works.css" rel="stylesheet">
   <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
+  <script type="text/javascript" src="/javascripts/common/ajax.js"></script>
 </head>
 <body>
   <div class="container">
     <% for (var index in works) { %>
     <% var work = works[index] %>
-    <div onclick="clickItem(this)" class="item_container" index="<%= index %>" >
-      <img src="<%= work.image %>" class="work_image"alt="">
+    <div class="item_container" index="<%= index %>" >
+      <img onclick="clickItem(this)" src="<%= work.image %>" class="work_image"alt="" index="<%= index %>">
       <p><%= work.name ? work.name : '不认识' %></p>
-      <div class="likes_container">
-         <img src="http://7xpecj.com1.z0.glb.clouddn.com/drawingboard_like.png" alt="">
+      <div onclick="like(this)" class="likes_container" index="<%= index %>">
+         <img src="http://7xpecj.com1.z0.glb.clouddn.com/2/like.png" alt="">
          <p><%= work.like %></p>
       </div>
     </div>
@@ -27,6 +28,7 @@
   </div>
   <script src="/javascripts/common/sendMassage.js" type="text/javascript"></script>
   <script type="text/javascript">
+  localStorage.renyanLikes = localStorage.renyanLikes || JSON.stringify([]) 
   var dataString = '<%- JSON.stringify(works) %>'
   window.data = JSON.parse(dataString)
   function makeNew () {
@@ -42,6 +44,45 @@
       window.location.href = '/drawingboard/work/' + work.param
     }
   }
+  function like(current) {
+    var index = current.getAttribute("index")
+    var likes = JSON.parse(localStorage.renyanLikes)
+    if (index < data.length) {
+      var work = data[index]
+      if (likes.includes(work.param)) {
+        return
+      }
+      Ajax('/drawingboard/like/' + work.param).get().done(function(result) {
+        result = JSON.parse(result)
+        if (result == 'success') {
+          var icon = current.getElementsByTagName('img')[0]
+          icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png"
+          likes.push(work.param)
+          localStorage.renyanLikes = JSON.stringify(likes)
+        } 
+    })
+    }
+  }
+
+  function initLikes () {
+    var likes = JSON.parse(localStorage.renyanLikes)
+    var likeContainers = document.getElementsByClassName('likes_container')
+    for (var index in likeContainers)  {
+      var likeContainer = likeContainers[index]
+      if (likeContainer.getElementsByTagName) {
+        var img = likeContainer.getElementsByTagName('img')[0]
+        var current = likeContainer.getAttribute("index")
+        if (index < data.length) {
+          var work = data[index]
+          if (likes.includes(work.param)) {
+            img.src = 'http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png'
+          }
+        }
+      }
+    }
+  }
+  initLikes()
+  
   configureShare({
     text: '<%- share.text %>',
     image: '<%- share.image %>',

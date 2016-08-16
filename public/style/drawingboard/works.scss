@@ -48,7 +48,8 @@ body {
       @include align-items(center);
       width: 100%;
       img {
-        height: 20px;
+        height: 15px;
+        margin-right: 10px;
       }
       p {
         margin:0;
