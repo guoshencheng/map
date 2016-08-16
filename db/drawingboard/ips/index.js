@@ -4,7 +4,8 @@ var addLike = function(ip, like, cb) {
   fetchIp(ip, function(err, result) {
     if (!result) result = new Ip({ip: ip, likes:[]})
     result.likes = result.likes || []
-    if (result.likes.includes(like)) {
+    var index = result.likes.indexOf(like)
+    if (index >= 0 && index < result.likes.length) {
       cb(err, result, true)
     } else {
       result.likes.push(like)
