@@ -56,7 +56,9 @@
         result = JSON.parse(result)
         if (result == 'success') {
           var icon = current.getElementsByTagName('img')[0]
+          var text = current.getElementsByTagName('p')[0]
           icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png"
+          text.textContent ++
           likes.push(work.param)
           localStorage.renyanLikes = JSON.stringify(likes)
         } 
