@@ -8,6 +8,7 @@ var paths = {
 }
 
 module.exports = {
+  mongodb: process.env.NODE_ENV == "production" ? 'mongodb://10.174.8.183:27017' : '10.174.8.139:27017',
   paths: paths,
   domin: process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest' : 'http://testry.renyan.cn/rest',
   shareDomin: process.env.NODE_ENV == "production" ? 'http://activity.renyan.cn' : 'http://activity.test.renyan.cn' 

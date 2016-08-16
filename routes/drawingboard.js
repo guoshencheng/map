@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var drawingboard = require('../middleware/drawingboard')
 var config = require('../config')
+var headers = require('../middleware/header')
+var checkip = require('../middleware/db/drawingboard/checkip')
 
 router.post('/image', drawingboard.postImage)
 
@@ -24,7 +26,7 @@ router.get('/index/app', function(req, res, next) {
 })
 
 
-router.get('/like/:workId', drawingboard.likeWork)
+router.get('/like/:workId',headers.getRemoteAddress, checkip, drawingboard.likeWork)
 
 router.get('/work/:workId', drawingboard.fetchWork, function(req, res, next) {
   var work = req.renyan.work

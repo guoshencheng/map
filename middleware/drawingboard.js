@@ -28,13 +28,17 @@ var likeWork = function(req, res, next) {
       'Auth': 'RyZxAuth'
     }
   }
-  request(options, function(error, response, body) {
-   if (!error && response.statusCode == 200) {
-      res.json(body)
-    } else {
-      next(new Error())
-    }
-  })
+  if (req.renyan.includes) {
+    res.json('liked')
+  } else {
+    request(options, function(error, response, body) {
+     if (!error && response.statusCode == 200) {
+        res.json(body)
+      } else {
+        next(new Error())
+      }
+    })
+  }
 }
 
 var fetchWork = function(req, res, next) {
