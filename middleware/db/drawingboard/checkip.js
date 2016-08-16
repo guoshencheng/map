@@ -8,3 +8,5 @@ var checkip = function(req, res, next) {
     next()
   })
 }
+
+module.exports = checkip
