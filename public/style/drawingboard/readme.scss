@@ -1,0 +1,81 @@
+@import "../common/define.scss";
+
+html {
+  background-color: black;
+  font-family: Helvetica-Light;
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+  @include flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+.container {
+  @include flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  .title_text {
+    width: 100%;
+    margin-left: 40px;
+    color: white;
+  }
+  .readme_container {
+    @include radius(8px);
+    width: 90%;
+    background-color: white;
+    .readme_text {
+      font-size: 14px;
+      margin-left: 5%;
+      width: 90%;
+    }
+  }
+  .icon {
+    width: 120px;
+  }
+}
+
+@mixin drawingboard_button {
+  margin: 10px;
+  height: 32px;
+  border: 1px solid white;
+  background-color: transparent;
+  @include radius(5px);
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 15px;
+}
+
+.bottom_container {
+  @include flex;
+  color: white;
+  width: 100%;
+  background-color: #353535;
+  position: fixed;
+  bottom: 0px;
+  .bottom_button {
+    font-family: Helvetica-Light;
+    @include drawingboard_button;
+  }
+  .in_app {
+    width: 40%;
+  }
+  .out_app {
+    width: 80%;
+  }
+}
+
+.container_in_app {
+  @include justify-content(space-between);
+}
+
+.container_out_app {
+  @include justify-content(center);
+}
+

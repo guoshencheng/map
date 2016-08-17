@@ -58,4 +58,8 @@ router.get('/works', drawingboard.fetchWorks, function(req, res, next) {
   res.render('drawingboard/works', {title: '围观作品', works: works, share: share})
 })
 
+router.get('/readme', function(req, res, next) {
+   res.render('drawingboard/readme')
+})
+
 module.exports = router
