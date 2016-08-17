@@ -24,19 +24,22 @@ body {
     width: 100%;
     margin-left: 40px;
     color: white;
+    font-size: 0.5rem;
   }
   .readme_container {
     @include radius(8px);
     width: 90%;
     background-color: white;
     .readme_text {
-      font-size: 14px;
+      font-size: 0.49rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0.7rem;
       margin-left: 5%;
       width: 90%;
     }
   }
   .icon {
-    width: 120px;
+    width: 3rem;
   }
 }
 
