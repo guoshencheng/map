@@ -81,7 +81,8 @@
         var current = likeContainer.getAttribute("index")
         if (index < data.length) {
           var work = data[index]
-          if (likes.includes(work.param)) {
+          var a = likes.indexOf(work.param)
+          if (a >= 0 && a < likes.length) {
             img.src = 'http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png'
           }
         }
