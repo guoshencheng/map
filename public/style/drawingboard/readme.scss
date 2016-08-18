@@ -1,5 +1,17 @@
 @import "../common/define.scss";
 
+@mixin drawingboard_button {
+  margin: 10px;
+  height: 32px;
+  border: 1px solid white;
+  background-color: transparent;
+  @include radius(5px);
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 15px;
+}
+
 html {
   background-color: black;
   font-family: Helvetica-Light;
@@ -10,8 +22,8 @@ body {
 }
 
 .container {
-  margin-top: 0.2rem;
-  margin-bottom: 40px;
+  margin-top: 1.2rem;
+  margin-bottom: 50px;
   @include flex;
   @include flex-direction(column);
   @include justify-content(center);
@@ -37,18 +49,21 @@ body {
   .icon {
     width: 5rem;
   }
-}
-
-@mixin drawingboard_button {
-  margin: 10px;
-  height: 32px;
-  border: 1px solid white;
-  background-color: transparent;
-  @include radius(5px);
-  color: white;
-  padding-left: 8px;
-  padding-right: 8px;
-  font-size: 15px;
+  .renyan_icon {
+    width: 3rem;
+    margin-top: 2rem;
+  }
+  .renyan_text {
+    margin-top: 1rem;
+    font-size: 0.4rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .download_button {
+    @include drawingboard_button;
+    font-size: 0.4rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 .bottom_container {
