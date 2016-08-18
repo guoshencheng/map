@@ -58,12 +58,14 @@ body {
     margin-top: 2rem;
   }
   .renyan_text {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
     font-size: 0.4rem;
     color: rgba(255, 255, 255, 0.8);
   }
   .download_button {
     @include drawingboard_button;
+    margin-top: 0;
     font-size: 0.4rem;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.8);
