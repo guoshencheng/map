@@ -115,7 +115,7 @@ window.confirmClearCanvas = function() {
   hideDeleMessage()
 }
 window.clickUpload = function() {
-  showRyToast('alert_upload', '给这只猫起个名字吧', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '取消', onclick: 'hideUploadAlert()'})
+  showRyToast('alert_upload', '给这只猫起个名字吧', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '我再想想', onclick: 'hideUploadAlert()'})
 }
 
 window.hideUploadAlert = function() {
