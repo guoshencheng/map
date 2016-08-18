@@ -15,13 +15,16 @@
 html {
   background-color: black;
   font-family: Helvetica-Light;
+  width: 100%;
 }
 
 body {
   margin: 0px;
+  width: 100%;
 }
 
 .container {
+  width: 100%;
   margin-top: 0.2rem;
   margin-bottom: 50px;
   @include flex;
@@ -29,8 +32,8 @@ body {
   @include justify-content(center);
   @include align-items(center);
   .title_text {
-    width: 100%;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    width: 9rem;
     color: white;
     font-size: 0.5rem;
   }
