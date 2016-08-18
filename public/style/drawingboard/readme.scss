@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-  margin-top: 2rem;
+  margin-top: 0.2rem;
   margin-bottom: 50px;
   @include flex;
   @include flex-direction(column);
@@ -47,6 +47,7 @@ body {
     }
   }
   .icon {
+    margin-top: 1.8rem;
     width: 5rem;
   }
   .renyan_icon {
