@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  margin-top: 1.5rem;
+  margin-top: 0.2rem;
   margin-bottom: 40px;
   @include flex;
   @include flex-direction(column);
@@ -35,7 +35,7 @@ body {
     }
   }
   .icon {
-    width: 3.5rem;
+    width: 5rem;
   }
 }
 
