@@ -23,11 +23,6 @@
     <button onclick="watchOthers()" class="bottom_button in_app">围观作品</button>
   </div>
   <script type="text/javascript">
-   configureShare({
-      text: '',
-      image: '',
-      shareType: 4
-   })
   (function(win) {
       var doc = win.document;
       var docEl = doc.documentElement;
@@ -81,7 +76,13 @@
   })();
   </script>
   <% } %>
-
+  <script type="text/javascript">
+   configureShare({
+      text: '',
+      image: '',
+      shareType: 4
+   })
+  </script>
 </body>  
 </html>
 
