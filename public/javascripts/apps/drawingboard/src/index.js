@@ -74,7 +74,7 @@ var uploadImage = function(username) {
       success: function (data) {
         if (data.param) {
           var param = data.param
-          window.location.href = '/drawingboard/work/' + param + '/me'
+          window.location.href = '/drawingboard/work/' + param 
         }
       }
   });
@@ -101,4 +101,33 @@ for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
   window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
   window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
 }
+
+window.clearArtboard = function() {
+  showRyToast('alert_delete_message', '是否继续删除', {text: '删除', onclick: 'confirmClearCanvas()'}, {text: '取消', onclick: 'hideDeleMessage()'})
+}
+
+window.hideDeleMessage = function() {
+  hideRyToast('alert_delete_message')
+}
+
+window.confirmClearCanvas = function() {
+  clearCanvas()
+  hideDeleMessage()
+}
+window.clickUpload = function() {
+  showRyToast('alert_upload', '给这只猫起个名字吧', {text: '上传作品', onclick: 'confirmUploadImage()'},  {text: '取消', onclick: 'hideUploadAlert()'})
+}
+
+window.hideUploadAlert = function() {
+  hideRyToast('alert_upload')
+}
+
+window.confirmUploadImage = function() {
+  var textContainer = document.getElementsByClassName('renyan_mask_text')[0]
+  var username = textContainer.value
+  if (!username || username == '') username = '不知名的猫'
+  uploadImage(username)
+  hideUploadAlert()
+}
+
 
