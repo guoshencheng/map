@@ -27,7 +27,7 @@
   <% if (me) { %>
     <div id="bottom_container" class="bottom_container container_in_app">
       <button onclick='share()' id="bottom_share_button" class="bottom_button in_app">我要分享</button>
-      <button onclick='makeNew()' id="bottom_makenew_button" class="bottom_button in_app">继续创作</button>
+      <button onclick='makeNew()' id="bottom_makenew_button" class="bottom_button in_app">开始创作</button>
     </div>
     <% } else { %>
     <div class="bottom_container container_in_app">
@@ -41,7 +41,7 @@
   var dataString = '<%- JSON.stringify(work) %>'
   window.work = JSON.parse(dataString)
   function makeNew () {
-    window.location.href = '/drawingboard/index'
+    window.location.href = '/drawingboard/index/app'
   }
   function watchOthers() {
     window.location.href = '/drawingboard/works'
