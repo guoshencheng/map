@@ -60,7 +60,7 @@ var fetchWork = function(req, res, next) {
 var fetchWorks = function(req, res, next) {
   var options = {
     url: domin + paths.GET_DRAW_WORKS,
-    qs:{curPage:1, pageSize: 20}
+    qs:{curPage:1, pageSize: 39}
   }
   request(options, function(error, response, body) {
     if (!error && response.statusCode == 200) {

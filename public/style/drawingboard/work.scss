@@ -54,11 +54,11 @@ body {
     @include flex;
     @include justify-content(center);
     img {
-      height: 15px;
+      height: 20px;
       margin-right: 20px;
     }
     p {
-      font-size: 12px;
+      font-size: 15px;
       margin: 0;
     }
   }

@@ -126,6 +126,9 @@ window.confirmUploadImage = function() {
   var textContainer = document.getElementsByClassName('renyan_mask_text')[0]
   var username = textContainer.value
   if (!username || username == '') username = ''
+  if (username.length > 20) {
+    username = username.substring(0, 20)
+  }
   uploadImage(username)
   hideUploadAlert()
 }
