@@ -3,26 +3,22 @@
 html {
   background-color: black;
   font-family: Helvetica-Light;
-  height: 100%;
 }
 
 body {
   margin: 0px;
-  height: 100%;
-  @include flex;
-  @include flex-direction(column);
-  @include align-items(center);
-  @include justify-content(center);
 }
 
 .container {
+  margin-top: 1.5rem;
+  margin-bottom: 40px;
   @include flex;
   @include flex-direction(column);
   @include justify-content(center);
   @include align-items(center);
   .title_text {
     width: 100%;
-    margin-left: 40px;
+    margin-left: 1rem;
     color: white;
     font-size: 0.5rem;
   }
@@ -39,7 +35,7 @@ body {
     }
   }
   .icon {
-    width: 3rem;
+    width: 3.5rem;
   }
 }
 
