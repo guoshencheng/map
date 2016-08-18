@@ -15,7 +15,7 @@
       <img src="http://7xpecj.com1.z0.glb.clouddn.com/share_arrow.png" alt="" class="share_arrow">
     </div>
     <img class="work_image" src="<%= work.image %>" alt="">
-    <p class="text">喵星人 <%= work.name %>（编号<%- work.dbid %>）诞生啦！</br>
+    <p class="text">喵星人 <%= work.name %>（编号<%- work.number %>）诞生啦！</br>
     快分享给大家，让更多人加入到拯救计划中来！</p>
     <% if (!me) { %>
     <div class="like_container">
@@ -64,8 +64,10 @@
     var likes = JSON.parse(localStorage.renyanLikes)
     var index = likes.indexOf(work.param)
     var icon = document.getElementsByClassName('like_icon')[0]
+    var likeButton = document.getElementsByClassName('like_button')[0]
     if (index >= 0 && index < likes.length) {
       icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png"
+      likeButton.textContent = '已点赞'
     } else {
       icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like.png"
     }
@@ -82,13 +84,17 @@
       if (result == 'success') {
         var icon = document.getElementsByClassName('like_icon')[0]
         var text = document.getElementsByClassName('like_count')[0]
+        var likeButton = document.getElementsByClassName('like_button')[0]
         icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png"
+        likeButton.textContent = '已点赞'
         text.textContent ++
         likes.push(work.param)
         localStorage.renyanLikes = JSON.stringify(likes)
       } else if (result == 'liked') {
         var icon = document.getElementsByClassName('like_icon')[0]
         icon.src = "http://7xpecj.com1.z0.glb.clouddn.com/2/like_highlight.png"
+        var likeButton = document.getElementsByClassName('like_button')[0]
+        likeButton.textContent = '已点赞'
         likes.push(work.param)
         localStorage.renyanLikes = JSON.stringify(likes)
       }
