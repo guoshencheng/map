@@ -10,7 +10,10 @@
 </head>
 <body>
   <div class="container">
-    <p class="text">赶快分享给大家看</p>
+    <div class="title_container">
+      <p class="text">赶快分享给大家看</p>
+      <img src="http://7xpecj.com1.z0.glb.clouddn.com/share_arrow.png" alt="" class="share_arrow">
+    </div>
     <img class="work_image" src="<%= work.image %>" alt="">
     <p class="text"><%= me ? '我' : '这个人' %> 画出了一只叫做 <%= work.name %> 的猫！快分享给大家，让大家快来围观啊！</p>
     <% if (!me) { %>
