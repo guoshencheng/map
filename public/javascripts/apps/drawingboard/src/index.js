@@ -125,7 +125,7 @@ window.hideUploadAlert = function() {
 window.confirmUploadImage = function() {
   var textContainer = document.getElementsByClassName('renyan_mask_text')[0]
   var username = textContainer.value
-  if (!username || username == '') username = '不知名的猫'
+  if (!username || username == '') username = ''
   uploadImage(username)
   hideUploadAlert()
 }

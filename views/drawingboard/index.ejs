@@ -52,6 +52,9 @@
       image: '<%- share.image %>',
       shareType: 4
     })
+    if (!canRyShare()) {
+      document.title = '<%- share.text %>'
+    }
 </script>
 <% if (env == 'production') {  %>
 <script>

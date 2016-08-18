@@ -7,7 +7,7 @@
   <script type="text/javascript" src='/javascripts/common/ajax.js'></script>
   <script type="text/javascript" src='/javascripts/common/sendMassage.js'></script>
   <link href="/stylesheets/drawingboard/readme.css" rel="stylesheet">
-  <title>十万喵星人拯救计划</title>
+  <title><%= title %></title>
 </head>  
   <div class="container">
     <p class="title_text">十万喵星人拯救计划</p>
@@ -85,6 +85,9 @@
       image: '',
       shareType: 4
    })
+  if (!canRyShare()) {
+    document.title = '<%- share.text %>'
+  }
   </script>
 </body>  
 </html>
