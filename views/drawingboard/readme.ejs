@@ -80,11 +80,12 @@
   </script>
   <% } %>
   <script type="text/javascript">
-   configureShare({
-      text: '',
-      image: '',
-      shareType: 4
-   })
+  configureShare({
+    text: '<%- share.text %>',
+    image: '<%- share.image %>',
+    link: '<%- share.link %>',
+    shareType: 4
+  })
   if (!canRyShare()) {
     document.title = '<%- share.text %>'
   }

@@ -63,7 +63,7 @@ router.get('/readme', function(req, res, next) {
      image: 'http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png',
      link: config.shareDomin + '/drawingboard/index/app'
    }
-   res.render('drawingboard/readme', {env: process.env.NODE_ENV})
+   res.render('drawingboard/readme', {env: process.env.NODE_ENV, share: share})
 })
 
 module.exports = router

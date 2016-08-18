@@ -14,7 +14,7 @@
     <% var work = works[index] %>
     <div class="item_container" index="<%= index %>" >
       <img onclick="clickItem(this)" src="<%= work.image %>" class="work_image"alt="" index="<%= index %>">
-      <p><%= work.name ? work.name : '不认识' %></p>
+      <p><%= (!work.name || work.name == '') ? '不知名的猫' : work.name %></p>
       <div onclick="like(this)" class="likes_container" index="<%= index %>">
          <img src="http://7xpecj.com1.z0.glb.clouddn.com/2/like.png" alt="">
          <p><%= work.like %></p>
