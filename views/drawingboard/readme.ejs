@@ -13,10 +13,10 @@
     <p class="title_text">十万喵星人拯救计划</p>
     <div class="readme_container">
       <p class="readme_text">全球75%的喵星人处于流浪状态，从出生那刻起，就未曾被善待过。
-我们不愿眼睁睁地看着他们在这城市里挣扎求生，「人言app」在此发起一项公益救助活动——“十万流浪喵拯救计划”。
+      我们不愿眼睁睁地看着他们在这城市里挣扎求生，「人言app」在此发起一项公益救助活动——“十万流浪喵拯救计划”。</br>
 你只需画出心中的喵星人，作品即纳入“公益猫粮”爱心箱，将转化成为流浪喵的“免费午餐”。为无家可归的喵星人伸出援手，一起完成爱心接力吧！</p>
     </div>
-    <img src="http://7xpecj.com1.z0.glb.clouddn.com/2/cat_food_white.png" alt="" class="icon">
+    <img src="http://7xpecj.com1.z0.glb.clouddn.com/drawingboard_inde_icon.gif" alt="" class="icon">
   </div>
   <div id="bottom_container" class="bottom_container container_in_app">
     <button onclick='makeNew()' id="bottom_makenew_button" class="bottom_button in_app">我要创作</button>
@@ -55,6 +55,28 @@
       window.location.href = '/drawingboard/works'
     }
   </script>
+  <% if (env == 'production') %>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?05d2e87945786502ca1a962c610a43c0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  <% else { %>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?03cf39b7bf360a57d4ef9a0f2babd76a";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  <% } %>
+
 </body>  
 </html>
 

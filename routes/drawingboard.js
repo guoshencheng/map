@@ -13,7 +13,7 @@ router.get('/index', function(req, res, next) {
     image: 'http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png',
     link: config.shareDomin + '/drawingboard/index'
   }
-  res.render('drawingboard/index', {title: '画猫', share: share})
+  res.render('drawingboard/index', {title: '画猫', share: share, env: process.env.NODE_ENV})
 })
 
 router.get('/index/app', function(req, res, next) {
@@ -22,7 +22,7 @@ router.get('/index/app', function(req, res, next) {
     image: 'http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png',
     link: config.shareDomin + '/drawingboard/index'
   }
-  res.render('drawingboard/index_app', {title: '猫粮计划', share: share})
+  res.render('drawingboard/index_app', {title: '猫粮计划', share: share, env: process.env.NODE_ENV})
 })
 
 
@@ -35,7 +35,7 @@ router.get('/work/:workId', drawingboard.fetchWork, function(req, res, next) {
     image: work.image,
     link: config.shareDomin + '/drawingboard/work/' + req.params.workId
   }
-  res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: false, share: share})
+  res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: false, share: share, env: process.env.NODE_ENV})
 })
 
 router.get('/work/:workId/me', drawingboard.fetchWork, function(req, res, next) {
@@ -45,7 +45,7 @@ router.get('/work/:workId/me', drawingboard.fetchWork, function(req, res, next) 
     image: work.image,
     link: config.shareDomin + '/drawingboard/work/' + req.params.workId
   }
-  res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: true, share: share})
+  res.render('drawingboard/work', {title: 'xxxx的作品', work: work, me: true, share: share, env: process.env.NODE_ENV})
 })
 
 router.get('/works', drawingboard.fetchWorks, function(req, res, next) {
@@ -55,11 +55,11 @@ router.get('/works', drawingboard.fetchWorks, function(req, res, next) {
     image: 'http://7xpecj.com1.z0.glb.clouddn.com/2/renyan_logo.png',
     link: config.shareDomin + '/drawingboard/works'
   }
-  res.render('drawingboard/works', {title: '围观作品', works: works, share: share})
+  res.render('drawingboard/works', {title: '围观作品', works: works, share: share, env: process.env.NODE_ENV})
 })
 
 router.get('/readme', function(req, res, next) {
-   res.render('drawingboard/readme')
+   res.render('drawingboard/readme', {env: process.env.NODE_ENV})
 })
 
 module.exports = router
