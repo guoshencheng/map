@@ -19,7 +19,7 @@
     <img src="http://7xpecj.com1.z0.glb.clouddn.com/drawingboard_inde_icon.gif" alt="" class="icon">
     <img class="renyan_icon" src="http://7xpecj.com1.z0.glb.clouddn.com/renyan_icon@96.png" alt="">
     <p class="renyan_text">Powered by 人言</p>
-    <button class="download_button">点击下载</button>
+    <button onclick="download()" class="download_button">点击下载</button>
   </div>
   <div id="bottom_container" class="bottom_container container_in_app">
     <button onclick='makeNew()' id="bottom_makenew_button" class="bottom_button in_app">我要创作</button>
@@ -88,6 +88,10 @@
   })
   if (!canRyShare()) {
     document.title = '<%- share.text %>'
+  }
+
+  function download() {
+    window.location.href = 'http://share.renyan.cn/share/link/10wmiao'
   }
   </script>
 </body>  
