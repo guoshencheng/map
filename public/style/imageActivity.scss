@@ -20,7 +20,7 @@ body {
     width: 100%;
   }
   .activity_detail_container {
-    margin-top: -100px;
+    margin-top: -120px;
     width: 100%;
     .activity_detail_button {
         font-size: 12px;
@@ -29,8 +29,8 @@ body {
         @include shadow;
         @include radius(5px);
         padding: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
   }
 }
