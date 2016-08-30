@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 var config = require('../config')
 var fetchContent = require('../middleware/fetchContent')
-var checkCidParam = require('../middleware/decodeCid')
+var decodeCid = require('../middleware/decodeCid')
 
-router.get('/share/:id', checkCidParam, fetchContent, function(req, res, next) {
+router.get('/share/:encodeCid', decodeCid.checkCidParam, fetchContent, function(req, res, next) {
   renderMap(req, res, true)
 })
 
-router.get('/:id', checkCidParam, fetchContent, function(req, res, next) {
+router.get('/:encodeCid', decodeCid.checkCidParam, fetchContent, function(req, res, next) {
   renderMap(req, res, false)
 })
 

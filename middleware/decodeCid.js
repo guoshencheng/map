@@ -1,5 +1,11 @@
+var FIRST_INDEX = 13 
+var SECOUND_INDEX = 7
+var ENCODE_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+var ENCODE_PREFIX = 'rna'
+var SHARE_SUFIX = 'eyn'
+
 var checkCidParam = function(req, res, next) {
-  var param = req.params.id
+  var param = req.params.encodeCid
   var cardId = decodeParams(param)
   if (cardId) {
     req.cardId = cardId  
@@ -25,10 +31,32 @@ var decodeParams = function(param) {
 
 }
 
+var encodeParam = function(param) {
+  return generatePrefix(param) + generateMd5(param)
+}
+
+var generatePrefix = function(param) {
+  var result = ''
+  if (param === 0) {
+    result = 'a'
+  }
+  while (param !== 0) {
+    result += ENCODE_LIST[param % 52]
+    param = param / 52
+  }
+  return result
+}
+
+var generateMd5 = function(param) {
+  var crypto = require('crypto')
+  var md5String = crypto.createHash('md5').update('rna' + param + 'eyn').digest('hex').toUpperCase()
+  return md5String.charAt(FIRST_INDEX) + md5String.charAt(SECOUND_INDEX)
+}
+
 var checkCid = function(cid, param) {
   var crypto = require('crypto')
-  var md5String = crypto.createHash('md5').update('rna' + cid + 'eyn').digest("hex").toUpperCase()
-  return param.length >= 2 && (md5String.charAt(13) == param.charAt(param.length - 2)) && (md5String.charAt(7) == param.charAt(param.length - 1))
+  var md5String = crypto.createHash('md5').update('rna' + cid + 'eyn').digest('hex').toUpperCase()
+  return param.length >= 2 && (md5String.charAt(FIRST_INDEX) == param.charAt(param.length - 2)) && (md5String.charAt(SECOUND_INDEX) == param.charAt(param.length - 1))
 }
 
 var generateCid = function(param) {
@@ -47,6 +75,9 @@ var generateCid = function(param) {
   return cid
 }
 
-module.exports = checkCidParam
+module.exports = {
+  checkCidParam: checkCidParam,
+  encodeParam: encodeParam
+}
 
 
