@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/content/:contentId', function(req, res, next) {
+router.get('/share/:contentId', function(req, res, next) {
   var text = '郭申成 郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成郭申成'
   var imageItem = {pictureCut: 'http://img3.fengniao.com/travel/2_960/1850.jpg', type: 2}
   var textItem = {content: text, type: 1}
