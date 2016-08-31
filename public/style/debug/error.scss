@@ -1,0 +1,44 @@
+@import "../common/define.scss";
+
+html {
+  width: 100%;
+  font-family: Helvetica-Light;
+}
+
+body {
+  width: 100%;
+  margin: 0px;
+  @include flex;
+  
+  @include flex-direction(column);
+}
+
+.message {
+  font-size: 20px;
+  text-align: center;
+}
+
+.status {
+  font-size: 20px;
+  text-align: center;
+}
+
+.stack {
+  font-size: 18px;
+}
+
+.icon_container {
+  @include flex;
+  @include justify-content(center);
+  @include align-items(center);
+  .icon {
+    color: white;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    font-size:85px;
+    background-color: #F06050;
+    @include radius(50%);
+  }
+}
+

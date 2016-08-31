@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  <title>Error <%- error.status %></title>
+  <link href="/stylesheets/debug/error.css" rel="stylesheet">
+</head>
+<body>
+  <div class="icon_container">
+    <div class="icon">!</div>
+  </div>
+  <p class="message"><%- message %></p>
+  <p class="status"><%- error.status %></p>
+  <pre class="stack"><%- error.stack %></pre>
+</body>
+</html>
+
+
