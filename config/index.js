@@ -8,8 +8,11 @@ var paths = {
   FETCH_CONTENT: '/share/card/'
 }
 
+var debugMongodb = 'mongodb://localhost:27017'
+var testMongodb = 'mongodb://10.174.8.139:27017'
+
 module.exports = {
-  mongodb: process.env.NODE_ENV == "production" ? 'mongodb://10.174.8.183:27017' : 'mongodb://localhost:27017',
+  mongodb: process.env.NODE_ENV == "production" ? 'mongodb://10.174.8.183:27017' : testMongodb,
   paths: paths,
   domin: process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest' : 'http://testry.renyan.cn/rest',
   shareDomin: process.env.NODE_ENV == "production" ? 'http://activity.renyan.cn' : 'http://activity.test.renyan.cn' 
