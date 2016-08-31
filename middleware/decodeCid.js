@@ -42,7 +42,7 @@ var generatePrefix = function(param) {
   }
   while (param !== 0) {
     result += ENCODE_LIST[param % 52]
-    param = param / 52
+    param = parseInt(param / 52)
   }
   return result
 }
