@@ -1,6 +1,10 @@
+var config = require('../config')
+var domin = config.domin
+var paths = config.paths
+
 var prefix = process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest/share/position/' : 'http://testry.renyan.cn/rest/share/position/'
-module.exports = function(req, res, next) {
-  //Auth: RyZxAuth
+
+var fetchMapContent = function(req, res, next) {
   var cid = req.cardId
   var url = prefix + cid
   var request = require('request')
@@ -40,6 +44,34 @@ module.exports = function(req, res, next) {
       next(err);
     }
   })
+
+}
+
+var fetchContent = function(req, res, next) {
+  var cid = req.cardId
+  var url = domin + paths.FETCH_CONTENT + cid
+  var request = require('request')
+  var options = {
+    url: url,
+    headers: {
+      'Auth': 'RyZxAuth'
+    }
+  }
+  request(options, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var result = JSON.parse(body)
+      res.json(result)
+    } else {
+      var err = error || new Error('服务器异常');
+      err.status = err.status || 512;
+      next(err);
+    }
+  })
+}
+
+module.exports = {
+  fetchMapContent: fetchMapContent,
+  fetchContent: fetchContent
 }
 
 function textForHotRate(rate) {

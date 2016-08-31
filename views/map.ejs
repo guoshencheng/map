@@ -77,6 +77,22 @@
     <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
     <% var template = templates[contentInfo.card.template - 1] %>
     <div class="content_container">
+      <% if (contentInfo.card.isNewType) { %>
+      <div class="content_card">
+      <% contentInfo.card.cardContents.forEach(function(cardContent) { %>
+        <% if (cardContent.type == 1) { %>
+          <p class="long_content_text">
+            <%- cardContent.content %>
+          </p>
+        <% } else if (cardContent.type == 2) {%>
+        <img src="<%- cardContent.imageCut %>" alt="" class="long_content_image" id="long_content_image">
+        <% } else { %>
+          <video class="long_content_video" autoplay>
+            <source src="<%- cardContent.content %>" type="video/mp4"></video>
+        <% } %>
+      <% }) %>
+      </div>
+      <% } else { %>
       <div class="content_card <%= template %>">
         <div class="main_container">
           <div class="rect_image_container" id="content_image" style="background-image: url('<%= contentInfo.card.pictureCut %>')">
@@ -89,6 +105,8 @@
           </div>
         </div>
       </div>
+      <% } %>
+      
     </div>
     <div class="notice_download">
       <p>下载人言App，浏览更多内容</p>

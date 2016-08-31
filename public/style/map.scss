@@ -237,6 +237,29 @@ body {
   }
 }
 
+.long_content_text {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  word-wrap:break-word;
+  font-size: 15px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.long_content_image {
+ margin-top: 8px;
+ margin-bottom: 8px;
+ width: 80%;
+ margin-left: 10%;
+}
+
+.long_content_video {
+  width: 80%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 10%;
+}
+
 .download_banner {
   background-color: rgba(0, 0, 0, 0.8);
   @include flex;

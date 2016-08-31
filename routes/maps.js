@@ -4,11 +4,11 @@ var config = require('../config')
 var fetchContent = require('../middleware/fetchContent')
 var decodeCid = require('../middleware/decodeCid')
 
-router.get('/share/:encodeCid', decodeCid.checkCidParam, fetchContent, function(req, res, next) {
+router.get('/share/:encodeCid', decodeCid.checkCidParam, fetchContent.fetchMapContent, function(req, res, next) {
   renderMap(req, res, true)
 })
 
-router.get('/:encodeCid', decodeCid.checkCidParam, fetchContent, function(req, res, next) {
+router.get('/:encodeCid', decodeCid.checkCidParam, fetchContent.fetchMapContent, function(req, res, next) {
   renderMap(req, res, false)
 })
 
@@ -20,6 +20,7 @@ var renderMap = function(req, res, out) {
     image: contentInfo.card.pictureCut,
     link: config.shareDomin + '/map/share/' + cid
   }
+  console.log(contentInfo.cardContents)
   res.render('map', {
     out: out,
     contentInfo: contentInfo,
