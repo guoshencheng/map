@@ -3,7 +3,8 @@ var configure = function() {
   window.clickSpreadButton = function() {
     if (!renyanContentShare[spreadParams.cid]) {
       var spread = document.getElementById('spread_button')
-      Ajax('https://app.ry.api.renyan.cn/rest/share/spread/' + spreadParams.cid).post({a: 1}).done(function(result) {
+      Ajax('/map/share/spread/' + spreadParams.cid).post({a: 1}).done(function(result) {
+      result = JSON.parse(result)
       if (result == 'success') {
         renyanContentShare[spreadParams.cid] = true;
         localStorage.renyanContentShare = JSON.stringify(renyanContentShare)

@@ -12,19 +12,20 @@ router.get('/:encodeCid', decodeCid.checkCidParam, fetchContent.fetchMapContent,
   renderMap(req, res, false)
 })
 
+router.post('/share/spread/:encodeCid', fetchContent.spreadMapContent)
+
 var renderMap = function(req, res, out) {
-  var cid = req.params.id
+  var cid = req.params.encodeCid
   var contentInfo = req.contentInfo
   var share = {
     text: contentInfo.profile.name + '分享了一条'+ contentInfo.hotText + '的人言，快来帮TA传播一下~',
     image: contentInfo.card.pictureCut,
     link: config.shareDomin + '/map/share/' + cid
   }
-  console.log(contentInfo.cardContents)
   res.render('map', {
     out: out,
     contentInfo: contentInfo,
-    cid: req.params.id,
+    cid: cid,
     share: share
   });
 }

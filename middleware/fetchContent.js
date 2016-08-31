@@ -4,6 +4,25 @@ var paths = config.paths
 
 var prefix = process.env.NODE_ENV == "production" ? 'http://app.ry.api.renyan.cn/rest/share/position/' : 'http://testry.renyan.cn/rest/share/position/'
 
+var spreadMapContent = function(req, res, next) {
+  var request = require('request')
+  var cid =  req.params.encodeCid 
+  var options = {
+    method: 'POST',
+    url: domin + paths.MAP_SPREAD + cid,
+    headers: {
+      'Auth': 'RyZxAuth'
+    }
+  }
+  request(options, function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        res.json(body)
+      } else {
+        next(new Error())
+      }
+  })
+}
+
 var fetchMapContent = function(req, res, next) {
   var cid = req.cardId
   var url = prefix + cid
@@ -71,7 +90,8 @@ var fetchContent = function(req, res, next) {
 
 module.exports = {
   fetchMapContent: fetchMapContent,
-  fetchContent: fetchContent
+  fetchContent: fetchContent,
+  spreadMapContent: spreadMapContent
 }
 
 function textForHotRate(rate) {

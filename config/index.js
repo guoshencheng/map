@@ -5,7 +5,8 @@ var paths = {
   GET_DRAW_IMAGE: '/share/draw/',
   GET_DRAW_WORKS: '/share/draw/paged',
   DRAW_IMAGE_LIKE: '/share/draw/like/',
-  FETCH_CONTENT: '/share/card/'
+  FETCH_CONTENT: '/share/card/',
+  MAP_SPREAD: '/share/spread/',
 }
 
 var debugMongodb = 'mongodb://localhost:27017'
