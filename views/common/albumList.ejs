@@ -1,0 +1,12 @@
+
+<div class="album_list">
+  <div class="line"></div>
+  <p>TA的言集</p>
+  <% for( var index in albums ) {%> <% var album = albums[index] %><div class="album_content">
+      <a href="<%= album.url %>" >
+        <div class="album_cover_container" style="background-image: url('<%= album.cover %>')"></div>
+      </a>
+      <div class="mask"></div>
+      <p>「 <%= album.name %> 」</p>
+    </div><% } %>
+</div>

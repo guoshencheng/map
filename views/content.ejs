@@ -16,74 +16,18 @@
   <div class="renyan_container">
       <div class="content_container">
     <% if (contentInfo.card.isNewType) { %>
-      <div class="content_card">
-      <% contentInfo.card.cardContents.forEach(function(cardContent) { %>
-        <% if (cardContent.type == 1) { %>
-          <p class="long_content_text">
-            <%- cardContent.content %>
-          </p>
-        <% } else if (cardContent.type == 2) {%>
-        <img src="<%- cardContent.imageCut %>" alt="" class="long_content_image" id="long_content_image">
-        <% } else { %>
-          <video class="long_content_video" autoplay>
-            <source src="<%- cardContent.content %>" type="video/mp4"></video>
-        <% } %>
-      <% }) %>
-      </div>
+      <%- include('./common/longContent', {card: contentInfo.card}); %>
     <% } else { %>
-      <% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
-      <% var template = templates[contentInfo.card.template - 1] %>
-        <div class="content_card <%= template %>">
-          <div class="main_container">
-            <div class="rect_image_container" id="content_image" style="background-image: url('<%= contentInfo.card.pictureCut %>')">
-            </div>
-            <p class="content_text">
-              <%- contentInfo.card.text %>
-            </p>
-            <div class="album_name_container">
-              <p class="album_name">「 <%= contentInfo.card.albumName %> 」</p>
-            </div>
-          </div>
-        </div>
+      <%- include('./common/templateCard', {card: contentInfo.card}); %>
     <% } %>
       </div>
     <div class="notice_download">
       <p>下载人言App，浏览更多内容</p>
       <div class="line"></div>
     </div>
-    <div class="user_info_block">
-      <div class="user_info_container">
-        <img class="user_avatar" src="<%= contentInfo.profile.smallPicture %>" alt="">
-          <p class="profle_name"><%= contentInfo.profile.name %></p>
-          <div class="user_data">
-            <p>浏览数: <%= contentInfo.profile.view %></p>
-            <p>关注数: <%= contentInfo.profile.subscribe %></p>
-          </div>
-      </div>
-    </div>
-    <div class="album_list">
-      <div class="line"></div>
-      <p>TA的言集</p>
-      <% for( var index in contentInfo.albums ) {%> <% var album = contentInfo.albums[index] %><div class="album_content">
-          <a href="<%= album.url %>" >
-            <div class="album_cover_container" style="background-image: url('<%= album.cover %>')"></div>
-          </a>
-          <div class="mask"></div>
-          <p>「 <%= album.name %> 」</p>
-        </div><% } %>
-    </div>
-    <div class="download_banner">
-      <div class="info_block">
-        <img src="/images/logo.png" alt="" class="logo">
-        <div class="text_container">
-          <p class="title">人言</p>
-          <p>赶紧试一下你的人言能传多远</p>
-        </div>
-      </div>
-      <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zixintech.renyan">
-        <img src="http://7xpecj.com1.z0.glb.clouddn.com/open_rightnow.png" alt="" class="download_button">
-      </a>
-    </div>
+    <%- include('./common/albumList', {albums: contentInfo.albums}); %>
+    <%- include('./common/userInfo', {profile: contentInfo.profile}); %>
+    <%- include('./common/downloadBanner', {info: {title: '人言', desc: '赶紧试一下你的人言能传多远'}, link:'http://a.app.qq.com/o/simple.jsp?pkgname=com.zixintech.renyan', icon: 'http://7xpecj.com1.z0.glb.clouddn.com/open_rightnow.png'}); %>
   </div>
   <script type="text/javascript">
     configureShare({

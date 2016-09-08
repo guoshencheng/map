@@ -1,0 +1,15 @@
+
+<div class="content_card">
+<% card.cardContents.forEach(function(cardContent) { %>
+  <% if (cardContent.type == 1) { %>
+    <p class="long_content_text">
+      <%- cardContent.content %>
+    </p>
+  <% } else if (cardContent.type == 2) {%>
+  <img src="<%- cardContent.imageCut %>" alt="" class="long_content_image" id="long_content_image">
+  <% } else { %>
+    <video class="long_content_video" autoplay>
+      <source src="<%- cardContent.content %>" type="video/mp4"></video>
+  <% } %>
+<% }) %>
+</div>

@@ -1,0 +1,14 @@
+<% var templates = ['text_template', 'picture_template', 'flat_template', 'tall_template', 'rect_template', 'circle_template'] %>
+<% var template = templates[card.template - 1] %>
+<div class="content_card <%= template %>">
+  <div class="main_container">
+    <div class="rect_image_container" id="content_image" style="background-image: url('<%= card.pictureCut %>')">
+    </div>
+    <p class="content_text">
+      <%- card.text %>
+    </p>
+    <div class="album_name_container">
+      <p class="album_name">「 <%= card.albumName %> 」</p>
+    </div>
+  </div>
+</div>
