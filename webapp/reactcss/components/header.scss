@@ -1,0 +1,12 @@
+@import "../../css/common/define";
+
+.container {
+  width: 100%;
+  @include card;
+  margin: 0px;
+  @include flex;
+}
+
+.title_text {
+  margin-left: 5%;
+}

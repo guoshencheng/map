@@ -5,16 +5,16 @@ var webpack = require('webpack')
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-var apps = fs.readdirSync("./public/javascripts/apps/")
+var apps = fs.readdirSync("./webapp/js/apps/")
 var entry = {}
 apps.filter(function(child) {
-  var dir = "./public/javascripts/apps/" + child
+  var dir = "./webapp/js/apps/" + child
   if (!fs.lstatSync(dir).isDirectory()) return false
   var ls = fs.readdirSync(dir)
   var index = ls.indexOf('src')
   return index < ls.length && index >= 0
 }).forEach(function(child) {
-  entry[child] = './public/javascripts/apps/' + child + '/src/index.js'
+  entry[child] = './webapp/js/apps/' + child + '/src/index.js'
 })
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
         warnings: false
       }
     }),
-    new ExtractTextPlugin("../../stylesheets/[name].css")
+    new ExtractTextPlugin("../../reactstyles/[name].css")
   ],
   externals:{
     'pixi':'PIXI',
@@ -61,8 +61,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      }
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules")
+      },
     ]
   },
 };

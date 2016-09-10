@@ -4,11 +4,10 @@ var HelloMessage = React.createClass({
     return (
       <div>
         <Header title='GUOSHENCHENG'/>
-        <div>Hellp {this.props.name}</div>
       </div>
     )
   }
 })
 
-var container = document.getElementById('container')
+var container = document.body
 ReactDOM.render(<HelloMessage name="Guoshencheng" />, container)

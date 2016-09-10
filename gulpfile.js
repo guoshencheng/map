@@ -5,7 +5,7 @@ var webpack = require('./tasks/webpack')
 sass(gulp)
 webpack(gulp)
 
-gulp.task('default', ['webpack', 'sass'])
+gulp.task('default', ['sass', 'sass:react', 'webpack'])
 
 gulp.task('dev', ['webpack-dev-server', 'sass:watch', 'webpack:watch'])
 
