@@ -24,4 +24,8 @@ router.get('/activity/:activityId', activity.fetchActivity, function(req, res, n
   })
 })
 
+router.get('/react', function(req, res, next) {
+  res.render('myReact', {})
+})
+
 module.exports = router;
