@@ -60,6 +60,10 @@ module.exports = {
         }
       },
       {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(["css", "sass"]),
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules")
       },

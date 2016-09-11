@@ -1,4 +1,4 @@
-var Header = require('../../../components/header.jsx')
+var Header = require('../../../components/navigation/index.jsx')
 var HelloMessage = React.createClass({
   render: function() {
     return (

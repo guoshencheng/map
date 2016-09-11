@@ -1,4 +1,4 @@
-var styles = require('../../reactcss/dist/header.css')
+require('./navigation.scss')
 
 var Timer = React.createClass({
   getInitialState: function() {
@@ -10,8 +10,8 @@ var Timer = React.createClass({
   },
   render: function() {
     return (
-      <div className={styles.container} >
-        <p className={styles.title_text}> {this.props.title} </p>
+      <div id="navigation" >
+        <p className="title_text"> {this.props.title} </p>
       </div>
     );
   }

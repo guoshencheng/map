@@ -13,19 +13,9 @@ module.exports = function(gulp) {
       .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
       .pipe(gulp.dest(output));
   })
-  
-  gulp.task('sass:react', function () {
-    return gulp.src(reactIn)
-      .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-      .pipe(gulp.dest(reactOut));
-  })
 
   gulp.task('sass:watch', function () {
     gulp.watch(input, ['sass']);
-  });
-  
-  gulp.task('sass:react:watch', function () {
-    gulp.watch(input, ['sass:react']);
   });
 }
 
