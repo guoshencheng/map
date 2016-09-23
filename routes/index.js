@@ -11,6 +11,10 @@ router.get('/sendMessage', function(req, res, next) {
   res.render('sendMessage', {})
 })
 
+router.get('/video/:contentId', function(req, res, next) {
+  res.render('video')
+})
+
 router.get('/activity/:activityId', activity.fetchActivity, function(req, res, next) {
   var data = req.renyan.activity
   var close = data.status === 0 
