@@ -14,7 +14,6 @@ router.get('/sendMessage', function(req, res, next) {
 
 router.get('/video/:contentId',  pink.video.fetchVideo, function(req, res, next) {
   var content = req.renyan.content
-  console.log(content)
   res.render('video', {content: content})
 })
 
