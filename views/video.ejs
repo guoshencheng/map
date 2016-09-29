@@ -4,17 +4,25 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="/stylesheets/video.css" rel="stylesheet">
-  <title>video</title>
+  <title><%- content.title %></title>
 </head>
-<body>  
+<body>
   <div class="container">
     <video id="video_player" src="<%- content.videoRealUrl  %>" class="video_player" controls autoplay></video>
+    <div id="poster_container" class="video_poster_container">
+      <img src="<%- content.videoRealPost %>" alt="" class="video_poter">
+    </div>
   </div>
   <script type="text/javascript">
-  function play() {
      var player = document.getElementById('video_player')
-     player.play()
-  }
+     var container = document.getElementById('poster_container')
+     player.onloadedmetadata = function() {
+       container.style.display = 'none'  
+     };
+     function play() {
+       player.play()
+       container.style.display = 'none'  
+     }
   </script>
 </body>
 </html>
