@@ -8,7 +8,13 @@
 </head>
 <body>  
   <div class="container">
-    <video src="<%- content.videoRealUrl  %>" class="video_player" controls autoplay></video>
+    <video id="video_player" src="<%- content.videoRealUrl  %>" class="video_player" controls autoplay></video>
   </div>
+  <script type="text/javascript">
+  function play() {
+     var player = document.getElementById('video_player')
+     player.play()
+  }
+  </script>
 </body>
 </html>
