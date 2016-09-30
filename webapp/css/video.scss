@@ -21,6 +21,8 @@ body {
     height: 100%;
   }
   .video_poster_container {
+    position:fixed;
+    @include justify-content(center);
     @include flex;
     @include flex-direction(column);
     @include align-items(center);
