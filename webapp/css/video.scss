@@ -22,6 +22,7 @@ body {
   }
   .video_poster_container {
     position:fixed;
+    top:0px;
     @include justify-content(center);
     @include flex;
     @include flex-direction(column);
