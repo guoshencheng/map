@@ -9,8 +9,8 @@ var paths = {
   MAP_SPREAD: '/share/spread/',
 }
 
-var debugMongodb = 'mongodb://localhost:27017'
-var testMongodb = 'mongodb://10.174.8.139:27017'
+var testMongodb = 'mongodb://localhost:27017'
+// var testMongodb = 'mongodb://10.174.8.139:27017'
 
 module.exports = {
   mongodb: process.env.NODE_ENV == "production" ? 'mongodb://10.174.8.183:27017' : testMongodb,
